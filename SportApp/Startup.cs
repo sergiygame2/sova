@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SportApp.Data;
 
 namespace SportApp
 {
@@ -29,6 +28,29 @@ namespace SportApp
         {
             // Add framework services.
             services.AddMvc();
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+
+            services.AddOptions();
+            services.AddApplicationInsightsTelemetry(Configuration);
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 0;
+                    options.Password.RequireNonAlphanumeric = false;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
+            services.AddTransient<IDbInitializer, DbInitializer>();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("MySqlConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +69,12 @@ namespace SportApp
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseDefaultFiles();
+            app.UseIdentity();
+
             app.UseStaticFiles();
+
+            app.UseCors("AllowAll");
 
             app.UseMvc(routes =>
             {
@@ -55,6 +82,14 @@ namespace SportApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            InitializeDatabase(app);
+        }
+
+        public virtual void InitializeDatabase(IApplicationBuilder app)
+        {
+            IDbInitializer databaseInitializer = app.ApplicationServices.GetService<IDbInitializer>();
+            databaseInitializer.SeedData();
         }
     }
 }
