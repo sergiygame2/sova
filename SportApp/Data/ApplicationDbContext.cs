@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SportApp.Models;
 
 namespace SportApp.Data
 {
@@ -9,6 +10,9 @@ namespace SportApp.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        
         }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<Gym> Gym { get; set; }
     }
 }
