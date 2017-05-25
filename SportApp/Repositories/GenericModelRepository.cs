@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SportApp.Data;
 
@@ -17,14 +15,14 @@ namespace SportApp.Repositories
             _context = context;
         }
 
-        public void Add(T item)
+        public virtual void Add(T item)
         {
             _context.Set<T>().Add(item);
             _context.SaveChanges();
             _context.Entry(item).State = EntityState.Detached;
         }
 
-        public bool Delete(T item)
+        public virtual bool Delete(T item)
         {
             _context.Set<T>().Remove(item);
             int result = _context.SaveChanges();
@@ -33,7 +31,7 @@ namespace SportApp.Repositories
             return result == 0 ? true : false;
         }
 
-        public T Edit(T item)
+        public virtual T Edit(T item)
         {
             _context.Set<T>().Update(item);
             _context.SaveChanges();
@@ -42,8 +40,8 @@ namespace SportApp.Repositories
             return item;
         }
 
-        public T Get(int id) => _context.Set<T>().AsNoTracking().SingleOrDefault(item => (int)item.GetType().GetProperty("Id").GetValue(item) == id);
+        public virtual T Get(int id) => _context.Set<T>().AsNoTracking().SingleOrDefault(item => (int)item.GetType().GetProperty("Id").GetValue(item) == id);
 
-        public List<T> GetAll() => _context.Set<T>().AsNoTracking().ToList();
+        public virtual List<T> GetAll() => _context.Set<T>().AsNoTracking().ToList();
     }
 }
