@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SportApp.Data;
+using SportApp.Models;
 using SportApp.Repositories;
 
 namespace SportApp
@@ -48,6 +49,9 @@ namespace SportApp
                 .AddDefaultTokenProviders();
 
             //services.AddScoped<IModelRepository, GenericModelRepository>();
+            services.AddScoped<IModelRepository<Gym>, GymRepository>();
+            services.AddScoped<IModelRepository<Comment>, CommentRepository>();
+            
             services.AddTransient<IDbInitializer, DbInitializer>();
 
             services.AddDbContext<ApplicationDbContext>(options =>

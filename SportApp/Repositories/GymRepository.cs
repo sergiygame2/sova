@@ -6,7 +6,10 @@ using SportApp.Models;
 
 namespace SportApp.Repositories
 {
-    public class GymRepository : GenericModelRepository<Gym>
+    public interface IGymRepository : IModelRepository<Gym>
+    {}
+    
+    public class GymRepository : GenericModelRepository<Gym>, IGymRepository
     {
         private readonly ApplicationDbContext _context;
 
