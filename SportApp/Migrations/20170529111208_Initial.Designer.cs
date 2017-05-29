@@ -8,8 +8,8 @@ using SportApp.Data;
 namespace SportApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170525195358_ChangedFieldsTypes")]
-    partial class ChangedFieldsTypes
+    [Migration("20170529111208_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

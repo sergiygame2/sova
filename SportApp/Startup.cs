@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SportApp.Data;
-using SportApp.Models;
 using SportApp.Repositories;
 
 namespace SportApp
