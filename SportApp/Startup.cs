@@ -48,9 +48,8 @@ namespace SportApp
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            //services.AddScoped<IModelRepository, GenericModelRepository>();
-            services.AddScoped<IModelRepository<Gym>, GymRepository>();
-            services.AddScoped<IModelRepository<Comment>, CommentRepository>();
+            services.AddScoped<IGymRepository, GymRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
             
             services.AddTransient<IDbInitializer, DbInitializer>();
 
@@ -85,7 +84,8 @@ namespace SportApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
 
             InitializeDatabase(app);

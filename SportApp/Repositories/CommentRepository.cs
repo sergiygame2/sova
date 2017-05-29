@@ -7,7 +7,7 @@ namespace SportApp.Repositories
     {}
     
     
-    public class CommentRepository : GenericModelRepository<Comment>
+    public class CommentRepository : GenericModelRepository<Comment>, ICommentRepository
     {
         public CommentRepository(ApplicationDbContext context) : base(context)
         {
