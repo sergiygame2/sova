@@ -5,7 +5,7 @@ using SportApp.Models;
 
 namespace SportApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Gym> Gym { get; set; }

@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Pages.Models
+@using Pages.Services
+
+@inject NavLinkServices NLS;
+
+
+    <ul style="margin-top:15px;">
+        @Html.DropDownList("Pages",
+           NLS.ListItems().Select(c =>
+                new SelectListItem() { Text = c, Value = c }))
+    </ul>
+
+

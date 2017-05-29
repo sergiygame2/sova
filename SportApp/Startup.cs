@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SportApp.Data;
+using SportApp.Models;
 using SportApp.Repositories;
+using SportApp.Services;
 
 namespace SportApp
 {
@@ -19,6 +21,8 @@ namespace SportApp
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
+          
             Configuration = builder.Build();
         }
 
@@ -36,7 +40,7 @@ namespace SportApp
             services.AddOptions();
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
                     options.Password.RequireDigit = false;
                     options.Password.RequireLowercase = false;
@@ -46,6 +50,10 @@ namespace SportApp
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
 
             services.AddScoped<IGymRepository, GymRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
@@ -78,6 +86,17 @@ namespace SportApp
             app.UseStaticFiles();
 
             app.UseCors("AllowAll");
+
+            app.UseFacebookAuthentication(new FacebookOptions()
+            {
+                AppId = "235726570155665",
+                AppSecret = "5a874129278465d113c11d600de2d270"
+            });
+            app.UseGoogleAuthentication(new GoogleOptions
+            {
+                ClientId = "890692129897-89eb0oclt6covikm1b1qrfp9qps1nqgr.apps.googleusercontent.com",
+                ClientSecret = "W26j3ubFzzMy337WCi_WGUBL"
+            });
 
             app.UseMvc(routes =>
             {
