@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using SportApp.Repositories;
 
 namespace SportApp.Controllers
 {
+    [Authorize(Policy = "ViewComments")]
     public class CommentController : Controller
     {
         private readonly ICommentRepository _comRepo;
@@ -22,9 +24,10 @@ namespace SportApp.Controllers
 
         // GET: Comments
         public IActionResult Index() => View(_comRepo.GetAll());
-        
+
 
         // GET: Comments/Create
+        [Authorize(Policy = "CreateComments")]
         public IActionResult Create()
         {
             return View();
@@ -35,6 +38,7 @@ namespace SportApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "CreateComments")]
         public IActionResult Create([Bind("Id,GymId,UserId,CommentText,Rate,PublicationDate")] Comment comment)
         {
 
@@ -47,6 +51,7 @@ namespace SportApp.Controllers
         }
 
         // GET: Comments/Edit/5
+        [Authorize(Policy = "UpdateComments")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -65,6 +70,7 @@ namespace SportApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "UpdateComments")]
         public IActionResult Edit(int id, [Bind("Id,GymId,UserId,CommentText,Rate,PublicationDate")] Comment comment)
         {
             if (id != comment.Id)
@@ -92,6 +98,7 @@ namespace SportApp.Controllers
         }
 
         // GET: Comments/Delete/5
+        [Authorize(Policy = "RemoveComments")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
@@ -111,6 +118,7 @@ namespace SportApp.Controllers
         // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "RemoveComments")]
         public IActionResult DeleteConfirmed(int id)
         {
             var comment = _comRepo.Get(id);
