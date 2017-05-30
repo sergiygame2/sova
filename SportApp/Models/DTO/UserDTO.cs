@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace SportApp.Models
+namespace SportApp.Models.DTO
 {
-    // Add profile data for application users by adding properties to the ApplicationUser class
-    public class ApplicationUser : IdentityUser
+    public class UserDTO
     {
+        public string Id { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public string UserName { get; set; }
+
         public string FullName { get; set; }
 
         public string Address { get; set; }
@@ -18,5 +24,7 @@ namespace SportApp.Models
         public int Height { get; set; }
 
         public double Weight { get; set; }
+
+        public IDictionary<string, bool> Roles { get; set; }
     }
 }
