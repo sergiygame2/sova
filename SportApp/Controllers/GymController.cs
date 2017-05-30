@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using SportApp.Repositories;
 
 namespace SportApp.Controllers
 {
+    [Authorize(Policy = "ViewGyms")]
     public class GymController : Controller
     {
         private readonly IGymRepository _gymRepo;
@@ -22,11 +24,10 @@ namespace SportApp.Controllers
 
         // GET: Gym
         public IActionResult Index() => View(_gymRepo.GetAll());
-        
 
-        
 
         // GET: Gym/Create
+        [Authorize(Policy = "CreateGyms")]
         public IActionResult Create()
         {
             return View();
@@ -37,6 +38,7 @@ namespace SportApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "CreateGyms")]
         public IActionResult Create([Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl")] Gym gym)
         {
             if (ModelState.IsValid)
@@ -48,6 +50,7 @@ namespace SportApp.Controllers
         }
 
         // GET: Gym/Edit/5
+        [Authorize(Policy = "UpdateGyms")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -66,6 +69,7 @@ namespace SportApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "UpdateGyms")]
         public IActionResult Edit(int id, [Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl")] Gym gym)
         {
             if (id != gym.Id)
@@ -93,6 +97,7 @@ namespace SportApp.Controllers
         }
 
         // GET: Gym/Delete/5
+        [Authorize(Policy = "RemoveGyms")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
@@ -111,6 +116,7 @@ namespace SportApp.Controllers
         // POST: Gym/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "RemoveGyms")]
         public IActionResult DeleteConfirmed(int id)
         {
             var gym = _gymRepo.Get(id);
@@ -118,7 +124,6 @@ namespace SportApp.Controllers
             return RedirectToAction("Index");
         }
 
-        // хз как это перевести на репо
         private bool GymExists(int id)
         {
             return _gymRepo.GetAll().Any(gym => gym.Id == id);

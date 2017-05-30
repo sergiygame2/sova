@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SportApp.Data;
+using SportApp.Lookups;
 using SportApp.Models;
 using SportApp.Repositories;
 using SportApp.Services;
@@ -14,6 +15,8 @@ namespace SportApp
 {
     public class Startup
     {
+        private IAppPermissionsLookup _permissions;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -21,9 +24,9 @@ namespace SportApp
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-
-          
+            
             Configuration = builder.Build();
+            _permissions = new AppPermissionsLookup();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -50,6 +53,31 @@ namespace SportApp
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ViewUsers", policy => policy.RequireClaim("permission", _permissions.ViewUsers));
+                options.AddPolicy("CreateUsers", policy => policy.RequireClaim("permission", _permissions.CreateUsers));
+                options.AddPolicy("UpdateUsers", policy => policy.RequireClaim("permission", _permissions.UpdateUsers));
+                options.AddPolicy("RemoveUsers", policy => policy.RequireClaim("permission", _permissions.RemoveUsers));
+
+                options.AddPolicy("ViewRoles", policy => policy.RequireClaim("permission", _permissions.ViewRoles));
+                options.AddPolicy("CreateRoles", policy => policy.RequireClaim("permission", _permissions.CreateRoles));
+                options.AddPolicy("UpdateRoles", policy => policy.RequireClaim("permission", _permissions.UpdateRoles));
+                options.AddPolicy("RemoveRoles", policy => policy.RequireClaim("permission", _permissions.RemoveRoles));
+
+                options.AddPolicy("ViewGyms", policy => policy.RequireClaim("permission", _permissions.ViewGyms));
+                options.AddPolicy("CreateGyms", policy => policy.RequireClaim("permission", _permissions.CreateGyms));
+                options.AddPolicy("UpdateGyms", policy => policy.RequireClaim("permission", _permissions.UpdateGyms));
+                options.AddPolicy("RemoveGyms", policy => policy.RequireClaim("permission", _permissions.RemoveGyms));
+                
+                options.AddPolicy("ViewComments", policy => policy.RequireClaim("permission", _permissions.ViewComments));
+                options.AddPolicy("CreateComments", policy => policy.RequireClaim("permission", _permissions.CreateComments));
+                options.AddPolicy("UpdateComments", policy => policy.RequireClaim("permission", _permissions.UpdateComments));
+                options.AddPolicy("RemoveComments", policy => policy.RequireClaim("permission", _permissions.RemoveComments));
+            });
+
+            services.AddSingleton<IAppPermissionsLookup, AppPermissionsLookup>();
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
