@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace SportApp.Models
 {
-    public class Gym 
+    public class Gym : IIdentifiable
     {
         public int Id { get; set; }
         public string GymName { get; set; }

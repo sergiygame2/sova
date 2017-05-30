@@ -1,57 +1,47 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using SportApp.Repositories;
-using SportApp.Controllers;
 using SportApp.Models;
+using SportApp.Services;
 
 
 namespace SportApp.Controllers
 {
     public class ApiController<T> : Controller
-            where T : class
+            where T : class, IIdentifiable
     {
         protected readonly IModelRepository<T> repo;
-        protected readonly UserManager<IdentityUser> _userManager;
-
-        public ApiController(IModelRepository<T> repo, UserManager<IdentityUser> userManager)
+   
+        public ApiController(IModelRepository<T> repo)
         {
             this.repo = repo;
-            this._userManager = userManager;
         }
 
         public virtual IActionResult GetGeneric(string _query = "",
             HashSet<string> searchableProperties = null,
             string _sort = "", string _order = "", int _start = 0, int _end = 0)
         {
-
-            //var paginationService = (IPaginationUtilities)HttpContext.RequestServices.GetService(typeof(IPaginationUtilities));
+            var paginationService = (IPaginationUtilities)HttpContext.RequestServices.GetService(typeof(IPaginationUtilities));
             dynamic items = repo.GetAll();
 
-            /*items = paginationService.Filter(items, _query, searchableProperties);
+            items = paginationService.Filter(items, _query, searchableProperties);
             int totalCount = items.Count;
             items = paginationService.Sort(items, _sort, _order, searchableProperties);
-            items = paginationService.Partition(items, _start, _end);*/
+            items = paginationService.Partition(items, _start, _end);
 
-            return Json(new { data = items, count = items.Count });
+            return Json(new { data = items, count = totalCount });
         }
 
         public IActionResult GetByIdGeneric(int id)
         {
             var entity = repo.Get(id);
-            //TODO add IIdentifiable
-            //if (entity == null || entity.Id != id)
-            // {
-            try
-            {
+            if (entity == null || entity.Id != id)
+            { 
+                try
+                {
                     HttpContext.Response.StatusCode = 404;
                     return Json(new { message = $"{typeof(T).Name} not found" });
                 }
@@ -59,8 +49,8 @@ namespace SportApp.Controllers
                 {
                     return NotFound();
                 }
-           // }
-            //return new ObjectResult(entity);
+            }
+            return new ObjectResult(entity);
         }
 
         [HttpPost]
@@ -78,7 +68,6 @@ namespace SportApp.Controllers
 
             try
             {
-                string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 repo.Add(entity);
             }
             catch (DbUpdateException e)
@@ -94,15 +83,13 @@ namespace SportApp.Controllers
                 return BadRequest($"{e.Message}");
             }
             return CreatedAtRoute(String.Concat("Get", typeof(T).Name),
-                new { id = 1 }, entity);
-            // TODO Add Id
-            //new { id = entity.Id }, entity);
+                new { id = entity.Id }, entity);
         }
 
         [HttpPut]
         public virtual IActionResult Put(int id, [FromBody]T entity)
         {
-            if (entity == null)// || entity.Id != id)
+            if (entity == null || entity.Id != id)
             {
                 return BadRequest("Object reference not set to an instance of an object");
             }
@@ -145,7 +132,6 @@ namespace SportApp.Controllers
                     return NotFound();
                 }
             }
-            string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var deleteSuccessful = repo.Delete(entity);
             if (!deleteSuccessful)
             {
@@ -153,8 +139,5 @@ namespace SportApp.Controllers
             }
             return new NoContentResult();
         }
-
-
-
     }
 }

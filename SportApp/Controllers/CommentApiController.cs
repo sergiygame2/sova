@@ -8,32 +8,30 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SportApp.Controllers
 {
-    [Route("api/CommentApi")]
+    [Route("api/comments")]
     [Authorize(Policy = "ViewComments")]
     public class CommentApiController : ApiController<Comment>
     {
-        public CommentApiController(CommentRepository repo, UserManager<IdentityUser> userManager) :
-            base(repo, userManager)
+        public CommentApiController(ICommentRepository repo) :
+            base(repo)
         { }
 
         [HttpGet]
         public IActionResult Get(string _query = "", string _sort = "", string _order = "", int _start = 0, int _end = 0)
         {
-            HashSet<string> searchableProperties = new HashSet<string>();
-            searchableProperties.Add("Key");
-            searchableProperties.Add("Value");
+            HashSet<string> searchableProperties = new HashSet<string> {"CommentText", "PublicationDate"};
 
             return GetGeneric(_query, searchableProperties, _sort, _order, _start, _end);
         }
 
-        [HttpGet("{id}", Name = "GetComments")]
+        [HttpGet("{id}", Name = "GetComment")]
         public IActionResult Get(int id)
         {
             return GetByIdGeneric(id);
         }
 
         [HttpPost]
-        [Authorize(Policy = "UpdateComments")]
+        [Authorize(Policy = "CreateComments")]
         public override IActionResult Post([FromBody]Comment item)
         {
             return base.Post(item);

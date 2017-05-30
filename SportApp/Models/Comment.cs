@@ -2,7 +2,7 @@ using System;
 
 namespace SportApp.Models
 {
-    public class Comment
+    public class Comment : IIdentifiable
     {
         public int Id { get; set;}
         public int GymId { get; set; }

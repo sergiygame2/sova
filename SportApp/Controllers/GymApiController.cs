@@ -8,33 +8,29 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SportApp.Controllers
 {
-    [Route("api/GymApi")]
+    [Route("api/gyms")]
     [Authorize(Policy = "ViewGyms")]
     public class GymApiController : ApiController<Gym>
     {
-        
-        public GymApiController(GymRepository repo, UserManager<IdentityUser> userManager) :
-            base(repo, userManager)
+        public GymApiController(IGymRepository repo) :
+            base(repo)
         { }
 
         [HttpGet]
         public IActionResult Get(string _query = "", string _sort = "", string _order = "", int _start = 0, int _end = 0)
         {
-            HashSet<string> searchableProperties = new HashSet<string>();
-            searchableProperties.Add("Key");
-            searchableProperties.Add("Value");
-
+            HashSet<string> searchableProperties = new HashSet<string> { "GymName", "GymLocation", "Url", "FoundYear", "Description" };
             return GetGeneric(_query, searchableProperties, _sort, _order, _start, _end);
         }
 
-        [HttpGet("{id}", Name = "GetGyms")]
+        [HttpGet("{id}", Name = "GetGym")]
         public IActionResult Get(int id)
         {
             return GetByIdGeneric(id);
         }
 
         [HttpPost]
-        [Authorize(Policy = "UpdateGyms")]
+        [Authorize(Policy = "CreateGyms")]
         public override IActionResult Post([FromBody]Gym item)
         {
             return base.Post(item);

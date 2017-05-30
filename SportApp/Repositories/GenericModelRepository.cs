@@ -25,10 +25,10 @@ namespace SportApp.Repositories
         public virtual bool Delete(T item)
         {
             _context.Set<T>().Remove(item);
-            int result = _context.SaveChanges();
+            _context.SaveChanges();
             _context.Entry(item).State = EntityState.Detached;
 
-            return result == 0 ? true : false;
+            return true;
         }
 
         public virtual T Edit(T item)
