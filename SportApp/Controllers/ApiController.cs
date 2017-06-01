@@ -14,23 +14,23 @@ namespace SportApp.Controllers
             where T : class, IIdentifiable
     {
         protected readonly IModelRepository<T> repo;
-   
-        public ApiController(IModelRepository<T> repo)
+        private IPaginationUtilities _paginationService;
+        public ApiController(IModelRepository<T> repo, IPaginationUtilities services)
         {
             this.repo = repo;
+            this._paginationService = services;
         }
 
         public virtual IActionResult GetGeneric(string _query = "",
             HashSet<string> searchableProperties = null,
             string _sort = "", string _order = "", int _start = 0, int _end = 0)
         {
-            var paginationService = (IPaginationUtilities)HttpContext.RequestServices.GetService(typeof(IPaginationUtilities));
             dynamic items = repo.GetAll();
 
-            items = paginationService.Filter(items, _query, searchableProperties);
+            items = _paginationService.Filter(items, _query, searchableProperties);
             int totalCount = items.Count;
-            items = paginationService.Sort(items, _sort, _order, searchableProperties);
-            items = paginationService.Partition(items, _start, _end);
+            items = _paginationService.Sort(items, _sort, _order, searchableProperties);
+            items = _paginationService.Partition(items, _start, _end);
 
             return Json(new { data = items, count = totalCount });
         }

@@ -5,6 +5,7 @@ using SportApp.Models;
 using SportApp.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using SportApp.Services;
 
 namespace SportApp.Controllers
 {
@@ -12,8 +13,8 @@ namespace SportApp.Controllers
     [Authorize(Policy = "ViewComments")]
     public class CommentApiController : ApiController<Comment>
     {
-        public CommentApiController(ICommentRepository repo) :
-            base(repo)
+        public CommentApiController(ICommentRepository repo, IPaginationUtilities services) :
+            base(repo, services)
         { }
 
         [HttpGet]

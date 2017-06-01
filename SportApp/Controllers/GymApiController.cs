@@ -5,6 +5,7 @@ using SportApp.Models;
 using SportApp.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using SportApp.Services;
 
 namespace SportApp.Controllers
 {
@@ -12,8 +13,8 @@ namespace SportApp.Controllers
     [Authorize(Policy = "ViewGyms")]
     public class GymApiController : ApiController<Gym>
     {
-        public GymApiController(IGymRepository repo) :
-            base(repo)
+        public GymApiController(IGymRepository repo, IPaginationUtilities services) :
+            base(repo, services)
         { }
 
         [HttpGet]

@@ -13,6 +13,7 @@ using SportApp.Repositories;
 namespace SportApp.Controllers
 {
     [Authorize(Policy = "ViewComments")]
+    [Route("Admin/Comment")]
     public class CommentController : Controller
     {
         private readonly ICommentRepository _comRepo;
@@ -23,14 +24,15 @@ namespace SportApp.Controllers
         }
 
         // GET: Comments
-        public IActionResult Index() => View(_comRepo.GetAll());
+        public IActionResult Index() => View("Views/Admin/Comment/Index.cshtml",_comRepo.GetAll());
 
 
         // GET: Comments/Create
         [Authorize(Policy = "CreateComments")]
+        [Route("Create")]
         public IActionResult Create()
         {
-            return View();
+            return View("Views/Admin/Comment/Create.cshtml");
         }
 
         // POST: Comments/Create
@@ -39,6 +41,7 @@ namespace SportApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "CreateComments")]
+        [Route("Create")]
         public IActionResult Create([Bind("Id,GymId,UserId,CommentText,Rate,PublicationDate")] Comment comment)
         {
 
@@ -47,11 +50,12 @@ namespace SportApp.Controllers
                 _comRepo.Add(comment);
                 return RedirectToAction("Index");
             }
-            return View(comment);
+            return View("Views/Admin/Comment/Create.cshtml",comment);
         }
 
         // GET: Comments/Edit/5
         [Authorize(Policy = "UpdateComments")]
+        [Route("Edit")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -62,7 +66,7 @@ namespace SportApp.Controllers
             {
                 return NotFound();
             }
-            return View(comment);
+            return View("Views/Admin/Comment/Edit.cshtml",comment);
         }
 
         // POST: Comments/Edit/5
@@ -71,6 +75,7 @@ namespace SportApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "UpdateComments")]
+        [Route("Edit")]
         public IActionResult Edit(int id, [Bind("Id,GymId,UserId,CommentText,Rate,PublicationDate")] Comment comment)
         {
             if (id != comment.Id)
@@ -94,11 +99,12 @@ namespace SportApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(comment);
+            return View("Views/Admin/Comment/Edit.cshtml",comment);
         }
 
         // GET: Comments/Delete/5
         [Authorize(Policy = "RemoveComments")]
+        [Route("Delete")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
@@ -112,13 +118,14 @@ namespace SportApp.Controllers
                 return NotFound();
             }
 
-            return View(comment);
+            return View("Views/Admin/Comment/Delete.cshtml",comment);
         }
 
         // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "RemoveComments")]
+        [Route("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
             var comment = _comRepo.Get(id);
