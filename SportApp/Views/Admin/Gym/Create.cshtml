@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-<form asp-action="Create">
+<form asp-action="Create" enctype="multipart/form-data" method="post">
     <div class="form-horizontal">
         <h4>Gym</h4>
         <hr />
@@ -84,8 +84,7 @@
         <div class="form-group">
             <label asp-for="GymImgUrl" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="GymImgUrl" class="form-control" />
-                <span asp-validation-for="GymImgUrl" class="text-danger"></span>
+                <p><input type="file" name="pic"></p>  
             </div>
         </div>
         <div class="form-group">

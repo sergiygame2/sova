@@ -17,6 +17,6 @@ namespace SportApp.Models
 
         public int Height { get; set; }
 
-        public double Weight { get; set; }
+        public double Weight { get; set; }       
     }
 }

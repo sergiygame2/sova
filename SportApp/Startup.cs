@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.IO;
+using GI.Models.Core;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +43,11 @@ namespace SportApp
                 .AllowAnyHeader()));
 
             services.AddOptions();
+
+            services.Configure<UploadedFilesSettings>(Configuration.GetSection("UploadedFilesSettings"));
+            var uploadedFilesPath = Configuration.GetSection("UploadedFilesSettings").GetValue<string>("PhysicalPath").Replace("\\", "/");
+            //uploadedFilesPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), uploadedFilesPath));
+            
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
