@@ -71,7 +71,7 @@ namespace SportApp.Controllers
                 repo.Add(entity);
             }
             catch (DbUpdateException e)
-            {
+            { 
                 Console.WriteLine(e.InnerException.Message);
                 ModelState.AddModelError("0", e.InnerException.Message);
                 return BadRequest(ModelState);
