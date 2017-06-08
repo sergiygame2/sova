@@ -24,32 +24,6 @@ namespace SportApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false)
-                        .Annotation("MySql:ValueGeneratedOnAdd", true),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
@@ -64,21 +38,52 @@ namespace SportApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false)
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
+                    BirthDay = table.Column<DateTime>(nullable: false),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    FullName = table.Column<string>(nullable: true),
+                    Height = table.Column<int>(nullable: false),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Weight = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Gym",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
-                    Description = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(type: "varchar(10000)", maxLength: 10000, nullable: false),
                     Facilities = table.Column<string>(nullable: true),
-                    FoundYear = table.Column<int>(nullable: false),
-                    GoogleLocation = table.Column<string>(nullable: true),
-                    GymArea = table.Column<int>(nullable: false),
+                    FoundYear = table.Column<int>(nullable: true),
+                    GoogleLocation = table.Column<string>(nullable: false),
+                    GymArea = table.Column<int>(nullable: true),
                     GymImgUrl = table.Column<string>(nullable: true),
-                    GymLocation = table.Column<string>(nullable: true),
-                    GymName = table.Column<string>(nullable: true),
-                    GymRate = table.Column<int>(nullable: false),
-                    MbrshipPrice = table.Column<int>(nullable: false),
+                    GymLocation = table.Column<string>(nullable: false),
+                    GymName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    GymRate = table.Column<int>(nullable: true),
+                    MbrshipPrice = table.Column<int>(nullable: true),
                     Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -178,7 +183,7 @@ namespace SportApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
-                    CommentText = table.Column<string>(nullable: true),
+                    CommentText = table.Column<string>(type: "varchar(10000)", maxLength: 10000, nullable: false),
                     GymId = table.Column<int>(nullable: false),
                     PublicationDate = table.Column<DateTime>(nullable: false),
                     Rate = table.Column<int>(nullable: false),
@@ -189,6 +194,32 @@ namespace SportApp.Migrations
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Comments_Gym_GymId",
+                        column: x => x.GymId,
+                        principalTable: "Gym",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsersGyms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
+                    ApplicationUserId = table.Column<string>(nullable: true),
+                    GymId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsersGyms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsersGyms_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UsersGyms_Gym_GymId",
                         column: x => x.GymId,
                         principalTable: "Gym",
                         principalColumn: "Id",
@@ -207,17 +238,6 @@ namespace SportApp.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
@@ -233,8 +253,29 @@ namespace SportApp.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_GymId",
                 table: "Comments",
+                column: "GymId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersGyms_ApplicationUserId",
+                table: "UsersGyms",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersGyms_GymId",
+                table: "UsersGyms",
                 column: "GymId");
         }
 
@@ -257,6 +298,9 @@ namespace SportApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "UsersGyms");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

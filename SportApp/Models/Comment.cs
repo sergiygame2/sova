@@ -1,15 +1,26 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportApp.Models
 {
     public class Comment : IIdentifiable
     {
         public int Id { get; set;}
+
+        [Required]
         public int GymId { get; set; }
+
+        [Required]
         public int UserId { get; set; }
+
+        [Required(AllowEmptyStrings = false), Column(TypeName = "varchar(10000)"), MaxLength(10000)]
         public string CommentText { get; set; }
+
+        [Required]
         public int Rate { get; set; }
-        public DateTime PublicationDate { get; set; }
+
+        public DateTime? PublicationDate { get; set; }
 
         protected bool Equals(Comment other)
         {

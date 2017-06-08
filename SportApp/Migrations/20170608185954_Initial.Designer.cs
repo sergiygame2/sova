@@ -8,8 +8,8 @@ using SportApp.Data;
 namespace SportApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170608170409_UsersGyms")]
-    partial class UsersGyms
+    [Migration("20170608185954_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -188,7 +188,10 @@ namespace SportApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CommentText");
+                    b.Property<string>("CommentText")
+                        .IsRequired()
+                        .HasColumnType("varchar(10000)")
+                        .HasMaxLength(10000);
 
                     b.Property<int>("GymId");
 
@@ -210,27 +213,36 @@ namespace SportApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(10000)")
+                        .HasMaxLength(10000);
 
                     b.Property<string>("Facilities");
 
                     b.Property<int>("FoundYear");
 
-                    b.Property<string>("GoogleLocation");
+                    b.Property<string>("GoogleLocation")
+                        .IsRequired();
 
                     b.Property<int>("GymArea");
 
                     b.Property<string>("GymImgUrl");
 
-                    b.Property<string>("GymLocation");
+                    b.Property<string>("GymLocation")
+                        .IsRequired();
 
-                    b.Property<string>("GymName");
+                    b.Property<string>("GymName")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<int>("GymRate");
 
                     b.Property<int>("MbrshipPrice");
 
-                    b.Property<string>("Url");
+                    b.Property<string>("Url")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

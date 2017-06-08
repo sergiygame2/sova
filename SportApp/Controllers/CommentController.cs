@@ -18,9 +18,12 @@ namespace SportApp.Controllers
     {
         private readonly ICommentRepository _comRepo;
 
-        public CommentController(ICommentRepository comRepo)
+        private readonly IGymRepository _gymRepo;
+
+        public CommentController(ICommentRepository comRepo, IGymRepository gymRepo)
         {
-            _comRepo = comRepo;    
+            _comRepo = comRepo;
+            _gymRepo = gymRepo;
         }
 
         // GET: Comments
@@ -32,6 +35,8 @@ namespace SportApp.Controllers
         [Route("Create")]
         public IActionResult Create()
         {
+            var gymsIds = _gymRepo.GetAll().Select(g => g.Id);
+            ViewBag.GymId = gymsIds;
             return View("Views/Admin/Comment/Create.cshtml");
         }
 
@@ -44,6 +49,7 @@ namespace SportApp.Controllers
         [Route("Create")]
         public IActionResult Create([Bind("Id,GymId,UserId,CommentText,Rate,PublicationDate")] Comment comment)
         {
+            comment.PublicationDate = DateTime.Now;
 
             if (ModelState.IsValid)
             {

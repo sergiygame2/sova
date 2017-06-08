@@ -43,9 +43,8 @@ namespace Tests
             },
              new Gym
             {
-                Id = 3,
-                GymName = null,
-                Description = "Gym description3",
+                GymName = "",
+                Description = null,
                 FoundYear = 2014,
                 Url = "site",
                 GoogleLocation = "location",
