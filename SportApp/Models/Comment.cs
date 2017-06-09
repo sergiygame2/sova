@@ -12,7 +12,7 @@ namespace SportApp.Models
         public int GymId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required(AllowEmptyStrings = false), Column(TypeName = "varchar(10000)"), MaxLength(10000)]
         public string CommentText { get; set; }
@@ -46,7 +46,7 @@ namespace SportApp.Models
             {
                 var hashCode = Id;
                 hashCode = (hashCode * 397) ^ GymId;
-                hashCode = (hashCode * 397) ^ UserId;
+                hashCode = (hashCode * 397) ^ (UserId != null ? UserId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (CommentText != null ? CommentText.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Rate;
                 hashCode = (hashCode * 397) ^ PublicationDate.GetHashCode();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +36,8 @@ namespace SportApp.Controllers
         [Route("Create")]
         public IActionResult Create()
         {
-            var gymsIds = _gymRepo.GetAll().Select(g => g.Id);
-            ViewBag.GymId = gymsIds;
+            ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewData["GymsIds"] = new SelectList( _gymRepo.GetAll(), "Id", "GymName");
             return View("Views/Admin/Comment/Create.cshtml");
         }
 
@@ -56,12 +57,14 @@ namespace SportApp.Controllers
                 _comRepo.Add(comment);
                 return RedirectToAction("Index");
             }
+            ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewData["GymsIds"] = new SelectList( _gymRepo.GetAll(), "Id", "GymName", comment.GymId);
             return View("Views/Admin/Comment/Create.cshtml",comment);
         }
 
         // GET: Comments/Edit/5
         [Authorize(Policy = "UpdateComments")]
-        [Route("Edit")]
+        [Route("Edit/{id}")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -72,6 +75,8 @@ namespace SportApp.Controllers
             {
                 return NotFound();
             }
+            ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewData["GymsIds"] = new SelectList(_gymRepo.GetAll(), "Id", "GymName", comment.GymId);
             return View("Views/Admin/Comment/Edit.cshtml",comment);
         }
 
@@ -81,7 +86,7 @@ namespace SportApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "UpdateComments")]
-        [Route("Edit")]
+        [Route("Edit/{id}")]
         public IActionResult Edit(int id, [Bind("Id,GymId,UserId,CommentText,Rate,PublicationDate")] Comment comment)
         {
             if (id != comment.Id)
@@ -105,18 +110,19 @@ namespace SportApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewData["GymsIds"] = new SelectList(_gymRepo.GetAll(), "Id", "GymName", comment.GymId);
             return View("Views/Admin/Comment/Edit.cshtml",comment);
         }
 
         // GET: Comments/Delete/5
         [Authorize(Policy = "RemoveComments")]
-        [Route("Delete")]
+        [Route("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
                 return BadRequest("Wrong id");
-
-
+            
             var comment = _comRepo.Get(id);
 
             if (comment == null)
@@ -131,10 +137,11 @@ namespace SportApp.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "RemoveComments")]
-        [Route("Delete")]
+        [Route("Delete/{id}")]
         public IActionResult DeleteConfirmed(int id)
         {
             var comment = _comRepo.Get(id);
+            if (comment == null) return BadRequest("Error during deleting comment  " + id);
             _comRepo.Delete(comment);
             return RedirectToAction("Index");
         }

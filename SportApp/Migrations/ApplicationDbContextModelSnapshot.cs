@@ -194,11 +194,12 @@ namespace SportApp.Migrations
 
                     b.Property<int>("GymId");
 
-                    b.Property<DateTime>("PublicationDate");
+                    b.Property<DateTime?>("PublicationDate");
 
                     b.Property<int>("Rate");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -219,12 +220,12 @@ namespace SportApp.Migrations
 
                     b.Property<string>("Facilities");
 
-                    b.Property<int>("FoundYear");
+                    b.Property<int?>("FoundYear");
 
                     b.Property<string>("GoogleLocation")
                         .IsRequired();
 
-                    b.Property<int>("GymArea");
+                    b.Property<int?>("GymArea");
 
                     b.Property<string>("GymImgUrl");
 
@@ -238,10 +239,9 @@ namespace SportApp.Migrations
 
                     b.Property<int>("GymRate");
 
-                    b.Property<int>("MbrshipPrice");
+                    b.Property<int?>("MbrshipPrice");
 
-                    b.Property<string>("Url")
-                        .IsRequired();
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 

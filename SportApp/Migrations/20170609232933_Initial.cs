@@ -82,7 +82,7 @@ namespace SportApp.Migrations
                     GymImgUrl = table.Column<string>(nullable: true),
                     GymLocation = table.Column<string>(nullable: false),
                     GymName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
-                    GymRate = table.Column<int>(nullable: true),
+                    GymRate = table.Column<int>(nullable: false),
                     MbrshipPrice = table.Column<int>(nullable: true),
                     Url = table.Column<string>(nullable: true)
                 },
@@ -185,9 +185,9 @@ namespace SportApp.Migrations
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
                     CommentText = table.Column<string>(type: "varchar(10000)", maxLength: 10000, nullable: false),
                     GymId = table.Column<int>(nullable: false),
-                    PublicationDate = table.Column<DateTime>(nullable: false),
+                    PublicationDate = table.Column<DateTime>(nullable: true),
                     Rate = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
