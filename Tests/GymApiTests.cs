@@ -90,6 +90,7 @@ namespace Tests
             var gymsRepo = new Mock<IGymRepository>();
             var services = new Mock<IPaginationUtilities>();
             var controller = new GymApiController(gymsRepo.Object, services.Object) { ControllerContext = { HttpContext = new DefaultHttpContext() } };
+            controller.ModelState.AddModelError("", "Error");
 
             // Act
             var postResponse = controller.Post(gym);
@@ -175,6 +176,7 @@ namespace Tests
             gymsRepo.Setup(repo => repo.Edit(gym)).Returns(gym);
             var services = new Mock<IPaginationUtilities>();
             var controller = new GymApiController(gymsRepo.Object, services.Object) { ControllerContext = { HttpContext = new DefaultHttpContext() } };
+            controller.ModelState.AddModelError("", "Error");
 
             // Act
             var putResponse = controller.Put(gym.Id, gym);

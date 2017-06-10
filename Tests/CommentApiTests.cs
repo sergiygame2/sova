@@ -93,6 +93,7 @@ namespace Tests
             commentsRepo.Setup(repo => repo.Get(comment.Id)).Returns(comment);
             var services = new Mock<IPaginationUtilities>();
             var controller = new CommentApiController(commentsRepo.Object, services.Object) { ControllerContext = { HttpContext = new DefaultHttpContext() } };
+            controller.ModelState.AddModelError("", "Error");
 
             // Act
             var postResponse = controller.Post(comment);
@@ -178,6 +179,7 @@ namespace Tests
             commentsRepo.Setup(repo => repo.Edit(comment)).Returns(comment);
             var services = new Mock<IPaginationUtilities>();
             var controller = new CommentApiController(commentsRepo.Object, services.Object) { ControllerContext = { HttpContext = new DefaultHttpContext() } };
+            controller.ModelState.AddModelError("", "Error");
 
             // Act
             var postResponse = controller.Put(comment.Id, comment); 
