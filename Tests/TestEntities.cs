@@ -65,7 +65,7 @@ namespace Tests
             {
                 Id = 1,
                 GymId = 1,
-                UserId = 2,
+                UserId = "2",
                 CommentText = "Some comment text",
                 PublicationDate = new DateTime(1997, 8,27),
                 Rate = 5
@@ -75,7 +75,7 @@ namespace Tests
             {
                 Id = 2,
                 GymId = 2,
-                UserId = 3,
+                UserId = "3",
                 CommentText = "Some comment text2",
                 PublicationDate = new DateTime(2014, 6,12),
                 Rate = 10
@@ -85,7 +85,7 @@ namespace Tests
             {
                 Id = 3,
                 GymId = 2,
-                UserId = 4,
+                UserId = "4",
                 CommentText = null,
                 PublicationDate = new DateTime(2014, 6,12),
                 Rate = 8
