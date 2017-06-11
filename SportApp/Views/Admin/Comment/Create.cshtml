@@ -14,13 +14,12 @@
         <div class="form-group">
             <label asp-for="GymId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="GymId" class ="form-control" asp-items="ViewBag.GymId"></select>
+                <select asp-for="GymId" class ="form-control" asp-items="ViewBag.GymsIds"></select>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="UserId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="UserId" class="form-control" />
+                <input asp-for="UserId" type="hidden" value="@ViewData["CurrentUserId"]" class="form-control" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
         </div>
@@ -36,13 +35,6 @@
             <div class="col-md-10">
                 <input asp-for="Rate" class="form-control" />
                 <span asp-validation-for="Rate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PublicationDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="PublicationDate" class="form-control" />
-                <span asp-validation-for="PublicationDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">

@@ -1,15 +1,26 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportApp.Models
 {
     public class Comment : IIdentifiable
     {
         public int Id { get; set;}
+
+        [Required]
         public int GymId { get; set; }
-        public int UserId { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        [Required(AllowEmptyStrings = false), Column(TypeName = "varchar(10000)"), MaxLength(10000)]
         public string CommentText { get; set; }
+
+        [Required]
         public int Rate { get; set; }
-        public DateTime PublicationDate { get; set; }
+
+        public DateTime? PublicationDate { get; set; }
 
         protected bool Equals(Comment other)
         {
@@ -35,7 +46,7 @@ namespace SportApp.Models
             {
                 var hashCode = Id;
                 hashCode = (hashCode * 397) ^ GymId;
-                hashCode = (hashCode * 397) ^ UserId;
+                hashCode = (hashCode * 397) ^ (UserId != null ? UserId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (CommentText != null ? CommentText.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Rate;
                 hashCode = (hashCode * 397) ^ PublicationDate.GetHashCode();
