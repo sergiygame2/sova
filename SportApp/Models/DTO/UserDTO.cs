@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,6 +26,7 @@ namespace SportApp.Models.DTO
 
         public double Weight { get; set; }
 
+        [NotMapped]
         public IDictionary<string, bool> Roles { get; set; }
     }
 }

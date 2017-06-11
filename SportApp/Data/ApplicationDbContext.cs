@@ -1,7 +1,8 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using SportApp.Models;
+using SportApp.Models.DTO;
 
 namespace SportApp.Data
 {
@@ -16,5 +17,7 @@ namespace SportApp.Data
         {
         
         }
+
+        public DbSet<SportApp.Models.DTO.UserDTO> UserDTO { get; set; }
     }
 }

@@ -173,7 +173,7 @@ namespace SportApp.Controllers
                 //var jsonpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "upload");
                 var jsonpath = Path.Combine(_env.WebRootPath, _filesSettings.Value.PhysicalPath.Replace("\\", "/"));
                 //Directory.CreateDirectory(jsonpath);
-                var path = normalizeFilename(Path.Combine(jsonpath, originalFilename));
+                var path = NormalizeFilename(Path.Combine(jsonpath, originalFilename));
                 const int MAX_ALLOWED_WIDTH = 300;
                 string newFileName = "";
                 using (Stream stream = file.OpenReadStream())
@@ -212,7 +212,7 @@ namespace SportApp.Controllers
             }
         }
 
-        private string normalizeFilename(string original)
+        private string NormalizeFilename(string original)
         {
             var fullPath = original.Replace(" ", "_");
 
