@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Http;
 
 namespace SportApp.Controllers
 {
+    [Authorize(Policy = "ViewUsers")]
+    [Route("Admin/Users")]
     public class UserDTOController : Controller
     {
 
@@ -52,7 +54,7 @@ namespace SportApp.Controllers
                 var roles = (await _userManager.GetRolesAsync(allUsers.ElementAt(i))).ToDictionary(x => x, x => true);
                 result.Add(new UserDTO() { Id = allUsers.ElementAt(i).Id, Email = allUsers.ElementAt(i).Email, Password = allUsers.ElementAt(i).PasswordHash, UserName = allUsers.ElementAt(i).UserName, FullName = allUsers.ElementAt(i).FullName, Address = allUsers.ElementAt(i).Address, BirthDay = allUsers.ElementAt(i).BirthDay, Height = allUsers.ElementAt(i).Height, Weight = allUsers.ElementAt(i).Weight, Roles = roles });
             }
-            return View("Views/UserDTO/Index.cshtml", result);
+            return View("Views/Admin/Users/Index.cshtml", result);
         }
 
         //// GET: UserDTO
@@ -71,16 +73,22 @@ namespace SportApp.Controllers
 
 
         // GET: UserDTO/Create
+        [Authorize(Policy = "CreateUsers")]
+        [Route("Create")]
+        [Consumes("multipart/form-data")]
         public IActionResult Create()
         {
-            return View("Views/UserDTO/Create.cshtml");
+            return View("Views/Admin/Users/Create.cshtml");
         }
 
         // POST: UserDTO/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Route("Create")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "CreateUsers")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Create([Bind("Id,Email,Password,UserName,FullName,Address,BirthDay,Height,Weight")] UserDTO userDTO)
         {
             if (ModelState.IsValid)
@@ -104,6 +112,9 @@ namespace SportApp.Controllers
         }
 
         //GET: UserDTO/Edit/5
+        [Route("Edit/{id}")]
+        [Authorize(Policy = "UpdateUsers")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -117,14 +128,17 @@ namespace SportApp.Controllers
             }
             var roles = (await _userManager.GetRolesAsync(userDTO)).ToDictionary(x => x, x => true);
 
-            return View("Views/UserDTO/Edit.cshtml", new UserDTO() {Id = userDTO.Id, Email = userDTO.Email, Password = userDTO.PasswordHash, UserName = userDTO.UserName, FullName = userDTO.FullName, Address = userDTO.Address, BirthDay = userDTO.BirthDay, Height = userDTO.Height, Weight = userDTO.Weight, Roles = roles });
+            return View("Views/Admin/Users/Edit.cshtml", new UserDTO() {Id = userDTO.Id, Email = userDTO.Email, Password = userDTO.PasswordHash, UserName = userDTO.UserName, FullName = userDTO.FullName, Address = userDTO.Address, BirthDay = userDTO.BirthDay, Height = userDTO.Height, Weight = userDTO.Weight, Roles = roles });
         }
 
         //// POST: UserDTO/Edit/5
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
+        [Route("Edit/{id}")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "UpdateUsers")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Email,Password,UserName,FullName,Address,BirthDay,Height,Weight")] UserDTO userDTO)
         {
             if (userDTO == null)
@@ -161,6 +175,8 @@ namespace SportApp.Controllers
         }
 
         // GET: UserDTO/Delete/5
+        [Route("Delete/{id}")]
+        [Authorize(Policy = "RemoveUsers")]
         public async Task<IActionResult> Delete(string id)
         {
             var userDTO = await _userManager.FindByIdAsync(id);
@@ -172,13 +188,16 @@ namespace SportApp.Controllers
             if (_userManager.Users.Count() == 1)
                 return BadRequest("Last user cannot be deleted");
 
-            return View("Views/USerDTO/Delete.cshtml", new UserDTO() { Id = userDTO.Id, Email = userDTO.Email, Password = userDTO.PasswordHash, UserName = userDTO.UserName, FullName = userDTO.FullName, Address = userDTO.Address, BirthDay = userDTO.BirthDay, Height = userDTO.Height, Weight = userDTO.Weight });
+            return View("Views/Admin/Users/Delete.cshtml", new UserDTO() { Id = userDTO.Id, Email = userDTO.Email, Password = userDTO.PasswordHash, UserName = userDTO.UserName, FullName = userDTO.FullName, Address = userDTO.Address, BirthDay = userDTO.BirthDay, Height = userDTO.Height, Weight = userDTO.Weight });
             //return View("Views/USerDTO/Delete.cshtml", user);
         }
 
         //// POST: UserDTO/Delete/5
+        
         [HttpPost, ActionName("Delete")]
+        [Route("Delete/{id}")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "RemoveUsers")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var userDTO = await _userManager.FindByIdAsync(id);
