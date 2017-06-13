@@ -1,10 +1,8 @@
-@{Layout = null; }
+@using Newtonsoft.Json
 
 @{
-    ViewData["Title"] = "Search";
+    var serializedGyms = @ViewData["gyms"];
 }
-
-<!DOCTYPE html>
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,5 +30,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwNLNBwCGX66RV_oYm8YUBAyB2Bgz7jQ"></script>
     <script>
         google.maps.event.addDomListener(window, 'load', initialize);
+        var data = @Html.Raw(serializedGyms);
+        alert(data[0].GymName);
+        alert(data[1].GymName);
     </script>
 </footer>

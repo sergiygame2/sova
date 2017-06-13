@@ -1,4 +1,6 @@
 ﻿// Write your Javascript code.
+
+
 function initialize() {
     google.maps.visualRefresh = true;
     var Tunisie = new google.maps.LatLng(36.81881, 10.16596);
