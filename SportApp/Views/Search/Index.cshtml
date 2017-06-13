@@ -1,5 +1,7 @@
 @{Layout = null; }
 
+@model SearchModel
+
 @{
     ViewData["Title"] = "Search";
 }
@@ -11,6 +13,28 @@
 </head>
 <body>
 <h2>Search</h2>
-
+    <form asp-controller="Search" asp-action="Results" method="get" class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Region" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Region" class="form-control" />
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Street" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default">Search</button>
+            </div>
+        </div>
+     </form>
 </body>
 </html>

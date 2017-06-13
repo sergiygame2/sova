@@ -1,6 +1,7 @@
 using SportApp.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SportApp.Models;
 
 namespace SportApp.Controllers
 {
@@ -17,10 +18,14 @@ namespace SportApp.Controllers
         {
             return View();
         }
-        
-        public IActionResult Results()
+
+        [Route("SearchResults")]
+        public IActionResult Results([Bind("Region","Street")] SearchModel searchModel)
         {
-            ViewData["gyms"] = JsonConvert.SerializeObject(_gymRepo.GetAll());
+            var gyms = _gymRepo.Search(searchModel.Region, searchModel.Street);
+            ViewData["region"] = searchModel.Region;
+            ViewData["street"] = searchModel.Street;
+            ViewData["gyms"] = JsonConvert.SerializeObject(gyms);
             return View("Results");
         }
     }
