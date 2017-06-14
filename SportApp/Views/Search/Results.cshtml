@@ -31,15 +31,9 @@
 <footer>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwNLNBwCGX66RV_oYm8YUBAyB2Bgz7jQ"></script>
     <script>
-        google.maps.event.addDomListener(window, 'load', initialize);
         var data = @Html.Raw(serializedGyms);
         var gyms = new Gym();
         gyms = $.extend(data);
-        //console.log(gyms[0].GymName);
-        //console.log(gyms[0].Longitude);
-        //console.log(gyms[0].Latitude);
-        //console.log(gyms[1].GymName);
-        //console.log(gyms[1].Longitude);
-        //console.log(gyms[1].Latitude);
+        google.maps.event.addDomListener(window, 'load' , initialize(gyms));
     </script>
 </footer>
