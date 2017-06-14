@@ -1,10 +1,93 @@
-﻿#map-canvas {
-    margin: 0;
-    padding: 0;
+﻿
+
+body {
+    width: 100%;
     height: 100%;
 }
 
-.map-container {
-    height: 500px;
-    width: 80%;
+body {
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+    .text-vertical-center h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 4.5em;
+        font-weight: 700;
+    }
+
+
+.btn-dark {
+    border-radius: 8;
+    color: #fff;
+    background-color: rgb(245, 144, 29);
+}
+
+.btn-light {
+    border-radius: 8;
+    color: #fff;
+    background-color: rgb(128, 128, 128);
+}
+
+    .btn-dark:hover,
+    .btn-dark:focus,
+    .btn-dark:active {
+        color: #fff;
+        background-color: rgb(225, 124, 9);
+    }
+
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../images/dumbbell.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+#signupbtn {
+    position: absolute;
+    top:20px;
+    right:120px;
+}
+
+#loginbtn {
+    position:absolute;
+    top:20px;
+    right:20px;
+}
+
+img.img-logo{
+    position:absolute;
+    left:50%;
+    margin-left:-300px;
+    margin-top:200px;
+}
+
+#searchbtn {
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: 400px;
+}
+
+
+footer{
+    background-color:rgb(89, 89, 89);
+    color:white;
+}
+
+.list-inline{
+    color:white;
+}
+
