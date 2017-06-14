@@ -1,39 +1,67 @@
 ﻿// Write your Javascript code.
-function initialize() {
+class Gym {
+
+    constructor(GymName, GymRate, GymLocation, GoogleLocation, MbrshipPrice, GymArea, FoundYear, Facilities, Url,
+        Description, GymImgUrl,Comments, Longitude, Latitude) {
+        this.GymName = GymName;
+        this.GymRate = GymRate;
+        this.GymLocation = GymLocation;
+        this.GoogleLocation = GoogleLocation;
+        this.MbrshipPrice = MbrshipPrice;
+        this.GymArea = GymArea;
+        this.FoundYear = FoundYear;
+        this.Facilities = Facilities;
+        this.Url = Url;
+        this.Description = Description;
+        this.GymImgUrl = GymImgUrl;
+        this.Comments = Comments;
+        this.Longitude = Longitude;
+        this.Latitude = Latitude;
+    }
+}
+
+
+
+
+function initialize(gyms) {
+
     google.maps.visualRefresh = true;
-    var Tunisie = new google.maps.LatLng(36.81881, 10.16596);
-    
+    var Kyiv = new google.maps.LatLng(50.499988, 30.223344);
+
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 8,
-        center: Tunisie,
+        center: Kyiv,
         mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
     });
 
-    var data = [
-        { "Id": 1, "PlaceName": "Zaghouan", "GeoLong": "36.401081", "GeoLat": "10.16596" },
-        { "Id": 2, "PlaceName": "Hammamet ", "GeoLong": "36.4", "GeoLat": "10.616667" },
-        { "Id": 3, "PlaceName": "Sousse", "GeoLong": "35.8329809", "GeoLat": "10.63875" },
-        { "Id": 4, "PlaceName": "Sfax", "GeoLong": "34.745159", "GeoLat": "10.7613" }
-    ];
+        //console.log(gyms[0].GymName);
+        //console.log(gyms[0].Longitude);
+        //console.log(gyms[0].Latitude);
+        //console.log(gyms[1].GymName);
+        //console.log(gyms[1].Longitude);
+        //console.log(gyms[1].Latitude);
 
-    $.each(data,
-        function(i, item) {
+    $.each(gyms,
+        function (i, item) {
             var marker = new google.maps.Marker({
-                'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
+                'position': new google.maps.LatLng(item.Longitude, item.Latitude),
                 'map': map,
-                'title': item.PlaceName
+                'title': item.GymName
             });
-             
+
             var infowindow = new google.maps.InfoWindow({
-                content: "<div class='infoDiv'><h2>" + item.PlaceName + "</div></div>"
+                content: "<div class='infoDiv'><h2>" + item.GymName + "</div></div>"
             });
 
             // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked! 
             google.maps.event.addListener(marker,
                 'click',
-                function() {
+                function () {
                     infowindow.open(map, marker);
                 });
         });
 } 
+
+
+
 

@@ -37,6 +37,10 @@ namespace SportApp.Models
 
         public List<Comment> Comments { get; set; }
 
+        public double Longitude { get; set; }
+
+        public double Latitude { get; set; }
+
         protected bool Equals(Gym other)
         {
             return Id == other.Id &&
