@@ -1,5 +1,24 @@
 ﻿// Write your Javascript code.
+class Gym {
 
+    constructor(GymName, GymRate, GymLocation, GoogleLocation, MbrshipPrice, GymArea, FoundYear, Facilities, Url,
+        Description, GymImgUrl,Comments, Longitude, Latitude) {
+        this.GymName = GymName;
+        this.GymRate = GymRate;
+        this.GymLocation = GymLocation;
+        this.GoogleLocation = GoogleLocation;
+        this.MbrshipPrice = MbrshipPrice;
+        this.GymArea = GymArea;
+        this.FoundYear = FoundYear;
+        this.Facilities = Facilities;
+        this.Url = Url;
+        this.Description = Description;
+        this.GymImgUrl = GymImgUrl;
+        this.Comments = Comments;
+        this.Longitude = Longitude;
+        this.Latitude = Latitude;
+    }
+}
 
 function initialize() {
     google.maps.visualRefresh = true;
