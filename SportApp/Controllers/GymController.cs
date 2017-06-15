@@ -50,7 +50,7 @@ namespace SportApp.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "CreateGyms")]
         [Consumes("multipart/form-data")]
-        public IActionResult Create([Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl")] Gym gym)
+        public IActionResult Create([Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl,Latitude,Longitude")] Gym gym)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace SportApp.Controllers
         [Route("Edit/{id}")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "UpdateGyms")]
-        public IActionResult Edit(int id, [Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl")] Gym gym)
+        public IActionResult Edit(int id, [Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl,Latitude,Longitude")] Gym gym)
         {
             if (id != gym.Id)
             {
