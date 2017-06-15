@@ -42,7 +42,9 @@ body {
         background-color: rgb(225, 124, 9);
     }
 
-.header {
+    /*Home*/
+
+    #top{
     display: table;
     position: relative;
     width: 100%;
@@ -57,20 +59,20 @@ body {
 
 #signupbtn {
     position: absolute;
-    top:20px;
+    top:35px;
     right:120px;
 }
 
 #loginbtn {
     position:absolute;
-    top:20px;
+    top:35px;
     right:20px;
 }
 
 img.img-logo{
     position:absolute;
     left:50%;
-    margin-left:-300px;
+    margin-left:-270px;
     margin-top:200px;
 }
 
@@ -91,13 +93,133 @@ footer{
     color:white;
 }
 
+/*Results*/
+
+.baner {
+    padding: 60px 0;
+    background: url(../images/weights.png) no-repeat top center;
+    background-size: cover;
+}
+
+img.weighthead{
+    position:absolute;
+    display:table;
+   width:100%;
+   height:20%;
+
+}
+
+img.logohead{
+ 
+    position:absolute;
+    top:20px;
+    left:80px;
+}
+
+.greyframe {
+    color: rgb(128, 128, 128);
+    position: absolute;
+    border-radius:12px;
+    overflow: hidden;
+    left: 50%;
+    margin-left: -550px;
+    top: 160px;
+    background-color: rgb(128, 128, 128);
+    width:auto;
+    height:auto;
+    z-index:50;
+}
+
+#searchnbtn {
+    position: absolute;
+    top: 200px;
+    left: 80%;
+    z-index: 100;
+    width: 170px;
+    margin-left: 30px;
+}
+
+#schhomebtn {
+    position: absolute;
+    top: 280px;
+    left: 80%;
+    z-index: 100;
+    margin-left:30px;
+}
+#topcont{
+    color:white;
+}
+.firstrow{
+    position:absolute;
+    top:170px;
+    left:20%;
+    z-index:100;
+    margin-left:-150px;
+    text-align:right;
+}
+
+.checkbox{
+    position:absolute;
+    top:130px;
+    left:160%;
+    margin-left:200px;
+    z-index:100;
+
+}
+
+.secondrow {
+    position: absolute;
+    top: 170px;
+    left: 50%;
+    z-index: 100;
+    margin-left: -150px;
+    text-align:right;
+}
+
+img.side{
+    top:120px;
+    left:85%;
+    position:absolute;
+    marging-left:300px;
+    z-index:50;
+}
+
+.emptyframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-radius: 12px;
+    overflow: hidden;
+    left: 50%;
+    margin-left: -550px;
+    top: 400px;
+    background-color:rgb(213, 204, 204);
+    color: rgb(213,204,204);
+
+}
+
+#resultstext{
+    color:white;
+    position:absolute;
+    left:50%;
+    margin-left:-530px;
+    z-index:100;
+    top:420px;
+}
+
 #map-canvas {
     margin: 0;
     padding: 0;
     height: 100%;
+    top:400px;
+    left:50%;
+    margin-left:-530px;
+    width:880px;
+    z-index:50;
 }
 
 .map-container {
-    height: 500px;
-    width: 80%;
+    height: 300px;
+    width:100%;
 }
+
+
