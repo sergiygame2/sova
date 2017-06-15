@@ -18,7 +18,7 @@ namespace SportApp.Models
         public string GymLocation { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        public string GoogleLocation { get; set; }
+        public string Region { get; set; }
     
         public int? MbrshipPrice { get; set; }
 
@@ -26,7 +26,7 @@ namespace SportApp.Models
 
         public int? FoundYear { get; set; }
 
-        public string Facilities { get; set; } // !!!
+        public string Facilities { get; set; } 
 
         public string Url { get; set; }
 
@@ -47,7 +47,7 @@ namespace SportApp.Models
                 string.Equals(GymName, other.GymName) && 
                 GymRate == other.GymRate && 
                 string.Equals(GymLocation, other.GymLocation) &&
-                string.Equals(GoogleLocation, other.GoogleLocation) && 
+                string.Equals(Region, other.Region) && 
                 MbrshipPrice == other.MbrshipPrice && 
                 GymArea == other.GymArea && 
                 FoundYear == other.FoundYear && 
@@ -74,7 +74,7 @@ namespace SportApp.Models
                 hashCode = (hashCode * 397) ^ (GymName != null ? GymName.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ GymRate;
                 hashCode = (hashCode * 397) ^ (GymLocation != null ? GymLocation.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (GoogleLocation != null ? GoogleLocation.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Region != null ? Region.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (int)MbrshipPrice;
                 hashCode = (hashCode * 397) ^ (int)GymArea;
                 hashCode = (hashCode * 397) ^ (int)FoundYear;

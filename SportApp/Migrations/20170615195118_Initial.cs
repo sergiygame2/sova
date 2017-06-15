@@ -69,6 +69,26 @@ namespace SportApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserDTO",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false)
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
+                    Address = table.Column<string>(nullable: true),
+                    BirthDay = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    FullName = table.Column<string>(nullable: true),
+                    Height = table.Column<int>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
+                    UserName = table.Column<string>(nullable: true),
+                    Weight = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDTO", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Gym",
                 columns: table => new
                 {
@@ -77,13 +97,15 @@ namespace SportApp.Migrations
                     Description = table.Column<string>(type: "varchar(10000)", maxLength: 10000, nullable: false),
                     Facilities = table.Column<string>(nullable: true),
                     FoundYear = table.Column<int>(nullable: true),
-                    GoogleLocation = table.Column<string>(nullable: false),
                     GymArea = table.Column<int>(nullable: true),
                     GymImgUrl = table.Column<string>(nullable: true),
                     GymLocation = table.Column<string>(nullable: false),
                     GymName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
                     GymRate = table.Column<int>(nullable: false),
+                    Latitude = table.Column<double>(nullable: false),
+                    Longitude = table.Column<double>(nullable: false),
                     MbrshipPrice = table.Column<int>(nullable: true),
+                    Region = table.Column<string>(nullable: false),
                     Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -298,6 +320,9 @@ namespace SportApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "UserDTO");
 
             migrationBuilder.DropTable(
                 name: "UsersGyms");

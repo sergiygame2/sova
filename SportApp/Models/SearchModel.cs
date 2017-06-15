@@ -10,5 +10,13 @@ namespace SportApp.Models
         public string Region { get; set; }
 
         public string Street { get; set; }
+
+        public int StartPrice { get; set; }
+
+        public int EndPrice { get; set; }
+
+        public bool Trainer { get; set; } 
+        
+        public string Facilities { get; set; } 
     }
 }

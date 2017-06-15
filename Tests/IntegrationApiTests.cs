@@ -24,19 +24,14 @@ namespace Tests
         [Fact]
         public void TestGyms()
         {
-            ValidLogin_ReturnsOK();
-            
-            UnatuhorizedRequestReturnsRedirect();
+            //UnatuhorizedRequestReturnsRedirect();
+            //ValidLogin_ReturnsOK();
             AddUpdateDeleteGyms();
         }
         
         private void UnatuhorizedRequestReturnsRedirect()
         {
             var response = Browser.Get("/Admin/Gym");
-            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            HttpContent content = new StringContent("{}", Encoding.UTF8, "application/json");
-
-            response = Browser.Post("/Admin/Gym/Create", content);
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         }
         

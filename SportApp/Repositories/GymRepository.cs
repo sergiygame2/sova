@@ -8,7 +8,7 @@ namespace SportApp.Repositories
 {
     public interface IGymRepository : IModelRepository<Gym>
     {
-        List<Gym> Search(string region = null, string street = null);
+        List<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, bool trainer = false, List<string> facilities = null);
     }
     
     public class GymRepository : GenericModelRepository<Gym>, IGymRepository
@@ -25,13 +25,23 @@ namespace SportApp.Repositories
 
         public override List<Gym> GetAll() => _context.Set<Gym>().AsNoTracking().Include(gym => gym.Comments).ToList();
 
-        public List<Gym> Search(string region = null, string street = null)
+        public List<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, bool trainer = false, List<string> facilities = null)
         {
             var gyms = _context.Gym.AsNoTracking();
             if(!string.IsNullOrEmpty(region))
                 gyms = gyms.Where(gym => gym.GymLocation.Contains(region));
-            if (!string.IsNullOrEmpty(street))
+            if(!string.IsNullOrEmpty(street))
                 gyms = gyms.Where(gym => gym.GymLocation.Contains(street));
+            if (startPrice == 0&&endPrice!=0)
+                gyms = gyms.Where(gym=>gym.MbrshipPrice<=endPrice);
+            if (startPrice != 0 && endPrice == 0)
+                gyms = gyms.Where(gym => gym.MbrshipPrice >= startPrice);
+            if (startPrice != 0 && endPrice != 0)
+                gyms = gyms.Where(gym => gym.MbrshipPrice <= endPrice && gym.MbrshipPrice>=startPrice);
+            if (trainer)
+                gyms = gyms.Where(gym => gym.Facilities.Contains("Тренер"));
+            if (facilities != null)
+                facilities.ForEach(facility => gyms = gyms.Where((gym => gym.Facilities.Contains(facility))));
             return gyms.ToList();
         }
     }

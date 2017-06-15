@@ -248,9 +248,6 @@ namespace SportApp.Migrations
 
                     b.Property<int?>("FoundYear");
 
-                    b.Property<string>("GoogleLocation")
-                        .IsRequired();
-
                     b.Property<int?>("GymArea");
 
                     b.Property<string>("GymImgUrl");
@@ -270,6 +267,9 @@ namespace SportApp.Migrations
                     b.Property<double>("Longitude");
 
                     b.Property<int?>("MbrshipPrice");
+
+                    b.Property<string>("Region")
+                        .IsRequired();
 
                     b.Property<string>("Url");
 

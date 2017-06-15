@@ -8,8 +8,8 @@ using SportApp.Data;
 namespace SportApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170614070012_GoogleLangLat")]
-    partial class GoogleLangLat
+    [Migration("20170615195118_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -249,9 +249,6 @@ namespace SportApp.Migrations
 
                     b.Property<int?>("FoundYear");
 
-                    b.Property<string>("GoogleLocation")
-                        .IsRequired();
-
                     b.Property<int?>("GymArea");
 
                     b.Property<string>("GymImgUrl");
@@ -271,6 +268,9 @@ namespace SportApp.Migrations
                     b.Property<double>("Longitude");
 
                     b.Property<int?>("MbrshipPrice");
+
+                    b.Property<string>("Region")
+                        .IsRequired();
 
                     b.Property<string>("Url");
 
