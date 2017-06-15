@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SportApp.Lookups;
 using SportApp.Models;
+using SportApp.Repositories;
 
 namespace SportApp.Data
 {
@@ -14,14 +15,16 @@ namespace SportApp.Data
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IAppPermissionsLookup _permissions;
+        private readonly IGymRepository _gymsRepo;
 
         public DbInitializer(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager, IAppPermissionsLookup permissions)
+            RoleManager<IdentityRole> roleManager, IAppPermissionsLookup permissions,IGymRepository gymsRepo )
         {
             this._context = context;
             this._userManager = userManager;
             this._roleManager = roleManager;
             this._permissions = permissions;
+            this._gymsRepo = gymsRepo;
         }
 
         public void SeedData()
@@ -29,6 +32,7 @@ namespace SportApp.Data
             _context.Database.Migrate();
 
             AddUserWithRoleAdmin();
+            AddGyms();
         }
 
         private void AddUserWithRoleAdmin()
@@ -63,6 +67,108 @@ namespace SportApp.Data
             
             if (_userManager.IsInRoleAsync(user, roleName).GetAwaiter().GetResult() == false)
                 _userManager.AddToRoleAsync(user, roleName).GetAwaiter().GetResult();
+        }
+
+        private void AddGyms()
+        {
+            if (!_gymsRepo.GetAll().Any())
+            {
+                _gymsRepo.Add(new Gym()
+                {
+                    GymName = "iGYM",
+                    GymRate = 4,
+                    GymLocation = "г. Киев ул. Маршала Якубовского 8",
+                    GoogleLocation = "",
+                    MbrshipPrice = 195,
+                    GymArea = 7,
+                    FoundYear = 10,
+                    Facilities = "full",
+                    Url = "http://igym.com.ua/",
+                    Description = "ТРЕНАЖЕРНЫЙ ЗАЛ, ФИТНЕС, ЙОГА, СROSSFIT И БОЙЦОВСКИЙ КЛУБ В ГОЛОСЕЕВСКОМ РАЙОНЕ КИЕВА",
+                    GymImgUrl = "",
+                    Comments = null,
+                    Longitude = 50.382568,
+                    Latitude = 30.4522403,
+   
+                });
+
+                _gymsRepo.Add(new Gym()
+                {
+                    GymName = "MegaGYM",
+                    GymRate = 4,
+                    GymLocation = "г. Киев, Харьковское Шоссе, 19",
+                    GoogleLocation = "",
+                    MbrshipPrice = 195,
+                    GymArea = 7,
+                    FoundYear = 10,
+                    Facilities = "full",
+                    Url = "http://megagym.com/",
+                    Description = "ТРЕНАЖЕРНЫЙ ЗАЛ, ФИТНЕС, ЙОГА, СROSSFIT НА ЛЕВОМ БЕРЕГУ ГОРОДА КИЕВ",
+                    GymImgUrl = "",
+                    Comments = null,
+                    Longitude = 50.431922,
+                    Latitude = 30.6321253,
+
+                });
+
+                _gymsRepo.Add(new Gym()
+                {
+                    GymName = "DOG & Grand CrossFit",
+                    GymRate = 4,
+                    GymLocation = "г. Киев, прт. Степана Бандеры 6",
+                    GoogleLocation = "",
+                    MbrshipPrice = 195,
+                    GymArea = 7,
+                    FoundYear = 10,
+                    Facilities = "full",
+                    Url = "https://dogsportclub.com.ua/",
+                    Description = "Мы – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.",
+                    GymImgUrl = "",
+                    Comments = null,
+                    Longitude = 50.486904,
+                    Latitude = 30.4916939,
+
+                });
+
+                _gymsRepo.Add(new Gym()
+                {
+                    GymName = "KAWABANGA CROSS GYM",
+                    GymRate = 4,
+                    GymLocation = "г. Киев ул. Коновальца 44А",
+                    GoogleLocation = "",
+                    MbrshipPrice = 1000,
+                    GymArea = 7,
+                    FoundYear = 10,
+                    Facilities = "full",
+                    Url = "http://kawabanga.com.ua/",
+                    Description = "",
+                    GymImgUrl = "",
+                    Comments = null,
+                    Longitude = 50.4253611,
+                    Latitude = 30.5352724,
+
+                });
+
+                _gymsRepo.Add(new Gym()
+                {
+                    GymName = "CrossFit Voin",
+                    GymRate = 4,
+                    GymLocation = "г. Киев, ул. Обсерваторная 7",
+                    GoogleLocation = "",
+                    MbrshipPrice = 1000,
+                    GymArea = 7,
+                    FoundYear = 10,
+                    Facilities = "full",
+                    Url = "http://crossfitvoin.com/",
+                    Description = "Это больше, чем просто фитнес зал. Наше сообщество основывается на желании помогать друг другу становится лучше, как снаружи так и внутри. Здесь ты сможешь улучшить свою физическую форму, выносливость, стать сильнее и здоровее. Типичный тренировочный день включает в себя разминку, изучение и отработку новых движений, WOD повышенной интенсивности, работу над ошибками и растяжку. Неважно какой твой род деятельности, здесь ты найдешь людей, которых объединяет одна цель - бросать вызов самому себе изо дня в день и становится лучше.",
+                    GymImgUrl = "",
+                    Comments = null,
+                    Longitude = 50.453269,
+                    Latitude = 30.4987648,
+
+                });
+
+            }
         }
     }
 }
