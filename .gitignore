@@ -3,8 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-#TEMPORARY
-SportApp/wwwroot/images/
+SportApp/wwwroot/images/upload
 
 # User-specific files
 *.suo
