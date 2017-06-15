@@ -91,3 +91,13 @@ footer{
     color:white;
 }
 
+#map-canvas {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.map-container {
+    height: 500px;
+    width: 80%;
+}
