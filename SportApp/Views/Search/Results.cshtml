@@ -17,6 +17,8 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -39,7 +41,9 @@
     <header id="hat" class="header">
         <div class="baner">
         <div class="container">
-            <img class="logohead" src="~/Views/../images/logo.png" height="80px" width="250px">
+            <a href="../0">
+                <img class="logohead" src="~/Views/../images/logo.png" height="80px" width="250px">
+            </a>
         </div>
         <div class="container">
             <div class="text-vertical-center">
@@ -50,15 +54,30 @@
         </div>
 
         <div class="container">
+            <a id="searchnbtn" href="" class="btn btn-light btn-lg">Шукати</a>
+            <a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>
+        </div>
+        <div class="container">
+            <img class="side" src="~/images/girl.jpg" />
+        </div>
+        <div class="container">
             <frameset>
-                <div class="greyframe">
-                    <iframe  frameborder="0" border="0" width="920px" height="200px">
-                          
-</iframe>
+                    <div class="container">
+                        <div class="greyframe">
+                    <iframe  frameborder="0" border="0">
+                    </iframe>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Dropdown Example
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu-right">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
                     </div>
-
                 <div id="topcont" class="container">
-                    <div class="text-vertical-center">
                         <div class="firstrow">
                           <input type="checkbox" class="checkbox" name="trainer" value="trainer">  
                                 <h4>Район</h4>
@@ -74,37 +93,69 @@
                             <h4>Додаткові послуги</h4>  
                         </div>
                     </div>
-                </div>
+                    </div>
+                    </div>
+                <div class="container">
                 <div class="emptyframe">
-                    <iframe style="border:5px solid orange;" width="920x" height="900px">
-                      
+                    <iframe style="border:5px solid orange;" width="920x" height="1400px"> </iframe>
+                    <div id="resultstext" class="container">
+                        <h1>Результати пошуку</h1>
+                    </div>
 
-                    
-                    </iframe>
+                    <div class="map-container">
+                        <div id="map-canvas"></div>
+                    </div>
+
+                    <div id="gyminfo" class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="item">
+                                    <div class="row">
+                                        @foreach (var gym in gyms)
+                                        {
+                                            <div class="col-md-4">
+                                                <div class="container">
+                                                    <a href="../Gym/Index">
+                                                        <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                                    </a>
+                                                </div>
+                                                <div id="text" class="container">
+                                                    <h4>@gym.GymName</h4>
+                                                    <h4>@gym.GymLocation</h4>
+                                                    <h4>@gym.MbrshipPrice  грн</h4>
+                                                    <div class="container">
+                                                        <div class="stars">
+                                                            <form action="">
+                                                                <input class="star star-5" id="star-5" type="radio" name="star" />
+                                                                <label class="star star-5" for="star-5"></label>
+                                                                <input class="star star-4" id="star-4" type="radio" name="star" />
+                                                                <label class="star star-4" for="star-4"></label>
+                                                                <input class="star star-3" id="star-3" type="radio" name="star" />
+                                                                <label class="star star-3" for="star-3"></label>
+                                                                <input class="star star-2" id="star-2" type="radio" name="star" />
+                                                                <label class="star star-2" for="star-2"></label>
+                                                                <input class="star star-1" id="star-1" type="radio" name="star" />
+                                                                <label class="star star-1" for="star-1"></label>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                    </div>
                </frameset>
-            
-            <div class="container">  
-                    <a id="searchnbtn" href="" class="btn btn-light btn-lg" >Шукати</a>
-                    <a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>    
             </div>
-
-            <div id="resultstext" class="container">
-              <h1>Результати пошуку</h1>
-            </div>
-
-            <div class="container">
-                <img class="side" src="~/images/girl.jpg" />
-            </div>
-            <div class="map-container">
-                <div id="map-canvas"></div>
-            </div>
-            
-            @foreach (var gym in gyms)
-            {
-                <h3>@gym.GymName</h3>
-            }
-        </div>
+   
     </header>
     
 </body>
