@@ -8,7 +8,7 @@ using SportApp.Data;
 namespace SportApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170615195118_Initial")]
+    [Migration("20170616184532_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,9 +263,9 @@ namespace SportApp.Migrations
 
                     b.Property<int>("GymRate");
 
-                    b.Property<double>("Latitude");
+                    b.Property<string>("Latitude");
 
-                    b.Property<double>("Longitude");
+                    b.Property<string>("Longitude");
 
                     b.Property<int?>("MbrshipPrice");
 
