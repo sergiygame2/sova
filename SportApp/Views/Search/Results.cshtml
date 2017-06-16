@@ -2,7 +2,8 @@
 @using Newtonsoft.Json
 
 @{
-    var serializedGyms = @ViewData["gyms"];
+    var serializedGyms = ViewData["gyms"];
+    var gyms = JsonConvert.DeserializeObject<List<Gym>>((string)serializedGyms);
 }
 
 <html>
@@ -98,6 +99,11 @@
             <div class="map-container">
                 <div id="map-canvas"></div>
             </div>
+            
+            @foreach (var gym in gyms)
+            {
+                <h3>@gym.GymName</h3>
+            }
         </div>
     </header>
     
