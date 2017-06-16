@@ -107,6 +107,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwNLNBwCGX66RV_oYm8YUBAyB2Bgz7jQ"></script>
     <script>
         var data = @Html.Raw(serializedGyms);
+        alert(data.length);
         var gyms = new Gym();
         gyms = $.extend(data);
         google.maps.event.addDomListener(window, 'load' , initialize(gyms));

@@ -14,8 +14,6 @@ namespace SportApp.Models
         public int StartPrice { get; set; }
 
         public int EndPrice { get; set; }
-
-        public bool Trainer { get; set; } 
         
         public string Facilities { get; set; } 
     }
