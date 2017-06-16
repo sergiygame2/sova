@@ -31,6 +31,27 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="StartPrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartPrice" class="form-control" />
+                <span asp-validation-for="StartPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EndPrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EndPrice" class="form-control" />
+                <span asp-validation-for="EndPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Facilities" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Facilities" class="form-control" />
+                <span asp-validation-for="Facilities" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" class="btn btn-default">Search</button>
             </div>
