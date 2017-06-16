@@ -1,12 +1,12 @@
 ﻿// Write your Javascript code.
 class Gym {
 
-    constructor(GymName, GymRate, GymLocation, GoogleLocation, MbrshipPrice, GymArea, FoundYear, Facilities, Url,
+    constructor(GymName, GymRate, GymLocation, Region, MbrshipPrice, GymArea, FoundYear, Facilities, Url,
         Description, GymImgUrl,Comments, Longitude, Latitude) {
         this.GymName = GymName;
         this.GymRate = GymRate;
         this.GymLocation = GymLocation;
-        this.GoogleLocation = GoogleLocation;
+        this.Region = Region;
         this.MbrshipPrice = MbrshipPrice;
         this.GymArea = GymArea;
         this.FoundYear = FoundYear;

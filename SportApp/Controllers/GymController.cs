@@ -91,7 +91,7 @@ namespace SportApp.Controllers
         [Route("Edit/{id}")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "UpdateGyms")]
-        public IActionResult Edit(int id, [Bind("Id,GymName,GymRate,GymLocation,GoogleLocation,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl,Latitude,Longitude")] Gym gym)
+        public IActionResult Edit(int id, [Bind("Id,GymName,GymRate,GymLocation,Region,MbrshipPrice,GymArea,FoundYear,Facilities,Url,Description,GymImgUrl,Latitude,Longitude")] Gym gym)
         {
             if (id != gym.Id)
             {
