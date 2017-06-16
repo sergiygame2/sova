@@ -33,13 +33,15 @@ namespace SportApp.Models
         [Required(AllowEmptyStrings = false), Column(TypeName = "varchar(10000)"), MaxLength(10000)]
         public string Description { get; set; }
 
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
+
         public string GymImgUrl { get; set; }
 
         public List<Comment> Comments { get; set; }
 
-        public double Longitude { get; set; }
 
-        public double Latitude { get; set; }
 
         protected bool Equals(Gym other)
         {

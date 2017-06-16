@@ -102,8 +102,8 @@ namespace SportApp.Migrations
                     GymLocation = table.Column<string>(nullable: false),
                     GymName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
                     GymRate = table.Column<int>(nullable: false),
-                    Latitude = table.Column<double>(nullable: false),
-                    Longitude = table.Column<double>(nullable: false),
+                    Latitude = table.Column<string>(nullable: true),
+                    Longitude = table.Column<string>(nullable: true),
                     MbrshipPrice = table.Column<int>(nullable: true),
                     Region = table.Column<string>(nullable: false),
                     Url = table.Column<string>(nullable: true)

@@ -262,9 +262,9 @@ namespace SportApp.Migrations
 
                     b.Property<int>("GymRate");
 
-                    b.Property<double>("Latitude");
+                    b.Property<string>("Latitude");
 
-                    b.Property<double>("Longitude");
+                    b.Property<string>("Longitude");
 
                     b.Property<int?>("MbrshipPrice");
 
