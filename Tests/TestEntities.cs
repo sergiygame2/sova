@@ -7,6 +7,24 @@ namespace Tests
 {
     public class TestEntities
     {
+        public static Gym integrationGym =
+                new Gym
+                {
+                    GymName = "TestGym",
+                    Description = "Gym description",
+                    FoundYear = 2014,
+                    Url = "site",
+                    Region = "location",
+                    Facilities = "pool",
+                    GymArea = 100,
+                    GymImgUrl = "imageurl",
+                    GymLocation = "Kiev",
+                    GymRate = 7,
+                    Latitude = "50",
+                    Longitude = "30",
+                    MbrshipPrice = 1500,
+                    Comments = new List<Comment>()
+                };
         public static List<Gym> Gyms = new List<Gym>
         {
             new Gym

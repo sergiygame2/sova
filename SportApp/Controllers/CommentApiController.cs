@@ -10,7 +10,7 @@ using SportApp.Services;
 namespace SportApp.Controllers
 {
     [Route("api/comments")]
-    [Authorize(Policy = "ViewComments")]
+    //[Authorize(Policy = "ViewComments")]
     public class CommentApiController : ApiController<Comment>
     {
         public CommentApiController(ICommentRepository repo, IPaginationUtilities services) :
@@ -32,21 +32,21 @@ namespace SportApp.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "CreateComments")]
+        //[Authorize(Policy = "CreateComments")]
         public override IActionResult Post([FromBody]Comment item)
         {
             return base.Post(item);
         }
 
         [HttpPut("{id}")]
-        [Authorize(Policy = "UpdateComments")]
+        //[Authorize(Policy = "UpdateComments")]
         public override IActionResult Put(int id, [FromBody]Comment item)
         {
             return base.Put(id, item);
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Policy = "RemoveComments")]
+        //[Authorize(Policy = "RemoveComments")]
         public override IActionResult Delete(int id)
         {
             return base.Delete(id);

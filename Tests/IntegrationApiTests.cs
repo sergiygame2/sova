@@ -7,6 +7,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using SportApp.Models.DTO;
+using SportApp.Models;
 
 namespace Tests
 {
@@ -53,7 +54,80 @@ namespace Tests
         
         private void AddUpdateDeleteGyms()
         {
+            var getAllResponse = Browser.Get("/api/gyms");
+            getAllResponse.EnsureSuccessStatusCode();
+            var data = (JsonConvert.DeserializeObject<List<Gym>>(getAllResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult()));
+            var startCount = data.Count;
+            Console.WriteLine(startCount);
+            int gymId = TestingCreate();
+            try
+            {
+                var gym = TestingGet(gymId);
+                if (gym != null)
+                {
+                    TestingEdit(gym);
+
+                    TestingDelete(gym.Id, startCount);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                var deleteResponse = Browser.Delete($"/api/gyms/{gymId}");
+                deleteResponse.EnsureSuccessStatusCode();
+                throw;
+            }
+
+
+        }
+
+        private Gym TestingGet(int gymId)
+        {
+            var getByIdResponse = Browser.Get($"/api/gyms/{gymId}");
+            getByIdResponse.EnsureSuccessStatusCode();
+            var gym = (JsonConvert.DeserializeObject<Gym>(getByIdResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult()));
             
+            var getByWrongIdResponse = Browser.Get("/api/gyms/0");
+            Assert.Equal(HttpStatusCode.NotFound, getByWrongIdResponse.StatusCode);
+            
+            return gym;
+        }
+        
+        private void TestingDelete(int id, int startCount)
+        {
+            var deleteResponse = Browser.Delete($"/api/gyms/{id}");
+            deleteResponse.EnsureSuccessStatusCode();
+
+            var getAllResponse = Browser.Get("/api/gyms");
+            getAllResponse.EnsureSuccessStatusCode();
+            var data = (JsonConvert.DeserializeObject<List<Gym>>(getAllResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult()));
+            var lastCount = data.Count;
+
+            Assert.Equal(startCount, lastCount);
+        }
+
+        private void TestingEdit(Gym gym)
+        {
+            gym.GymName = "Updated name";
+            var editResponse = Browser.Put($"/api/gyms/{gym.Id}", new StringContent(JsonConvert.SerializeObject(gym), Encoding.UTF8, "application/json"));
+            editResponse.EnsureSuccessStatusCode();
+
+            var getByIdResponse = Browser.Get($"/api/gyms/{gym.Id}");
+            getByIdResponse.EnsureSuccessStatusCode();
+            var updatedGym = (JsonConvert.DeserializeObject<Gym>(getByIdResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult()));
+
+            Assert.Equal(gym.GymName, updatedGym.GymName);
+        }
+
+        private int TestingCreate()
+        {
+            var createResponse = Browser.Post("/api/gyms", new StringContent(JsonConvert.SerializeObject(TestEntities.integrationGym), Encoding.UTF8, "application/json"));
+            createResponse.EnsureSuccessStatusCode();
+            return (JsonConvert.DeserializeObject<Gym>(createResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult())).Id;
         }
     }
 }

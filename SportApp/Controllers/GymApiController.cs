@@ -10,7 +10,7 @@ using SportApp.Services;
 namespace SportApp.Controllers
 {
     [Route("api/gyms")]
-    [Authorize(Policy = "ViewGyms")]
+    //[Authorize(Policy = "ViewGyms")]
     public class GymApiController : ApiController<Gym>
     {
         public GymApiController(IGymRepository repo, IPaginationUtilities services) :
@@ -31,21 +31,21 @@ namespace SportApp.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "CreateGyms")]
+        //[Authorize(Policy = "CreateGyms")]
         public override IActionResult Post([FromBody]Gym item)
         {
             return base.Post(item);
         }
 
         [HttpPut("{id}")]
-        [Authorize(Policy = "UpdateGyms")]
+        //[Authorize(Policy = "UpdateGyms")]
         public override IActionResult Put(int id, [FromBody]Gym item)
         {
             return base.Put(id, item);
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Policy = "RemoveGyms")]
+        //[Authorize(Policy = "RemoveGyms")]
         public override IActionResult Delete(int id)
         {
             return base.Delete(id);

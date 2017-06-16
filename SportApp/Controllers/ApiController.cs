@@ -32,7 +32,7 @@ namespace SportApp.Controllers
             items = _paginationService.Sort(items, _sort, _order, searchableProperties);
             items = _paginationService.Partition(items, _start, _end);
 
-            return Json(new { data = items, count = totalCount });
+            return new ObjectResult(items);
         }
 
         public IActionResult GetByIdGeneric(int id)
