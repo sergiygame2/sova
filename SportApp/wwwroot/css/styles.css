@@ -119,6 +119,7 @@ img.logohead{
 .greyframe {
     color: rgb(128, 128, 128);
     position: absolute;
+    border-style:solid;
     border-radius:12px;
     overflow: hidden;
     left: 50%;
