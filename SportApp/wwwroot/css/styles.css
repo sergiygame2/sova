@@ -138,6 +138,8 @@ img.logohead{
 .caret{
     background-color:white;
 }
+
+
 #searchnbtn {
     position: absolute;
     top: 200px;
@@ -161,6 +163,7 @@ img.logohead{
 #topcont{
     color:white;
 }
+
 .firstrow{
     position:absolute;
     z-index:100;
@@ -193,19 +196,33 @@ img.logohead{
     z-index: 200;
 }
 
-#price{
-    position:absolute;
-    width:35%;
-    margin-top:10px;
-    left:56%;
-    z-index:100;
+button.btn.btn-primary.dropdown-toggle {
+    background-color: white;
+    border-color:white;
+    color:gray;
+    width:150px;
 }
 
+    button.btn.btn-primary.dropdown-toggle:active,
+    button.btn.btn-primary.dropdown-toggle:hover,
+    button.btn.btn-primary.dropdown-toggle:focus {
+        background-color: rgb(213, 204, 204);
+        border-color: rgb(213, 204, 204);
+    }
 
-#rg{
-    z-index:100;
-    color:white;
-}
+
+    #price{
+        z-index:100;
+        position:absolute;
+        width:300px;
+        left:55%;
+       margin-top:10px;
+    }
+
+    #rg {
+        z-index: 100;
+        color: white;
+    }
 
 #rg2{
     z-index:100;
@@ -241,7 +258,8 @@ img.side {
     background-color: rgb(213, 204, 204);
     color: rgb(213,204,204);
     z-index: 50;
-    height:1900px;
+    height:1600px;
+
 }
 
 
