@@ -31,8 +31,8 @@ namespace Tests
             var response = controller.Get();
 
             // Assert
-            Assert.IsType(typeof(JsonResult), response);
-            Assert.NotNull(((JsonResult)response).Value);
+            Assert.IsType(typeof(ObjectResult), response);
+            Assert.NotNull(((ObjectResult)response).Value);
         }
 
         [Fact]

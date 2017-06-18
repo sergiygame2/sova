@@ -7,7 +7,7 @@ namespace Tests
 {
     public class TestEntities
     {
-        public static Gym integrationGym =
+        public static Gym ValidIntegrationGym =
                 new Gym
                 {
                     GymName = "TestGym",
@@ -25,6 +25,27 @@ namespace Tests
                     MbrshipPrice = 1500,
                     Comments = new List<Comment>()
                 };
+
+        public static Gym NotExistenGym =
+            new Gym
+            {
+                Id = -1,
+                GymName = "TestGym",
+                Description = "Gym description",
+                FoundYear = 2014,
+                Url = "site",
+                Region = "location",
+                Facilities = "pool",
+                GymArea = 100,
+                GymImgUrl = "imageurl",
+                GymLocation = "Kiev",
+                GymRate = 7,
+                Latitude = "50",
+                Longitude = "30",
+                MbrshipPrice = 1500,
+                Comments = new List<Comment>()
+            };
+
         public static List<Gym> Gyms = new List<Gym>
         {
             new Gym
