@@ -4,11 +4,39 @@
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
+@{Layout = null; }
+
 @{
     ViewData["Title"] = "Log in";
 }
 
-<h2>@ViewData["Title"].</h2>
+<html>
+<head>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <title>Крос-Увійти</title>
+
+</head>
+
+<body>
+
+<div class="baner">
+    <div class="container">
+        <a href="../0">
+            <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+        </a>
+    </div>
+    <div class="container">
+        <div class="text-vertical-center">
+            <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+            <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <div class="col-md-8">
         <section>
@@ -86,6 +114,9 @@
         </section>
     </div>
 </div>
+
+    </body>
+</html>
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

@@ -184,24 +184,17 @@ img.logohead{
     margin-left:130px;
     position:absolute;
     margin-top:40px;
-    width:200px;
+    width:210px;
     z-index:250;
-}
-
-#streetbox {
-    margin-left: 130px;
-    position: absolute;
-    margin-top: 100px;
-    width: 200px;
-    z-index: 250;
 }
 
 
 button.btn.btn-primary.dropdown-toggle {
-    background-color:white;
-    border-color:white;
-    color:gray;
-    width:180px;
+    background-color: white;
+    border-color: white;
+    color: gray;
+    width: 180px;
+   
 }
 
     button.btn.btn-primary.dropdown-toggle:active,
@@ -214,7 +207,7 @@ button.btn.btn-primary.dropdown-toggle {
 
 
     input[type="text"] {
-    width:180px;
+    width:170px;
     height:35px;
     position:absolute;
     margin-top:105px;
@@ -226,26 +219,35 @@ button.btn.btn-primary.dropdown-toggle {
 }
 
 
-    #price{
+    #amount{
         z-index:100;
         position:absolute;
-        width:300px;
+        width:200px;
+        height:30px;
         left:55%;
-       margin-top:-10px;
+       margin-top:-30px;
     }
 
-    #rg {
-        z-index:100;
-        color:white;
-    }
-
-#rg2{
-    z-index:100;
-    color:white;
-    margin-left:250px;
-    margin-top:-50px;
+#slider-range {
+    z-index: 100;
+    position: absolute;
+    width: 380px;
+    left: 55%;
+    margin-top:40px;
 }
+  
 
+
+button {
+    background-color: #6BBE92;
+    width: 302px;
+    border: 0;
+    padding: 10px 0;
+    margin: 5px 0;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
 
 
 img.side {
@@ -280,7 +282,7 @@ img.side {
     position:absolute;
     left:2%;
     z-index:100;
-
+    margin-top:-100px;
 }
 
 #map-canvas {
@@ -323,12 +325,12 @@ img.side {
 /*rate bar*/
 
 div.stars {
-     width:200px;
+     width:250px;
      display:inline-block;
      z-index:200;
      position:absolute;
      left:20%;
-     margin-left:-60px;
+     margin-left:-56px;
 
 
 }
@@ -339,8 +341,8 @@ input.star {
 
 label.star {
    float: right;
-   padding: 5px;
-   font-size: 20px;
+   padding: 2px;
+   font-size: 22px;
    color: #444;
    transition: all .2s;
 }
@@ -351,12 +353,16 @@ input.star:checked ~ label.star:before {
    transition: all .25s;
 }
 
-input.star-5:checked ~ label.star:before {
+input.star-10:checked ~ label.star:before {
   color: #FE7;
  text-shadow: 0 0 20px #952;
 }
 
-input.star-1:checked ~ label.star:before {
+input.star-1:checked ~ label.star:before,
+input.star-2:checked ~ label.star:before,
+input.star-3:checked ~ label.star:before,
+input.star-4:checked ~ label.star:before,
+input.star-5:checked ~ label.star:before {
     color: #F62;
 }
 
