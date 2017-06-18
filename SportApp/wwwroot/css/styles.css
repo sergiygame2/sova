@@ -71,18 +71,18 @@ body {
 
 img.img-logo{
     position:absolute;
-    left:50%;
+    left:45%;
     margin-left:-270px;
     margin-top:200px;
 }
 
 #searchbtn {
     position: absolute;
-    left: 50%;
+    left: 47%;
+    top:72%;
     margin-left: -60px;
  
 }
-
 
 footer{
     background-color:rgb(89, 89, 89);
@@ -117,19 +117,19 @@ img.logohead{
 }
 
 .greyframe {
-    color: rgb(128, 128, 128);
-    position: absolute;
-    border-style: solid;
-    border-radius: 12px;
-    overflow: hidden;
-    left: 50%;
-    margin-left: -550px;
-    top: 160px;
-    background-color: rgb(128, 128, 128);
-    width: 73%;
-    height: auto;
-    min-height: 200px;
-    z-index: 50;
+    color:rgb(128, 128, 128);
+    position:absolute;
+    border-style:solid;
+    border-radius:12px;
+    overflow:hidden;
+    left:50%;
+    margin-left:-550px;
+    top:160px;
+    background-color:rgb(128, 128, 128);
+    width:73%;
+    height:auto;
+    min-height:200px;
+    z-index:50;
     overflow:visible;
 
 }
@@ -141,22 +141,22 @@ img.logohead{
 
 
 #searchnbtn {
-    position: absolute;
-    top: 200px;
-    left: 80%;
-    z-index: 100;
-    width: 170px;
-    margin-left: 30px;
-    border-radius: 8;
+    position:absolute;
+    top:200px;
+    left:80%;
+    z-index:100;
+    width:170px;
+    margin-left:30px;
+    border-radius:8;
     color: #fff;
-    background-color: rgb(128, 128, 128);
+    background-color:rgb(128, 128, 128);
 }
 
 #schhomebtn {
-    position: absolute;
-    top: 280px;
-    left: 80%;
-    z-index: 100;
+    position:absolute;
+    top:280px;
+    left:80%;
+    z-index:100;
     margin-left:30px;
 }
 
@@ -167,40 +167,33 @@ img.logohead{
 .firstrow{
     position:absolute;
     z-index:100;
-    margin-left:70px;
-    margin-top:80px;
+    margin-left:30px;
+    margin-top:40px;
 
 }
 
 .secondrow {
-    position: absolute;
-    left:35%; 
+    position:absolute;
+    left:38%; 
     z-index: 100;
-    margin-top:80px;
+    margin-top:40px;
    
 }
 
 .dropdown{
-    margin-left:180px;
+    margin-left:130px;
     position:absolute;
     margin-top:40px;
     width:200px;
     z-index:250;
 }
 
-.dropdown-street {
-    margin-left: 180px;
-    position: absolute;
-    width: 200px;
-    margin-top: 100px;
-    z-index: 200;
-}
 
 button.btn.btn-primary.dropdown-toggle {
-    background-color: white;
+    background-color:white;
     border-color:white;
     color:gray;
-    width:150px;
+    width:180px;
 }
 
     button.btn.btn-primary.dropdown-toggle:active,
@@ -211,17 +204,31 @@ button.btn.btn-primary.dropdown-toggle {
     }
 
 
+
+    input[type="text"] {
+    width:180px;
+    height:35px;
+    position:absolute;
+    margin-top:105px;
+    margin-left:115px;
+    display:block;
+    border-radius:4px;
+    border:0;
+    text-align:center;
+}
+
+
     #price{
         z-index:100;
         position:absolute;
         width:300px;
         left:55%;
-       margin-top:10px;
+       margin-top:-10px;
     }
 
     #rg {
-        z-index: 100;
-        color: white;
+        z-index:100;
+        color:white;
     }
 
 #rg2{
@@ -231,33 +238,29 @@ button.btn.btn-primary.dropdown-toggle {
     margin-top:-50px;
 }
 
-.sliderval{
-    z-index:100;
-    color:white;
 
-}
 
 img.side {
-    top: 120px;
-    left: 85%;
-    position: absolute;
-    z-index: 50;
+    top:120px;
+    left:85%;
+    position:absolute;
+    z-index:50;
 }
 
 .emptyframe {
-    color: rgb(245, 144, 29);
-    position: absolute;
-    border-style: solid;
-    border-color: rgb(245, 144, 29);
-    border-width: 7px;
-    width: 73%;
-    border-radius: 12px;
-    left: 50%;
-    margin-left: -550px;
-    margin-top: 250px;
-    background-color: rgb(213, 204, 204);
-    color: rgb(213,204,204);
-    z-index: 50;
+    color:rgb(245, 144, 29);
+    position:absolute;
+    border-style:solid;
+    border-color:rgb(245, 144, 29);
+    border-width:7px;
+    width:73%;
+    border-radius:12px;
+    left:50%;
+    margin-left:-550px;
+    margin-top:250px;
+    background-color:rgb(213, 204, 204);
+    color:rgb(213,204,204);
+    z-index:50;
     height:1600px;
 
 }
@@ -273,9 +276,9 @@ img.side {
 }
 
 #map-canvas {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    margin:0;
+    padding:0;
+    height:100%;
     margin-top:100px;
     left:15px;
     width:880px;
@@ -284,7 +287,7 @@ img.side {
 }
 
 .map-container {
-    height: 300px;
+    height:300px;
     width:100%;
    
 }
@@ -312,8 +315,8 @@ img.side {
 /*rate bar*/
 
 div.stars {
-     width: 200px;
-     display: inline-block;
+     width:200px;
+     display:inline-block;
      z-index:200;
      position:absolute;
      left:20%;

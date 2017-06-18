@@ -51,7 +51,7 @@
         <div class="baner">
             <div class="container">
                 <a href="../0">
-                    <img class="logohead" src="~/Views/../images/logo.png" height="80px" width="250px">
+                    <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
                 </a>
             </div>
             <div class="container">
@@ -74,10 +74,22 @@
                 <div class="container">
                     <div class="greyframe">
                         <div class="greycontent">
+                            <div id="topcont" class="container">
+                                <div class="firstrow">
+                                    <h4>Район</h4>
+                                    <br>
+                                    <h4>Вулиця</h4>
+                                </div>
+                                <div class="secondrow">
+                                    <h4>Цінова категорія</h4>
+                                    <br />
+                                    <h4>Додаткові послуги</h4>
+                                </div>
+                            </div>
+
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Оберіть район
-                                    <span class="caret"></span>
+                                    Оберіть район<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     @foreach (var gym in gyms)
@@ -88,19 +100,12 @@
                                 </ul>
                             </div>
 
-                            <div class="dropdown-street">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Оберіть вулицю
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @foreach (var gym in gyms)
-                                    {
-                                        <li>@gym.GymLocation</li>
 
-                                    }
-                                </ul>
-                            </div>
+                            <div id="streetbox" class="container">
+                            <form>
+                            <input type="text" name="street" value="Введіть вулицю">  
+                                </form>
+                                </div>
 
                             <div id="price" class="container">
                                 <form action="#" method="post">
@@ -113,25 +118,13 @@
                 </div>
 
 
-                <div id="topcont" class="container">
-                    <div class="firstrow">
-                        <h4>Район</h4>
-                        <br>
-                        <h4>Вулиця</h4>
-                    </div>
-                    <div class="secondrow">
-                        <h4>Цінова категорія</h4>
-                        <br />
-                        <h4>Додаткові послуги</h4>
-                    </div>
-                </div>
+
                 <div class="container">
-                    <div class="emptyframe" display="table-cell">
+                    <div class="emptyframe" >
                         <div class="emptycontent">
                             <div id="resultstext" class="container">
                                 <h1>Результати пошуку</h1>
                             </div>
-                        </div>
 
                         <div class="map-container">
                             <div id="map-canvas"></div>
@@ -180,6 +173,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
