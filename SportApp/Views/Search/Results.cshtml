@@ -87,6 +87,7 @@
                                 </div>
                             </div>
 
+                            <div id="regionbox" class="container">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     Оберіть район<span class="caret"></span>
@@ -99,12 +100,12 @@
                                     }
                                 </ul>
                             </div>
+                                </div>
 
-
-                            <div id="streetbox" class="container">
-                            <form>
-                            <input type="text" name="street" value="Введіть вулицю">  
-                                </form>
+                            <div id ="streetbox" class="container">
+                            <div class="dropdown">
+                                <select class="btn dropdown-toggle" name="region" id="region" asp-items="ViewBag.Regions"></select>
+                            </div>
                                 </div>
 
                             <div id="price" class="container">

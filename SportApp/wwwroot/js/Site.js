@@ -44,7 +44,7 @@ function initialize(gyms) {
     $.each(gyms,
         function (i, item) {
             var marker = new google.maps.Marker({
-                'position': new google.maps.LatLng(item.Longitude, item.Latitude),
+                'position': new google.maps.LatLng(item.Latitude, item.Longitude),
                 'map': map,
                 'title': item.GymName
             });
@@ -60,8 +60,11 @@ function initialize(gyms) {
                     infowindow.open(map, marker);
                 });
         });
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 395baf752fb0b4ea7ba3eea90da599fa79cd2a36
 } 
 
 

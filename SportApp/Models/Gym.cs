@@ -32,9 +32,11 @@ namespace SportApp.Models
 
         [Required(AllowEmptyStrings = false), Column(TypeName = "varchar(10000)"), MaxLength(10000)]
         public string Description { get; set; }
-
+        
+        [RegularExpression("^[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?$", ErrorMessage = "Wrong format. Use onnly numbers (example : 30.223344)")]
         public string Longitude { get; set; }
 
+        [RegularExpression("^[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?$", ErrorMessage = "Wrong format. Use onnly numbers (example : 50.499988)")]
         public string Latitude { get; set; }
 
         public string GymImgUrl { get; set; }

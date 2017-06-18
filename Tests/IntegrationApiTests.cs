@@ -78,6 +78,8 @@ namespace Tests
 
                     TestingEdit(gym);
 
+                    TestingSearch(gym);
+
                     TestingDelete(gym.Id, startCount);
                 }
                 else
@@ -232,6 +234,15 @@ namespace Tests
                 throw;
             }
             return createdCommentId;
+        }
+
+        private void TestingSearch(Gym gym)
+        {
+            var searchResponse = Browser.Get("SearchResults");
+            searchResponse.EnsureSuccessStatusCode();
+
+            var regionSearchResponse = Browser.Get($"SearchResults?region={gym.Region}");
+            regionSearchResponse.EnsureSuccessStatusCode();
         }
     }
 }

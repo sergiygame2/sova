@@ -180,12 +180,20 @@ img.logohead{
    
 }
 
-.dropdown{
+#regionbox{
     margin-left:130px;
     position:absolute;
     margin-top:40px;
     width:200px;
     z-index:250;
+}
+
+#streetbox {
+    margin-left: 130px;
+    position: absolute;
+    margin-top: 100px;
+    width: 200px;
+    z-index: 250;
 }
 
 
