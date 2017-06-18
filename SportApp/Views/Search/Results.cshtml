@@ -28,28 +28,37 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+   
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="~/css/styles.css">
     <script src="~/js/Site.js"></script>
+    <script>
+        function avalSlider() {
+            var sliderValue = document.getElementById('pricerange').value;
+            document.getElementById('sliderVal').innerHTML = sliderValue;
+
+        }
+    </script>
+
+   
 
 </head>
 
 <body>
     <header id="hat" class="header">
         <div class="baner">
-        <div class="container">
-            <a href="../0">
-                <img class="logohead" src="~/Views/../images/logo.png" height="80px" width="250px">
-            </a>
-        </div>
-        <div class="container">
-            <div class="text-vertical-center">
-                <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
-                <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+            <div class="container">
+                <a href="../0">
+                    <img class="logohead" src="~/Views/../images/logo.png" height="80px" width="250px">
+                </a>
             </div>
+            <div class="container">
+                <div class="text-vertical-center">
+                    <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                    <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                </div>
             </div>
         </div>
 
@@ -62,100 +71,125 @@
         </div>
         <div class="container">
             <frameset>
-                    <div class="container">
-                        <div class="greyframe">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                            Dropdown Example
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu-right">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </div>
-                <div id="topcont" class="container">
-                        <div class="firstrow">
-                          <input type="checkbox" class="checkbox" name="trainer" value="trainer">  
-                                <h4>Район</h4>
-                                <br/>
-                                <h4>Вулиця</h4>
-                                <br/>
-                                <h4>Тренер</h4>     
-                        </div> 
-                        <div class="secondrow">
-                            <h4>Цінова категорія</h4>
-                            <br />
-                            <br />
-                            <h4>Додаткові послуги</h4>  
-                        </div>
-                    </div>
-                    </div>
-                    </div>
                 <div class="container">
-                <div class="emptyframe">
-                    <iframe style="border:5px solid orange;" width="920x" height="1400px"> </iframe>
-                    <div id="resultstext" class="container">
-                        <h1>Результати пошуку</h1>
-                    </div>
+                    <div class="greyframe">
+                        <div class="greycontent">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Оберіть район
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach (var gym in gyms)
+                                    {
+                                        <li>@gym.Region</li>
 
-                    <div class="map-container">
-                        <div id="map-canvas"></div>
-                    </div>
+                                    }
+                                </ul>
+                            </div>
 
-                    <div id="gyminfo" class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="item">
-                                    <div class="row">
-                                        @foreach (var gym in gyms)
-                                        {
-                                            <div class="col-md-4">
-                                                <div class="container">
-                                                    <a href="../Gym/Index">
-                                                        <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
-                                                    </a>
-                                                </div>
-                                                <div id="text" class="container">
-                                                    <h4>@gym.GymName</h4>
-                                                    <h4>@gym.GymLocation</h4>
-                                                    <h4>@gym.MbrshipPrice  грн</h4>
+                            <div class="dropdown-street">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Оберіть вулицю
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach (var gym in gyms)
+                                    {
+                                        <li>@gym.GymLocation</li>
+
+                                    }
+                                </ul>
+                            </div>
+
+                            <div id="price" class="container">
+                                <form action="#" method="post">
+                                    <h4 id="rg">₴100</h4><input type="range" id="pricerange" min="100" max="8000" onchange="evalSlider()" /><h4 id="rg2">₴8000</h4>
+                                    <div class="sliderval"><output id="sliderVal"></output></div>
+                                </form>
+                            </div>          
+                            </div>
+                    </div>
+                </div>
+
+
+                <div id="topcont" class="container">
+                    <div class="firstrow">
+                        <h4>Район</h4>
+                        <br>
+                        <h4>Вулиця</h4>
+                    </div>
+                    <div class="secondrow">
+                        <h4>Цінова категорія</h4>
+                        <br />
+                        <h4>Додаткові послуги</h4>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="emptyframe" display="table-cell">
+                        <div class="emptycontent">
+                            <div id="resultstext" class="container">
+                                <h1>Результати пошуку</h1>
+                            </div>
+                        </div>
+
+                        <div class="map-container">
+                            <div id="map-canvas"></div>
+                        </div>
+
+                        <div id="gyminfo" class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="item">
+                                        <div class="row">
+                                            @foreach (var gym in gyms)
+                                            {
+                                                <div class="col-md-4">
                                                     <div class="container">
-                                                        <div class="stars">
-                                                            <form action="">
-                                                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                                                <label class="star star-5" for="star-5"></label>
-                                                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                                                <label class="star star-4" for="star-4"></label>
-                                                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                                                <label class="star star-3" for="star-3"></label>
-                                                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                                                <label class="star star-2" for="star-2"></label>
-                                                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                                                <label class="star star-1" for="star-1"></label>
-                                                            </form>
-                                                        </div>
+                                                        <a href="../Gym/Index">
+                                                            <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                                        </a>
                                                     </div>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
+                                                    <div id="text" class="container">
+                                                        <h4>@gym.GymName</h4>
+                                                        <h4>@gym.GymLocation</h4>
+                                                        <h4>@gym.MbrshipPrice  грн</h4>
+                                                        <div class="container">
+                                                            <div class="stars">
+                                                                <form action="">
+                                                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                                                    <label class="star star-5" for="star-5"></label>
+                                                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                                                    <label class="star star-4" for="star-4"></label>
+                                                                    <input class="star star-3" id="star-3" type="radio" name="star" />
+                                                                    <label class="star star-3" for="star-3"></label>
+                                                                    <input class="star star-2" id="star-2" type="radio" name="star" />
+                                                                    <label class="star star-2" for="star-2"></label>
+                                                                    <input class="star star-1" id="star-1" type="radio" name="star" />
+                                                                    <label class="star star-1" for="star-1"></label>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        }
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    </div>
-               </frameset>
-            </div>
-   
+
+
+            </frameset>
+        </div>
     </header>
-    
+
 </body>
 </html>
 <footer>

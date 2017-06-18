@@ -80,7 +80,7 @@ img.img-logo{
     position: absolute;
     left: 50%;
     margin-left: -60px;
-    margin-top: 400px;
+ 
 }
 
 
@@ -119,22 +119,26 @@ img.logohead{
 .greyframe {
     color: rgb(128, 128, 128);
     position: absolute;
-    border-style:solid;
-    border-radius:12px;
+    border-style: solid;
+    border-radius: 12px;
     overflow: hidden;
     left: 50%;
     margin-left: -550px;
     top: 160px;
     background-color: rgb(128, 128, 128);
-    width:73%;
-    height:20%;
-    z-index:50;
+    width: 73%;
+    height: auto;
+    min-height: 200px;
+    z-index: 50;
+    overflow:visible;
+
 }
 
-.dropdown{
-    margin-top:100px;
-    z-index:100;
+
+.caret{
+    background-color:white;
 }
+
 
 #searchnbtn {
     position: absolute;
@@ -155,90 +159,145 @@ img.logohead{
     z-index: 100;
     margin-left:30px;
 }
+
 #topcont{
     color:white;
 }
+
 .firstrow{
     position:absolute;
-   
-    left:20%;
     z-index:100;
-  
- 
-}
+    margin-left:70px;
+    margin-top:80px;
 
-.checkbox{
-    position:absolute;
-    bottom:370px;
-    right:20%;
-    margin-left:-200px;
-    z-index:100;
 }
 
 .secondrow {
     position: absolute;
-    bottom: 410px;
-    left: 50%;
+    left:35%; 
     z-index: 100;
-    margin-left: -150px;
+    margin-top:80px;
+   
 }
 
-img.side{
-    top:120px;
-    left:85%;
+.dropdown{
+    margin-left:180px;
     position:absolute;
-    marging-left:300px;
-    z-index:50;
+    margin-top:40px;
+    width:200px;
+    z-index:250;
+}
+
+.dropdown-street {
+    margin-left: 180px;
+    position: absolute;
+    width: 200px;
+    margin-top: 100px;
+    z-index: 200;
+}
+
+button.btn.btn-primary.dropdown-toggle {
+    background-color: white;
+    border-color:white;
+    color:gray;
+    width:150px;
+}
+
+    button.btn.btn-primary.dropdown-toggle:active,
+    button.btn.btn-primary.dropdown-toggle:hover,
+    button.btn.btn-primary.dropdown-toggle:focus {
+        background-color: rgb(213, 204, 204);
+        border-color: rgb(213, 204, 204);
+    }
+
+
+    #price{
+        z-index:100;
+        position:absolute;
+        width:300px;
+        left:55%;
+       margin-top:10px;
+    }
+
+    #rg {
+        z-index: 100;
+        color: white;
+    }
+
+#rg2{
+    z-index:100;
+    color:white;
+    margin-left:250px;
+    margin-top:-50px;
+}
+
+.sliderval{
+    z-index:100;
+    color:white;
+
+}
+
+img.side {
+    top: 120px;
+    left: 85%;
+    position: absolute;
+    z-index: 50;
 }
 
 .emptyframe {
     color: rgb(245, 144, 29);
     position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 7px;
+    width: 73%;
     border-radius: 12px;
-    overflow: hidden;
     left: 50%;
     margin-left: -550px;
-    top: 350px;
-    background-color:rgb(213, 204, 204);
+    margin-top: 250px;
+    background-color: rgb(213, 204, 204);
     color: rgb(213,204,204);
-    z-index:50;
+    z-index: 50;
+    height:1600px;
+
 }
+
+
 
 #resultstext{
     color:white;
     position:absolute;
-    left:50%;
-    margin-left:-530px;
+    left:2%;
     z-index:100;
-  bottom:420px;
+
 }
 
 #map-canvas {
     margin: 0;
     padding: 0;
     height: 100%;
-    top:400px;
-    left:50%;
-    margin-left:-530px;
+    margin-top:100px;
+    left:15px;
     width:880px;
     z-index:50;
+   
 }
 
 .map-container {
     height: 300px;
     width:100%;
+   
 }
 
 
 #gyminfo {
     z-index:200;
-    top:50%; 
-    margin-top:600px;
-    left:20%;
-    margin-left:-150px;
+    left:2%;
     position:absolute;
     color:white;
-    width:70%;
+    width:100%;
+    margin-top:30px;
+    
 }
 
 
@@ -246,6 +305,7 @@ img.side{
     max-width:230px;
     text-align:center;
     margin-left:0px;
+
 }
 
 

@@ -60,8 +60,7 @@ function initialize(gyms) {
                     infowindow.open(map, marker);
                 });
         });
+
 } 
-
-
 
 
