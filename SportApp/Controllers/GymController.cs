@@ -12,6 +12,8 @@ using SportApp.Models;
 using SportApp.Repositories;
 using ImageSharp;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SportApp.Lookups;
 
 namespace SportApp.Controllers
 {
@@ -39,6 +41,7 @@ namespace SportApp.Controllers
         [Consumes("multipart/form-data")]
         public IActionResult Create()
         {
+            ViewData["Regions"] = new SelectList(SelectLookups.Regions);
             return View("Views/Admin/Gym/Create.cshtml");
         }
 
@@ -64,6 +67,7 @@ namespace SportApp.Controllers
                 _gymRepo.Add(gym);
                 return RedirectToAction("Index");
             }
+            ViewData["Regions"] = new SelectList(SelectLookups.Regions);
             return View("Views/Admin/Gym/Create.cshtml", gym);
         }
 
@@ -81,6 +85,7 @@ namespace SportApp.Controllers
             {
                 return NotFound();
             }
+            ViewData["Regions"] = new SelectList(SelectLookups.Regions);
             return View("Views/Admin/Gym/Edit.cshtml", gym);
         }
 
@@ -126,6 +131,7 @@ namespace SportApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewData["Regions"] = new SelectList(SelectLookups.Regions);
             return View("Views/Admin/Gym/Edit.cshtml", gym);
         }
 
