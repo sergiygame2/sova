@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using SportApp.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SportApp.Lookups;
 
 namespace SportApp.Controllers
 {
@@ -24,6 +26,8 @@ namespace SportApp.Controllers
         [Route("SearchResults")]
         public IActionResult Results([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel)
         {
+            var defaultRegion = "־בונ³עü נאימם";
+            if (searchModel.Region == defaultRegion) searchModel.Region = null;
             List<string> facilities = null;
             if (!string.IsNullOrEmpty(searchModel.Facilities))
             {
@@ -31,6 +35,9 @@ namespace SportApp.Controllers
             }
 
             var gyms = _gymRepo.Search(searchModel.Region, searchModel.Street, searchModel.StartPrice, searchModel.EndPrice, facilities);
+            var selectReionsList = SelectLookups.Regions;
+            selectReionsList.Insert(0, defaultRegion);
+            ViewData["Regions"] = new SelectList(selectReionsList);
             ViewData["region"] = searchModel.Region;
             ViewData["street"] = searchModel.Street;
             ViewData["startprice"] = searchModel.StartPrice;
