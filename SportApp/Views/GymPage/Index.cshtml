@@ -1,0 +1,25 @@
+﻿@model  SportApp.Models.Gym
+@{
+    Layout = null;
+}
+
+<p>@Model.GymName</p>
+
+
+@foreach (var comment in Model.Comments)
+{
+    <p>@comment.CommentText</p>
+    <p>@comment.Rate</p>
+}
+<form asp-action="CreateComment">
+    <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
+    <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
+    <p>
+        <b>Оцінка залу:</b><br>
+        <input type="text" data-val="true" data-val-range="The field Rate must be between 1 and 10." data-val-range-max="10" 
+               data-val-range-min="1" data-val-required="The Rate field is required." id="Rate" name="Rate" size="40">
+    </p>
+    <p><b>Введіть ваш отзив:</b></p>
+    <p><textarea id="CommentText" name="CommentText"></textarea></p>
+    <p><input type="submit"></p>
+</form>

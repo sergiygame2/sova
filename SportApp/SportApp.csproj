@@ -50,5 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\upload\" />
+    <Folder Include="wwwroot\images\upload\" />
   </ItemGroup>
 </Project>

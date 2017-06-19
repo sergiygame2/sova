@@ -18,6 +18,7 @@ namespace SportApp.Models
         public string CommentText { get; set; }
 
         [Required]
+        [Range(1, 10)]
         public int Rate { get; set; }
 
         public DateTime? PublicationDate { get; set; }

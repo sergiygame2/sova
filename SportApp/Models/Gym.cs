@@ -12,6 +12,7 @@ namespace SportApp.Models
         public string GymName { get; set; }
 
         [Required]
+        [Range(1, 10)]
         public int GymRate { get; set; }
 
         [Required(AllowEmptyStrings = false)]

@@ -92,6 +92,7 @@ namespace SportApp
 
             services.AddScoped<IGymRepository, GymRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IUserGymsRepository, UserGymsRepository>();
             services.AddSingleton<IPaginationUtilities, PaginationUtilities>();
 
             services.AddTransient<IDbInitializer, DbInitializer>();
