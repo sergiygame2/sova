@@ -9,6 +9,7 @@ namespace SportApp.Repositories
     public interface IGymRepository : IModelRepository<Gym>
     {
         List<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, List<string> facilities = null);
+        IQueryable<Gym> GetIQueryable();
     }
     
     public class GymRepository : GenericModelRepository<Gym>, IGymRepository
@@ -24,6 +25,8 @@ namespace SportApp.Repositories
             _context.Set<Gym>().AsNoTracking().Where(gym => gym.Id == id).Include(gym => gym.Comments).FirstOrDefault();
 
         public override List<Gym> GetAll() => _context.Set<Gym>().AsNoTracking().Include(gym => gym.Comments).ToList();
+
+        public IQueryable<Gym> GetIQueryable() => _context.Gym.AsNoTracking();
 
         public List<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, List<string> facilities = null)
         {

@@ -4,8 +4,10 @@ using Newtonsoft.Json;
 using SportApp.Models;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportApp.Lookups;
+using SportApp.Services;
 
 namespace SportApp.Controllers
 {
@@ -24,7 +26,7 @@ namespace SportApp.Controllers
         }
 
         [Route("SearchResults")]
-        public IActionResult Results([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel)
+        public async Task<IActionResult> Results([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel, int? page)
         {
             var defaultRegion = "־בונ³עü נאימם";
             if (searchModel.Region == defaultRegion) searchModel.Region = null;
@@ -44,7 +46,9 @@ namespace SportApp.Controllers
             ViewData["endprice"] = searchModel.EndPrice;
             ViewData["facilities"] = searchModel.Facilities;
             ViewData["gyms"] = JsonConvert.SerializeObject(gyms);
-            return View("Results");
+
+            int pageSize = 3;
+            return View(await PaginatedList<Gym>.CreateAsync(_gymRepo.GetIQueryable(), page ?? 1, pageSize));
         }
     }
 }
