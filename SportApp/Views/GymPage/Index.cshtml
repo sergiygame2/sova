@@ -2,18 +2,7 @@
 @{
     Layout = null;
 }
-
-
-
-@foreach (var comment in Model.Comments)
-{
-    <p>@comment.CommentText</p>
-    <p>@comment.Rate</p>
-}
-
-
 <html>
-
 <head>
 
         <title>@Model.GymName</title>
@@ -24,7 +13,6 @@
     <link href="~/css/bootstrap.css" rel="stylesheet">
 
     <link href="~/css/styles.css" rel="stylesheet">
-
 </head>
 <body>
 
@@ -58,18 +46,29 @@
                    <h4><strong>Сайт заснування:</strong></h4><h4>@Model.Url</h4>
                    <h4><strong>Додаткові послуги:</strong></h4><h4>@Model.Facilities</h4>
                    <h4><strong>Короткий опис:</strong></h4><h4>@Model.Description</h4>
+                   @if(!string.IsNullOrEmpty((string)ViewData["Errors"]))
+                   {
+                        <div class="alert alert-warning">
+                            <strong>Comment validation error!</strong> 
+                            Text is required. Rate from 1 to 10
+                        </div>
+                   }
+                    
                </div>
 
                 <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар</b></h4>
                 <div id="comframe" class="container">
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <p>@comment.CommentText</p>
+                        <p>@comment.Rate</p>
+                        <hr/>
+                    }
                     <form asp-action="CreateComment">
                         <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
                         <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
-                        <p>
-                            <input type="text" data-val="true" data-val-range="The field Rate must be between 1 and 10." data-val-range-max="10"
-                                   data-val-range-min="1" data-val-required="The Rate field is required." id="Rate" name="Rate" size="40">
-                        </p>
-                        <p><textarea id="CommentText" name="CommentText"></textarea></p>
+                        <input type="text" id="Rate" placeholder="1..10" style="color:black" name="Rate" size="40">
+                        <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black"></textarea></p>
                         <p><input id="sendbtn" type="submit"></p>
                     </form>
                 </div>

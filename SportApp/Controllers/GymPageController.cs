@@ -22,7 +22,7 @@ namespace SportApp.Controllers
         }
 
         [HttpGet("GymPage/{id}")]
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, int Length=0)
         {
             if (id == 0)
                 return BadRequest("Wrong id");
@@ -31,6 +31,7 @@ namespace SportApp.Controllers
             if (gym == null)
                 return NotFound();
 
+            if(Length!=0) ViewData["Errors"] = "error";
             ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return View(gym);
         }
@@ -51,7 +52,7 @@ namespace SportApp.Controllers
             }
             else
             {
-                return RedirectToAction($"{comment.GymId}");
+                return RedirectToAction($"{comment.GymId}","GymPage","error");
             }
         }
 
