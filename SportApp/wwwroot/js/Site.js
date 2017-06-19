@@ -61,23 +61,18 @@ function initialize(gyms) {
                 });
         });
 
-    $(".dropdown dt a").on('click', function () {
-        $(".dropdown dd ul").slideToggle('fast');
-    });
 
-    $(".dropdown dd ul li a").on('click', function () {
-        $(".dropdown dd ul").hide();
-    });
-
-    
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 395baf752fb0b4ea7ba3eea90da599fa79cd2a36
 } 
 
-/*
+
+$(".dropdown dt a").on('click', function () {
+    $(".dropdown dd ul").slideToggle('fast');
+});
+
+$(".dropdown dd ul li a").on('click', function () {
+    $(".dropdown dd ul").hide();
+});
+
 function getSelectedValue(id) {
     return $("#" + id).find("dt a span.value").html();
 }
@@ -104,4 +99,3 @@ $('.mutliSelect input[type="checkbox"]').on('click', function () {
     }
 });
 
-*/

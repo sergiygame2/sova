@@ -18,6 +18,8 @@
 
     <link href="css/styles.css" rel="stylesheet">
 
+
+    <!--map-->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -33,16 +35,17 @@
 
 
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-
-   
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="~/css/styles.css">
     <script src="~/js/Site.js"></script>
 
+
+
+    <!--price range-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css" />
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -88,9 +91,11 @@
             <a id="searchnbtn" href="" class="btn btn-light btn-lg">Шукати</a>
             <a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>
         </div>
+
         <div class="container">
             <img class="side" src="~/images/girl.jpg" />
         </div>
+
         <div class="container">
             <frameset>
                 <div class="container">
@@ -113,91 +118,91 @@
                             <div id="regionbox" class="dropdown">
                                 <select class="btn dropdown-toggle" name="region" id="region" asp-items="ViewBag.Regions"></select>
                             </div>
-                        
+
                             <div class="container">
                                 <form>
-                                <input class="w3-input" type="text" value="Введіть вулицю">
+                                    <input class="w3-input" type="text" value="Введіть вулицю">
                                 </form>
                             </div>
 
                             <!--Price range-->
                             <div id="range" class="container"></div>
-                            <div id="slider-range"></div> 
+                            <div id="slider-range"></div>
                             <p>
                                 <label for="amount">Price range:</label>
                                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
                             </p>
 
-    
-              </div>
+
+                        </div>
                     </div>
                 </div>
 
-                <div class="container">
-                    <div class="emptyframe" >
-                        <div class="emptycontent">
+                <div class="container" style="height:100%; width:100%;">
+                    <div class="emptyframe">
+                        <div class="emptycontent" style="height:100%; width:100%;">
                             <div id="resultstext" class="container">
                                 <h1>Результати пошуку</h1>
                             </div>
 
-                        <div class="map-container">
-                            <div id="map-canvas"></div>
-                        </div>
+                            <div class="map-container">
+                                <div id="map-canvas"></div>
+                            </div>
 
-                        <div id="gyminfo" class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="item">
-                                        <div class="row">
-                                            @foreach (var gym in gyms)
-                                            {
-                                                <div class="col-md-4">
-                                                    <div class="container">
-                                                        <a href="../Gym/Index">
-                                                            <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
-                                                        </a>
-                                                    </div>
-                                                    <div id="text" class="container">
-                                                        <h4>@gym.GymName</h4>
-                                                        <h4>@gym.GymLocation</h4>
-                                                        <h4>@gym.MbrshipPrice  грн</h4>
+                            <div id="gyminfo" class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="item">
+                                            <div class="row">
+                                                @foreach (var gym in gyms)
+                                                {
+                                                    <div class="col-md-4">
                                                         <div class="container">
-                                                            <div class="stars">
-                                                                <form action="">
-                                                                    <input class="star star-10" id="star-10" type="radio" name="star" />
-                                                                    <label class="star star-10" for="star-10"></label>
-                                                                    <input class="star star-9" id="star-9" type="radio" name="star" />
-                                                                    <label class="star star-9" for="star-9"></label>
-                                                                    <input class="star star-8" id="star-8" type="radio" name="star" />
-                                                                    <label class="star star-8" for="star-8"></label>
-                                                                    <input class="star star-7" id="star-7" type="radio" name="star" />
-                                                                    <label class="star star-7" for="star-7"></label>
-                                                                    <input class="star star-6" id="star-6" type="radio" name="star" />
-                                                                    <label class="star star-6" for="star-6"></label>
-                                                                    <input class="star star-5" id="star-5" type="radio" name="star" />
-                                                                    <label class="star star-5" for="star-5"></label>
-                                                                    <input class="star star-4" id="star-4" type="radio" name="star" />
-                                                                    <label class="star star-4" for="star-4"></label>
-                                                                    <input class="star star-3" id="star-3" type="radio" name="star" />
-                                                                    <label class="star star-3" for="star-3"></label>
-                                                                    <input class="star star-2" id="star-2" type="radio" name="star" />
-                                                                    <label class="star star-2" for="star-2"></label>
-                                                                    <input class="star star-1" id="star-1" type="radio" name="star" />
-                                                                    <label class="star star-1" for="star-1"></label>
-                                                                </form>
-                                                            </div>
+                                                            <a href="../Gym/Index">
+                                                                <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                                            </a>
                                                         </div>
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <br>
+                                                        <div id="text" class="container">
+                                                            <h4>@gym.GymName</h4>
+                                                            <h4>@gym.GymLocation</h4>
+                                                            <h4>@gym.MbrshipPrice  грн</h4>
+                                                            <div class="container">
+                                                                <div class="stars">
+                                                                    <form action="">
+                                                                        <input class="star star-10" id="star-10" type="radio" name="star" />
+                                                                        <label class="star star-10" for="star-10"></label>
+                                                                        <input class="star star-9" id="star-9" type="radio" name="star" />
+                                                                        <label class="star star-9" for="star-9"></label>
+                                                                        <input class="star star-8" id="star-8" type="radio" name="star" />
+                                                                        <label class="star star-8" for="star-8"></label>
+                                                                        <input class="star star-7" id="star-7" type="radio" name="star" />
+                                                                        <label class="star star-7" for="star-7"></label>
+                                                                        <input class="star star-6" id="star-6" type="radio" name="star" />
+                                                                        <label class="star star-6" for="star-6"></label>
+                                                                        <input class="star star-5" id="star-5" type="radio" name="star" />
+                                                                        <label class="star star-5" for="star-5"></label>
+                                                                        <input class="star star-4" id="star-4" type="radio" name="star" />
+                                                                        <label class="star star-4" for="star-4"></label>
+                                                                        <input class="star star-3" id="star-3" type="radio" name="star" />
+                                                                        <label class="star star-3" for="star-3"></label>
+                                                                        <input class="star star-2" id="star-2" type="radio" name="star" />
+                                                                        <label class="star star-2" for="star-2"></label>
+                                                                        <input class="star star-1" id="star-1" type="radio" name="star" />
+                                                                        <label class="star star-1" for="star-1"></label>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <br>
+                                                            <br>
+                                                            <br>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            }
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -205,9 +210,9 @@
             </frameset>
         </div>
     </header>
-
 </body>
 </html>
+
 <footer>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwNLNBwCGX66RV_oYm8YUBAyB2Bgz7jQ"></script>
     <script>
