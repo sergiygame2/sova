@@ -6,9 +6,6 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="wwwroot\css\styles.css" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="MailKit" Version="1.10.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="1.0.0" />
@@ -42,14 +39,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="1.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.1.1" />
-    <PackageReference Include="ImageSharp" Version="1.0.0-alpha-000076" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\images\upload\" />
-    <Folder Include="wwwroot\images\upload\" />
   </ItemGroup>
 </Project>

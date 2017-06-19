@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SportApp.Models;
 using SportApp.Repositories;
-using ImageSharp;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportApp.Lookups;
@@ -176,28 +175,8 @@ namespace SportApp.Controllers
         {
             try
             {
-                //var jsonpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "upload");
                 var jsonpath = Path.Combine(_env.WebRootPath, _filesSettings.Value.PhysicalPath.Replace("\\", "/"));
-                //Directory.CreateDirectory(jsonpath);
                 var path = NormalizeFilename(Path.Combine(jsonpath, originalFilename));
-                const int MAX_ALLOWED_WIDTH = 300;
-                string newFileName = "";
-                using (Stream stream = file.OpenReadStream())
-                {
-                    Image image = new Image(stream);
-                    if (image.Width > MAX_ALLOWED_WIDTH)
-                    {
-                        int neededHeight = image.Height * MAX_ALLOWED_WIDTH / image.Width;
-                        newFileName = Path.GetFileNameWithoutExtension(path) + "_300" +
-                                      Path.GetExtension(path);
-                        string newFilePath = Path.Combine(Path.GetDirectoryName(path), newFileName);
-                        using (FileStream output = System.IO.File.OpenWrite(newFilePath))
-                        {
-                            image.Resize(MAX_ALLOWED_WIDTH, neededHeight)
-                                .Save(output);
-                        }
-                    }
-                }
                 using (FileStream fs = System.IO.File.Create(path))
                 {
                     file.CopyTo(fs);
@@ -205,10 +184,6 @@ namespace SportApp.Controllers
                 }
                 var partialUrl = Path.Combine(_filesSettings.Value.RequestPath, Path.GetFileName(path)).Replace("\\", "/");
                 Console.WriteLine("###" + partialUrl + "###");
-                //if (newFileName != "")
-                //{
-                //    return Json(new { success = true, imageUrl = partialUrl, compressed = Path.Combine(filesSettings.Value.RequestPath, newFileName).Replace("\\", "/") });
-                //}
                 return partialUrl;
             }
             catch (Exception ex)
