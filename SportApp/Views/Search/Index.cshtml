@@ -227,6 +227,29 @@
                                             class="btn btn-default @prevDisabled">
                                                 Previous
                                             </a>
+                                            <ul class="pagination">
+                                                @for (int i = 1; i <= Model.TotalPages; ++i)
+                                                {
+                                                    if (i == Model.PageIndex)
+                                                    {
+                                                        <li class="active">
+                                                            <a asp-action="Index"
+                                                               asp-route-searchModel="@ViewData["SearchModel"]"
+                                                               asp-route-page="@i"
+                                                               >@i</a>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            <a asp-action="Index"
+                                                               asp-route-searchModel="@ViewData["SearchModel"]"
+                                                               asp-route-page="@i"
+                                                               >@i</a>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
                                             <a asp-action="Index"
                                             asp-route-searchModel="@ViewData["SearchModel"]"
                                             asp-route-page="@(Model.PageIndex + 1)"
