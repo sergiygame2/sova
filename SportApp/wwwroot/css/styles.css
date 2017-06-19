@@ -122,9 +122,8 @@ img.logohead {
     border-style: solid;
     border-radius: 12px;
     overflow: hidden;
-    left: 50%;
-    margin-left: -550px;
-    top: 160px;
+    left: 7%;
+    top:25%;
     background-color: rgb(128, 128, 128);
     width: 73%;
     height: auto;
@@ -141,11 +140,10 @@ img.logohead {
 
 #searchnbtn {
     position: absolute;
-    top: 200px;
-    left: 80%;
+    top: 32%;
+    left: 82%;
     z-index: 100;
     width: 170px;
-    margin-left: 30px;
     border-radius: 8;
     color: #fff;
     background-color: rgb(128, 128, 128);
@@ -153,10 +151,9 @@ img.logohead {
 
 #schhomebtn {
     position: absolute;
-    top: 280px;
-    left: 80%;
+    top: 45%;
+    left: 82%;
     z-index: 100;
-    margin-left: 30px;
 }
 
 #topcont {
@@ -233,14 +230,6 @@ input[type="text"] {
 }
 
 
-#facil{
-    position:absolute;
-    width:300px;
-    left:60%;
-    margin-top:60px;
-    height:60px;
-    border-radius:8px;
-}
 
 button {
     background-color: #6BBE92;
@@ -255,7 +244,7 @@ button {
 
 
 img.side {
-    top: 120px;
+    top:21,5%;
     left: 85%;
     position: absolute;
     z-index: 50;
@@ -270,10 +259,9 @@ img.side {
     border-width: 7px;
     width: 73%;
     border-radius: 12px;
-    left: 50%;
+    left: 7%;
     height: 1400px;
-    margin-left: -550px;
-    margin-top: 250px;
+    top:70%;
     background-color: rgb(213, 204, 204);
     color: rgb(213,204,204);
     z-index: 50;
@@ -282,18 +270,16 @@ img.side {
 
 
 #resultstext {
-    color: white;
-    position: absolute;
-    left: 2%;
-    z-index: 100;
-    margin-top: -100px;
+    color:white;
+    position:absolute;
+    left:2%;
+    z-index:100;
+    top:1%;
 }
 
 .map-container {
     height: 400px;
     width: 870px;
-    margin-left:20px;
-    margin-top:100px;
 }
 
 #map-canvas {
@@ -301,7 +287,8 @@ img.side {
     padding: 0;
     height:100%;
     width:100%;
-
+    top:25%;
+    left:2%;
 }
 
 
@@ -312,14 +299,14 @@ img.side {
     position: absolute;
     color: white;
     width: 100%;
-    margin-top: 40px;
+    top: 40%;
 }
 
 
 #text {
     max-width: 230px;
-    text-align: center;
-    margin-left: 0px;
+    margin-right:200px;
+    text-align:center;
 }
 
 
@@ -330,8 +317,8 @@ div.stars {
     display: inline-block;
     z-index: 200;
     position: absolute;
-    left: 20%;
-    margin-left: -56px;
+    left: 2%;
+    top:80%;
 }
 
 input.star {
