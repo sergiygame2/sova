@@ -11,6 +11,21 @@ body {
 }
 
 
+body::-webkit-scrollbar {
+    width: 1.2em;
+    
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid rgb(245, 144, 29);
+    border-radius: 6px;
+}
+
 .text-vertical-center {
     display: table-cell;
     text-align: center;
@@ -361,3 +376,126 @@ label.star:before {
     font-family: FontAwesome;
 }
 /*end ratebar*/
+
+
+/*GymPage*/
+
+#gymname{
+    position:absolute;
+   // margin-left:70px;
+   right:83%;
+
+}
+
+#manimg{
+    position:absolute;
+    left:45%;
+    top:6%;
+    width:250px;
+}
+
+#gymframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 7px;
+    width: 73%;
+    border-radius: 12px;
+    left: 10%;
+    height: 1000px;
+    top: 35%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 50;
+}
+
+#infoframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(89, 89, 89);
+    border-width: 7px;
+    width: 93%;
+    border-radius: 12px;
+    left: 3.5%;
+    height: 610px;
+    top: 35%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 100;
+}
+
+#info{
+    position:absolute;
+    top:2%;
+    max-width:470px;
+    z-index:150;
+    color:#444;
+}
+
+#comframe {
+    color: #444;
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 5px;
+    width: 40%;
+    border-radius: 12px;
+    left: 58%;
+    height: 480px;
+    top: 15%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 120;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+    #comframe::-webkit-scrollbar {
+        width: 1.2em;
+ 
+    }
+
+    #comframe::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius:8px;
+    }
+
+    #comframe::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid rgb(245, 144, 29);
+        border-radius:6px;
+    }
+
+
+#leavecom{
+    position:absolute;
+    max-width:35%;
+    left:59%;
+    top:2%;
+    z-index:200;
+    color:#444;
+
+}
+
+#CommentText{
+    position:absolute;
+    width:90%;
+    top:75%;
+    height:15%;
+    background-color:rgb(213, 204, 204);
+    border-radius:6px;
+}
+
+#sendbtn{
+    position:absolute;
+    width:40%;
+    height:6%;
+    top:92%;
+    left:55%;
+    color:white;
+    background-color:rgb(225, 124, 9);
+    border-radius:6px;
+    border:0;
+}

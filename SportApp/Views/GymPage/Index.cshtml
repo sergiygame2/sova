@@ -3,7 +3,6 @@
     Layout = null;
 }
 
-<p>@Model.GymName</p>
 
 
 @foreach (var comment in Model.Comments)
@@ -11,15 +10,77 @@
     <p>@comment.CommentText</p>
     <p>@comment.Rate</p>
 }
-<form asp-action="CreateComment">
-    <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
-    <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
-    <p>
-        <b>Оцінка залу:</b><br>
-        <input type="text" data-val="true" data-val-range="The field Rate must be between 1 and 10." data-val-range-max="10" 
-               data-val-range-min="1" data-val-required="The Rate field is required." id="Rate" name="Rate" size="40">
-    </p>
-    <p><b>Введіть ваш отзив:</b></p>
-    <p><textarea id="CommentText" name="CommentText"></textarea></p>
-    <p><input type="submit"></p>
-</form>
+
+
+<html>
+
+<head>
+
+        <title>@Model.GymName</title>
+   
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="baner">
+        <div class="container">
+            <a href="../0">
+                <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+            </a>
+        </div>
+        <div class="container">
+            <div class="text-vertical-center">
+                <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="gymmain" class="container">
+        <h2 id="gymname">@Model.GymName</h2>
+        <img id="manimg" src="~/images/man.png" />
+
+        <div id="gymframe" class="container">
+          
+            <div id="infoframe" class="container">
+
+               <div id="info" class="container">
+                   <h4><strong>Адреса:</strong></h4><h4>@Model.GymLocation</h4>
+                   <h4><strong>Мінмальна ціна:</strong></h4><h4>@Model.MbrshipPrice</h4>
+                   <h4><strong>Загальна площа:</strong></h4><h4>@Model.GymArea</h4>
+                   <h4><strong>Рік заснування:</strong></h4><h4>@Model.FoundYear</h4>
+                   <h4><strong>Сайт заснування:</strong></h4><h4>@Model.Url</h4>
+                   <h4><strong>Додаткові послуги:</strong></h4><h4>@Model.Facilities</h4>
+                   <h4><strong>Короткий опис:</strong></h4><h4>@Model.Description</h4>
+               </div>
+
+                <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар</b></h4>
+                <div id="comframe" class="container">
+                    <form asp-action="CreateComment">
+                        <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
+                        <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
+                        <p>
+                            <input type="text" data-val="true" data-val-range="The field Rate must be between 1 and 10." data-val-range-max="10"
+                                   data-val-range-min="1" data-val-required="The Rate field is required." id="Rate" name="Rate" size="40">
+                        </p>
+                        <p><textarea id="CommentText" name="CommentText"></textarea></p>
+                        <p><input id="sendbtn" type="submit"></p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+   
+    
+</body>
+
+
+</html>
