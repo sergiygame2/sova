@@ -238,10 +238,10 @@ namespace Tests
 
         private void TestingSearch(Gym gym)
         {
-            var searchResponse = Browser.Get("SearchResults");
+            var searchResponse = Browser.Get("Search");
             searchResponse.EnsureSuccessStatusCode();
 
-            var regionSearchResponse = Browser.Get($"SearchResults?region={gym.Region}");
+            var regionSearchResponse = Browser.Get($"Search?region={gym.Region}");
             regionSearchResponse.EnsureSuccessStatusCode();
         }
     }

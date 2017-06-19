@@ -1,61 +1,259 @@
+@model SportApp.Services.PaginatedList<Gym>
 @{Layout = null; }
-
-@model SearchModel
+@using Newtonsoft.Json
 
 @{
-    ViewData["Title"] = "Search";
+    var serializedGyms = ViewData["gyms"];
+    //var gyms = JsonConvert.DeserializeObject<List<Gym>>((string)serializedGyms);
+    var gyms = Model.ToList();
 }
-<!DOCTYPE html>
+
+
 <html>
+
 <head>
+
+    <title>Результати пошуку</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link href="css/styles.css" rel="stylesheet">
+
+
+    <!--map-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <!--Optional theme-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="~/css/styles.css">
     <script src="~/js/Site.js"></script>
-</head>
-<body>
-<h2>Search</h2>
-    <form asp-controller="Search" asp-action="Results" method="get" class="form-horizontal">
-        <hr />
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Region" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Region" class="form-control" />
-                <span asp-validation-for="Region" class="text-danger"></span>
+
+
+    <!--chosen-->
+    <link href="@Url.Content("~/css/chosen.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/js/chosen.jquery.js")" type="text/javascript"></script>
+    
+
+
+
+    <!--price range-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 100,
+                max: 10000,
+                values: [75, 300],
+                slide: function (event, ui) {
+                    $("#amount").val("₴" + ui.values[0] + " - ₴" + ui.values[1]);
+                }
+            });
+            $("#amount").val("₴" + $("#slider-range").slider("values", 0) +
+                " - ₴" + $("#slider-range").slider("values", 1));
+        });
+
+        $(".js-example-placeholder-multiple").select2({
+            placeholder: "Select a state"
+        });
+    </script>
+
+    </head>
+
+    <body>
+
+
+
+
+        <header id="hat" class="header">
+            <div class="baner">
+                <div class="container">
+                    <a href="../0">
+                        <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+                    </a>
+                </div>
+                <div class="container">
+                    <div class="text-vertical-center">
+                        <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                        <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Street" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Street" class="form-control" />
-                <span asp-validation-for="Street" class="text-danger"></span>
+
+            <div class="container">
+                <a id="searchnbtn" href="" class="btn btn-light btn-lg">Шукати</a>
+                <a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="StartPrice" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="StartPrice" class="form-control" />
-                <span asp-validation-for="StartPrice" class="text-danger"></span>
+
+            <div class="container">
+                <img class="side" src="~/images/girl.jpg" />
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EndPrice" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="EndPrice" class="form-control" />
-                <span asp-validation-for="EndPrice" class="text-danger"></span>
+
+            <div class="container">
+                <frameset>
+                    <div class="container">
+                        <div class="greyframe">
+                            <div class="greycontent">
+                                <div id="topcont" class="container">
+                                    <div class="firstrow">
+                                        <h4>Район</h4>
+                                        <br>
+                                        <h4>Вулиця</h4>
+                                    </div>
+                                    <div class="secondrow">
+                                        <h4>Цінова категорія</h4>
+                                        <br />
+                                        <h4>Додаткові послуги</h4>
+                                    </div>
+                                </div>
+
+
+                                <div id="regionbox" class="dropdown">
+                                    <select class="btn dropdown-toggle" name="region" id="region" asp-items="ViewBag.Regions"></select>
+                                </div>
+
+                                <div class="container">
+                                    <form>
+                                        <input class="w3-input" type="text" placeholder="Введіть вулицю">
+                                    </form>
+                                </div>
+
+                                <!--Price range-->
+                                <div id="range" class="container"></div>
+                                <div id="slider-range"></div>
+                                <p>
+                                    <label for="amount">Price range:</label>
+                                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
+                                </p>
+
+
+                                <!--facil-->
+                           </div>
+                        </div>
+                    </div>
+
+                    <div class="container" style="height:100%; width:100%;">
+                        <div class="emptyframe">
+                            <div class="emptycontent" style="height:100%; width:100%;">
+                                <div id="resultstext" class="container">
+                                    <h1>Результати пошуку</h1>
+                                </div>
+
+                                <div class="map-container">
+                                    <div id="map-canvas"></div>
+                                </div>
+
+                                <div id="gyminfo" class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="item">
+                                                <div class="row">
+                                                    @foreach (var gym in gyms)
+                                                    {
+                                                        <div class="col-md-4">
+                                                            <div class="container">
+                                                                <a href="../Gym/Index">
+                                                                    <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                                                </a>
+                                                            </div>
+                                                            <div id="text" class="container">
+                                                                <h4>@gym.GymName</h4>
+                                                                <h4>@gym.GymLocation</h4>
+                                                                <h4>@gym.MbrshipPrice  грн</h4>
+                                                                <div class="container">
+                                                                    <div class="stars">
+                                                                        <form action="">
+                                                                            <input class="star star-10" id="star-10" type="radio" name="star" />
+                                                                            <label class="star star-10" for="star-10"></label>
+                                                                            <input class="star star-9" id="star-9" type="radio" name="star" />
+                                                                            <label class="star star-9" for="star-9"></label>
+                                                                            <input class="star star-8" id="star-8" type="radio" name="star" />
+                                                                            <label class="star star-8" for="star-8"></label>
+                                                                            <input class="star star-7" id="star-7" type="radio" name="star" />
+                                                                            <label class="star star-7" for="star-7"></label>
+                                                                            <input class="star star-6" id="star-6" type="radio" name="star" />
+                                                                            <label class="star star-6" for="star-6"></label>
+                                                                            <input class="star star-5" id="star-5" type="radio" name="star" />
+                                                                            <label class="star star-5" for="star-5"></label>
+                                                                            <input class="star star-4" id="star-4" type="radio" name="star" />
+                                                                            <label class="star star-4" for="star-4"></label>
+                                                                            <input class="star star-3" id="star-3" type="radio" name="star" />
+                                                                            <label class="star star-3" for="star-3"></label>
+                                                                            <input class="star star-2" id="star-2" type="radio" name="star" />
+                                                                            <label class="star star-2" for="star-2"></label>
+                                                                            <input class="star star-1" id="star-1" type="radio" name="star" />
+                                                                            <label class="star star-1" for="star-1"></label>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pager" style="align-content: center; margin-right:15%;">
+                                        @{
+                                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                                         }
+
+                                            <a asp-action="Index"
+                                            asp-route-searchModel="@ViewData["SearchModel"]"
+                                            asp-route-page="@(Model.PageIndex - 1)"
+                                            class="btn btn-default @prevDisabled">
+                                                Previous
+                                            </a>
+                                            <a asp-action="Index"
+                                            asp-route-searchModel="@ViewData["SearchModel"]"
+                                            asp-route-page="@(Model.PageIndex + 1)"
+                                            class="btn btn-default @nextDisabled">
+                                                Next
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </frameset>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Facilities" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Facilities" class="form-control" />
-                <span asp-validation-for="Facilities" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-default">Search</button>
-            </div>
-        </div>
-     </form>
-</body>
+        </header>
+    </body>
 </html>
+
+<footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwNLNBwCGX66RV_oYm8YUBAyB2Bgz7jQ"></script>
+    <script>
+        var data = @Html.Raw(serializedGyms);
+        console.log(data.length);
+        var gyms = new Gym();
+        var gyms = $.extend(data);
+        google.maps.event.addDomListener(window, 'load' , initialize(gyms));
+    </script>
+
+</footer>

@@ -20,15 +20,9 @@ namespace SportApp.Controllers
             _gymRepo = repo;
         }
 
-        public IActionResult Index()
+        public  async Task<IActionResult> Index([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel, int? page)
         {
-            return View();
-        }
-
-        [Route("SearchResults")]
-        public async Task<IActionResult> Results([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel, int? page)
-        {
-            var defaultRegion = "Оберіть район";
+            var defaultRegion = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ";
             if (searchModel.Region == defaultRegion) searchModel.Region = null;
             List<string> facilities = null;
             if (!string.IsNullOrEmpty(searchModel.Facilities))
@@ -39,15 +33,10 @@ namespace SportApp.Controllers
             var gyms = _gymRepo.Search(searchModel.Region, searchModel.Street, searchModel.StartPrice, searchModel.EndPrice, facilities);
             var selectReionsList = SelectLookups.Regions;
             selectReionsList.Insert(0, defaultRegion);
-            ViewData["Regions"] = new SelectList(selectReionsList);
-            ViewData["region"] = searchModel.Region;
-            ViewData["street"] = searchModel.Street;
-            ViewData["startprice"] = searchModel.StartPrice;
-            ViewData["endprice"] = searchModel.EndPrice;
-            ViewData["facilities"] = searchModel.Facilities;
+            ViewData["SearchModel"] = searchModel;
             ViewData["gyms"] = JsonConvert.SerializeObject(gyms);
 
-            int pageSize = 3;
+            int pageSize = 6;
             return View(await PaginatedList<Gym>.CreateAsync(_gymRepo.GetIQueryable(), page ?? 1, pageSize));
         }
     }

@@ -34,13 +34,6 @@ function initialize(gyms) {
         mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
     });
 
-        //console.log(gyms[0].GymName);
-        //console.log(gyms[0].Longitude);
-        //console.log(gyms[0].Latitude);
-        //console.log(gyms[1].GymName);
-        //console.log(gyms[1].Longitude);
-        //console.log(gyms[1].Latitude);
-
     $.each(gyms,
         function (i, item) {
             var marker = new google.maps.Marker({
