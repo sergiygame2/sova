@@ -46,7 +46,6 @@ namespace SportApp.Controllers
 
             ViewData["UserGyms"] = _usersGymsRepo.GetGymsByUserId(userDTO.Id);
             return View("Views/Profile/Index.cshtml", userDTO);
-
         }
 
         [HttpPost]
@@ -85,11 +84,5 @@ namespace SportApp.Controllers
             //}
             return RedirectToAction("Index");
         }
-
-
-        //private bool UserDTOExists(string id)
-        //{
-        //    return _context.UserDTO.Any(e => e.Id == id);
-        //}
     }
 }
