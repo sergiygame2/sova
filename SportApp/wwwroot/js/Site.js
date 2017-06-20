@@ -20,9 +20,6 @@ class Gym {
     }
 }
 
-
-
-
 function initialize(gyms) {
 
     google.maps.visualRefresh = true;
@@ -94,8 +91,6 @@ $('.mutliSelect input[type="checkbox"]').on('click', function () {
 
 
 
-<<<<<<< HEAD
-=======
 $(document).ready(function () {
     $("#Facilities").select2();
     //select2Dropdown('make-hdn', 'Facilities', 'Search for facility(s)', 'search', 'get', true);
@@ -165,5 +160,3 @@ function s2FormatResult(item) {
 function s2FormatSelection(item) {
     return item.text;
 }
-
->>>>>>> 1cb7f60f6e4df6a9d2d077e5adf44bd4563bad5a

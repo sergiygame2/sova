@@ -124,12 +124,10 @@
                                     <label for="amount">Price range:</label>
                                     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
                                 </p>
-                                <div class="container">
-                                    <select class="my-select" multiple id="Facilities" name="Facilities" style="width:300px; margin-left:10%;">
+                                <div class="container" style="margin-left:55%; margin-top:8.5%;">         <select class="my-select" multiple id="Facilities" name="Facilities" style="width:300px; margin-left:10%;">
                                         @foreach(var facility in facilities)
                                         {
                                             <option value="@facility">@facility</option>
-                                            
                                         }
                                     </select>
                                     <!--<input type="hidden" class="select2-offscreen" id="make-hdn" style="width:100%" value="Facilities" />-->
