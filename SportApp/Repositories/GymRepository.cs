@@ -8,7 +8,7 @@ namespace SportApp.Repositories
 {
     public interface IGymRepository : IModelRepository<Gym>
     {
-        List<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, List<string> facilities = null);
+        IQueryable<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, List<string> facilities = null);
         IQueryable<Gym> GetIQueryable();
     }
     
@@ -28,7 +28,7 @@ namespace SportApp.Repositories
 
         public IQueryable<Gym> GetIQueryable() => _context.Gym.AsNoTracking();
 
-        public List<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, List<string> facilities = null)
+        public IQueryable<Gym> Search(string region = null, string street = null, int startPrice = 0, int endPrice = 0, List<string> facilities = null)
         {
             var gyms = _context.Gym.AsNoTracking();
             if(!string.IsNullOrEmpty(region))
@@ -43,7 +43,7 @@ namespace SportApp.Repositories
                 gyms = gyms.Where(gym => gym.MbrshipPrice <= endPrice && gym.MbrshipPrice>=startPrice);
             if (facilities != null)
                 facilities.ForEach(facility => gyms = gyms.Where((gym => gym.Facilities.Contains(facility))));
-            return gyms.ToList();
+            return gyms;
         }
     }
 }

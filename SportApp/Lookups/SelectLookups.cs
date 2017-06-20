@@ -30,5 +30,16 @@ namespace SportApp.Lookups
             "Університет",
             "Олімпійська"
         };
+        public static List<string> Facilities = new List<string>
+        {
+            "Тренер",
+            "Басейн",
+            "Кардіо зона",
+            "Сауна",
+            "Масаж",
+            "Групові заняття",
+            "Бокс",
+            "TRX",
+        };
     }
 }

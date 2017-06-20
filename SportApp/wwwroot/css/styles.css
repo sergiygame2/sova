@@ -725,13 +725,13 @@ label.star:before {
     top:140%;
 }
 
-#savedgyms{
-    position:absolute;
-    border-radius:8px;
-    border-width:6px;
-    border-color:rgb(89, 89, 89);
-    width:90%;
-    height:60%;
-    top:160%;
-    left:10%;
+#savedgyms {
+    position: absolute;
+    border-radius: 8px;
+    border-width: 6px;
+    border-color: rgb(89, 89, 89);
+    width: 90%;
+    height: 60%;
+    top: 160%;
+    left: 10%;
 }
