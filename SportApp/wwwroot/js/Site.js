@@ -95,9 +95,10 @@ $('.mutliSelect input[type="checkbox"]').on('click', function () {
 
 
 $(document).ready(function () {
-    select2Dropdown('make-hdn', 'Facilities', 'Search for facility(s)', 'search', 'get', true);
+    $("#Facilities").select2();
+    //select2Dropdown('make-hdn', 'Facilities', 'Search for facility(s)', 'search', 'get', true);
 });
- 
+/* 
 function select2Dropdown(hiddenID, valueID, ph, listAction, getAction, isMultiple) {
     var sid = '#' + hiddenID;
     $(sid).select2({
@@ -153,6 +154,7 @@ function select2Dropdown(hiddenID, valueID, ph, listAction, getAction, isMultipl
         $('#' + valueID).val(choice);
     });
 }
+*/
  
 function s2FormatResult(item) {
     return item.text;

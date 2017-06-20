@@ -5,6 +5,7 @@
     var serializedGyms = ViewData["gyms"];
     //var gyms = JsonConvert.DeserializeObject<List<Gym>>((string)serializedGyms);
     var gyms = Model.ToList();
+    var facilities =  (List<string>)ViewData["Facilities"];
 }
 
 <html>
@@ -124,10 +125,16 @@
                                     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
                                 </p>
                                 <div class="container">
-                                    <input type="hidden" class="select2-offscreen" id="make-hdn" style="width:100%" value="Facilities" />
-                                    <input type="text" class="my" style="margin-left: 500px;" id="Facilities" name="Facilities" placeholder="Facilities" />
+                                    <select class="my-select" multiple id="Facilities" name="Facilities" style="width:300px; margin-left:10%;">
+                                        @foreach(var facility in facilities)
+                                        {
+                                            <option value="@facility">@facility</option>
+                                            
+                                        }
+                                    </select>
+                                    <!--<input type="hidden" class="select2-offscreen" id="make-hdn" style="width:100%" value="Facilities" />-->
+                                    <!--<input type="text" class="my" style="margin-left: 500px;" id="Facilities" name="Facilities" placeholder="Facilities" />-->
                                 </div>
-                                <!--facil-->
                             </div>
                         </div>
                     </div>
@@ -249,7 +256,6 @@
     <script>
         var data = @Html.Raw(serializedGyms);
         console.log(data.length);
-        var gyms = new Gym();
         var gyms = $.extend(data);
         google.maps.event.addDomListener(window, 'load' , initialize(gyms));
     </script>

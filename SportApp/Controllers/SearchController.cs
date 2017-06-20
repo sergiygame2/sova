@@ -37,7 +37,7 @@ namespace SportApp.Controllers
             ViewData["Regions"] = new SelectList(selectRegionsList);
             ViewData["SearchModel"] = searchModel;
             ViewData["gyms"] = JsonConvert.SerializeObject(gyms.ToList());
-
+            ViewData["Facilities"] = SelectLookups.Facilities;
             int pageSize = 6;
             return View(await PaginatedList<Gym>.CreateAsync(gyms, page ?? 1, pageSize));
         }
