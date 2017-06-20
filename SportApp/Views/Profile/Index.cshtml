@@ -1,14 +1,15 @@
 @model SportApp.Models.DTO.UserDTO
 
 @{
+    Layout=null;
     ViewData["Title"] = "Index";
+    var usersGyms = (List<Gym>)ViewData["UserGyms"];
 }
 
-<h2>Index</h2>
-
+<h2>Profile</h2>
 <form asp-action="Index">
     <div class="form-horizontal">
-        <h4>UserDTO</h4>
+        <h4>User info</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
@@ -75,6 +76,11 @@
         </div>
     </div>
 </form>
+
+@foreach(var gym in usersGyms)
+{
+    <p>@gym.GymName</p>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
