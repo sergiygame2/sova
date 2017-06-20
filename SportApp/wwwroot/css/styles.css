@@ -533,3 +533,205 @@ label.star:before {
     border-radius:6px;
     border:0;
 }
+
+
+/*Profile*/
+
+.banerprof {
+    padding: 60px 0;
+    background: url(../images/weights.png) no-repeat top center;
+    width:100%;
+    position:absolute;
+    right:0%;
+    height:10%;
+   
+   
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgb(245, 144, 29);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 0;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    left:800px;
+    top:-30px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(245, 144, 29);
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    border: 0;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color:white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #e57325
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color:rgb(245, 144, 29);
+}
+
+#mycab{
+    position:absolute;
+    left:11%;
+    top:23%;
+
+
+}
+
+#profframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 7px;
+    width: 73%;
+    border-radius: 12px;
+    left: 10%;
+    height: 600px;
+    top: 34%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 50;
+}
+
+#picframe{
+    position:absolute;
+    border-width:5px;
+    border-style:solid;
+    border-radius:8px;
+    border-color:rgb(225, 124, 9);
+    z-index:100;
+    width:12%;
+    height:17%;
+    top:12%;
+    left:9%;
+}
+
+#pic{
+    position:absolute;
+    width:72%;
+    height:87%;
+    top:2%;
+    left:15%;
+  
+}
+
+.proftxt{
+    position:absolute;
+    left:28%;
+    color:#444;
+}
+
+
+#profbox1{
+    position:absolute;
+    left:46%;
+    
+  
+}
+
+
+#profbox2{
+    position:absolute;
+    left:45%;
+}
+
+#profbox3 {
+    position: absolute;
+    left: 46%;
+}
+
+
+#profbox4 {
+    position: absolute;
+    left: 46%;
+}
+#profbox5 {
+    position: absolute;
+    left: 46%;
+}
+
+
+#profbox6 {
+    position: absolute;
+    left: 45%;
+}
+
+#profbox7 {
+    position: absolute;
+    left: 46%;
+}
+
+
+#profbox8 {
+    position: absolute;
+    left: 46%;
+}
+
+#saveprof{
+    position:absolute;
+    top:100%;
+    left:36%;
+    border-width:3px;
+    border-radius:8px;
+    background-color:rgb(225, 124, 9);
+    color:white;
+}
+
+
+#savedtxt{
+    position:absolute;
+    top:135%;
+    left:10%;
+
+}
+
+#manweight{
+    position:absolute;
+    left:68%;
+    top:140%;
+}
+
+#savedgyms{
+    position:absolute;
+    border-radius:8px;
+    border-width:6px;
+    border-color:rgb(89, 89, 89);
+    width:90%;
+    height:60%;
+    top:160%;
+    left:10%;
+}

@@ -1,4 +1,4 @@
-@model SportApp.Models.DTO.UserDTO
+﻿@model SportApp.Models.DTO.UserDTO
 
 @{
     Layout=null;
@@ -6,76 +6,181 @@
     var usersGyms = (List<Gym>)ViewData["UserGyms"];
 }
 
-<h2>Profile</h2>
-<form asp-action="Index">
-    <div class="form-horizontal">
-        <h4>User info</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <label asp-for="Email" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="profile" class="container">
+    <div id="profcont" class="container">
+        <div class="banerprof">
+            <div class="container">
+                <a href="../0">
+                    <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+                </a>
+            </div>
+            <div class="container">
+                <div class="text-vertical-center">
+                    <div class="dropdown">
+                        <button class="dropbtn">Олександра</button>
+                        <div class="dropdown-content">
+                            <a href="../">Вийти</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Password" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+        <h3 id="mycab">Мій кабінет</h3>
+        <div id="profframe" class="container">
+
+            <div class="container" id="picframe">
+                <img id="pic" src="~/images/fmllogo.png" />
             </div>
+
+            <form asp-action="Index">
+                <div class="form-horizontal">
+                    <br />
+                    <br />
+                    <br />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <h4 class="proftxt">Повне ім'я</h4>
+                        <!--<label asp-for="FullName" class="col-md-2 control-label"></label>-->
+                        <div id="profbox1" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="FullName" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Дата народження</h4>
+                        <!--<label asp-for="BirthDay" class="col-md-2 control-label"></label>-->
+                        <div id="profbox2" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="BirthDay" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="BirthDay" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Логін</h4>
+                        <!--<label asp-for="UserName" class="col-md-2 control-label"></label>-->
+                        <div id="profbox3" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="UserName" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <!--<label asp-for="Email" class="col-md-2 control-label"></label>-->
+                        <h4 class="proftxt">Email</h4>
+                        <div id="profbox4" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Email" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <h4 class="proftxt">Адреса</h4>
+                        <!-- <label asp-for="Address" class="col-md-2 control-label"></label>-->
+                        <div id="profbox5" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Address" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Зріст</h4>
+                        <!--<label asp-for="Height" class="col-md-2 control-label"></label>-->
+                        <div id="profbox6" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Height" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="Height" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Вага</h4>
+                        <!--<label asp-for="Weight" class="col-md-2 control-label"></label>-->
+                        <div id="profbox7" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Weight" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="Weight" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Пароль</h4>
+                        <!--<label asp-for="Password" class="col-md-2 control-label"></label>-->
+                        <div id="profbox8" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Password" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Зберегти" class="btn btn-dark" id="saveprof">
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label asp-for="UserName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+            <h2 id="savedtxt">Збережені зали</h2>
+
+            <div id="manweight" class="container">
+                <img src="~/images/weightman.jpg" />
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="FullName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Address" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="BirthDay" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="BirthDay" class="form-control" />
-                <span asp-validation-for="BirthDay" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Height" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Weight" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+            <div id="savedgyms" class="container">
+                <div id="sdgym" class="container">
+                    
+                </div>
             </div>
         </div>
     </div>
-</form>
+</body>
+</html>
+
 
 @foreach(var gym in usersGyms)
 {

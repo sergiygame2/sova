@@ -92,3 +92,5 @@ $('.mutliSelect input[type="checkbox"]').on('click', function () {
     }
 });
 
+
+
