@@ -13,25 +13,25 @@ namespace SportApp.Controllers
     {
         private IEnumerable<SelectItem> _facilities = new List<SelectItem>
         {
-            new SelectItem { id = 1, text = "Trainer" },
-            new SelectItem { id = 2, text = "Pool" },
-            new SelectItem { id = 3, text = "Cardio zone" },
-            new SelectItem { id = 4, text = "Sauna" },
-            new SelectItem { id = 5, text = "Massage" },
-            new SelectItem { id = 6, text = "Group workouts" },
-            new SelectItem { id = 7, text = "Boxing" },
-            new SelectItem { id = 8, text = "TRX" }
+            new SelectItem { Id = 1, Text = "Тренер" },
+            new SelectItem { Id = 2, Text = "Басейн" },
+            new SelectItem { Id = 3, Text = "Кардіо зона" },
+            new SelectItem { Id = 4, Text = "Сауна" },
+            new SelectItem { Id = 5, Text = "Масаж" },
+            new SelectItem { Id = 6, Text = "Групові заняття" },
+            new SelectItem { Id = 7, Text = "Бокс" },
+            new SelectItem { Id = 8, Text = "TRX" }
         };
 
-        [HttpGet]
+        [HttpGet("search")]
         public IEnumerable<SelectItem> SearchMake(string id)
         {
-            var query = _facilities.Where(m => m.text.ToLower().Contains(id.ToLower()));
+            var query = _facilities.Where(m => m.Text.ToLower().Contains(id.ToLower()));
 
             return query;
         }
 
-        [HttpGet]
+        [HttpGet("get")]
         public IEnumerable<SelectItem> GetMake(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) return null;
@@ -44,7 +44,7 @@ namespace SportApp.Controllers
                 int idInt;
                 if (int.TryParse(idStr, out idInt))
                 {
-                    items.Add(_facilities.FirstOrDefault(m => m.id == idInt));
+                    items.Add(_facilities.FirstOrDefault(m => m.Id == idInt));
                 }
             }
 
@@ -54,7 +54,7 @@ namespace SportApp.Controllers
 
     public class SelectItem
     {
-        public int id { get; set; }
-        public string text { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
     }
 }

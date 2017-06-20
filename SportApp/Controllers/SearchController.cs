@@ -22,7 +22,7 @@ namespace SportApp.Controllers
 
         public  async Task<IActionResult> Index([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel, int? page)
         {
-            var defaultRegion = "������ �����";
+            var defaultRegion = "Оберіть район";
             if (searchModel.Region == defaultRegion) searchModel.Region = null;
             List<string> facilities = null;
             if (!string.IsNullOrEmpty(searchModel.Facilities))
@@ -33,6 +33,7 @@ namespace SportApp.Controllers
             var gyms = _gymRepo.Search(searchModel.Region, searchModel.Street, searchModel.StartPrice, searchModel.EndPrice, facilities);
             var selectReionsList = SelectLookups.Regions;
             selectReionsList.Insert(0, defaultRegion);
+            ViewData["Regions"] = new SelectList(selectReionsList);
             ViewData["SearchModel"] = searchModel;
             ViewData["gyms"] = JsonConvert.SerializeObject(gyms);
 

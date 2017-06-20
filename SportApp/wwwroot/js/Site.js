@@ -95,7 +95,7 @@ $('.mutliSelect input[type="checkbox"]').on('click', function () {
 
 
 $(document).ready(function () {
-    select2Dropdown('make-hdn', 'make', 'Search for make(s)', 'SearchMake', 'GetMake', true);
+    select2Dropdown('make-hdn', 'Facilities', 'Search for facility(s)', 'search', 'get', true);
 });
  
 function select2Dropdown(hiddenID, valueID, ph, listAction, getAction, isMultiple) {
@@ -123,7 +123,7 @@ function select2Dropdown(hiddenID, valueID, ph, listAction, getAction, isMultipl
             // using its formatResult renderer - that way the make text is shown preselected
             var id = $('#' + valueID).val();
             if (id !== null && id.length > 0) {
-                $.ajax("/api/facilities/" + getAction + "/" + id, {
+                $.ajax("/api/facilities/" + getAction + "?" + id, {
                     dataType: "json"
                 }).done(function (data) { callback(data); });
             }
