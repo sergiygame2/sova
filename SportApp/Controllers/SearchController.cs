@@ -31,14 +31,15 @@ namespace SportApp.Controllers
             }
 
             var gyms = _gymRepo.Search(searchModel.Region, searchModel.Street, searchModel.StartPrice, searchModel.EndPrice, facilities);
-            var selectReionsList = SelectLookups.Regions;
-            selectReionsList.Insert(0, defaultRegion);
-            ViewData["Regions"] = new SelectList(selectReionsList);
+            var selectRegionsList = new List<string>();
+            SelectLookups.Regions.ForEach(region => selectRegionsList.Add(region));
+            selectRegionsList.Insert(0, defaultRegion);
+            ViewData["Regions"] = new SelectList(selectRegionsList);
             ViewData["SearchModel"] = searchModel;
-            ViewData["gyms"] = JsonConvert.SerializeObject(gyms);
+            ViewData["gyms"] = JsonConvert.SerializeObject(gyms.ToList());
 
             int pageSize = 6;
-            return View(await PaginatedList<Gym>.CreateAsync(_gymRepo.GetIQueryable(), page ?? 1, pageSize));
+            return View(await PaginatedList<Gym>.CreateAsync(gyms, page ?? 1, pageSize));
         }
     }
 }
