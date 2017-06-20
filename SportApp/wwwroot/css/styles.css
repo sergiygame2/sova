@@ -259,7 +259,7 @@ button {
 
 
 img.side {
-    top:21,5%;
+    top:21.5%;
     left: 85%;
     position: absolute;
     z-index: 50;
@@ -383,12 +383,26 @@ label.star:before {
 #gymname{
     position:absolute;
    right:83%;
+   top:22%;
 
+}
+
+#gymrate {
+    position: absolute;
+    left: 60%;
+    top:22%;
+}
+
+
+#gymstars {
+    position: absolute;
+    left: 61%;
+    top: 25%;
 }
 
 #manimg{
     position:absolute;
-    left:45%;
+    left:40%;
     top:6%;
     width:250px;
 }
@@ -402,11 +416,23 @@ label.star:before {
     width: 73%;
     border-radius: 12px;
     left: 10%;
-    height: 1000px;
-    top: 35%;
+    height: 1200px;
+    top: 34%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 50;
+}
+
+#addbtn{
+    position:absolute;
+    background-color:rgb(225, 124, 9);
+    border:0;
+    border-radius:5px;
+    color:white;
+    text-align:center;
+    height:30px;
+    top:2%;
+    right:2%;
 }
 
 #infoframe {
@@ -419,7 +445,7 @@ label.star:before {
     border-radius: 12px;
     left: 3.5%;
     height: 610px;
-    top: 35%;
+    top: 45%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 100;
@@ -467,6 +493,15 @@ label.star:before {
         border-radius:6px;
     }
 
+
+#gymimage{
+    position:absolute;
+    border-width:3px;
+    border-radius:8px;
+    top:20%;
+    left:40%;
+
+}
 
 #leavecom{
     position:absolute;

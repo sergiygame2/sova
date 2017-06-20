@@ -32,11 +32,50 @@
 
     <div id="gymmain" class="container">
         <h2 id="gymname">@Model.GymName</h2>
+        <h2 id="gymrate">@Model.GymRate/10</h2>
+
+
+        <div id="gymstars" class="container">
+            <div class="stars">
+                <form action="">
+                    <input class="star star-10" id="star-10" type="radio" name="star" />
+                    <label class="star star-10" for="star-10"></label>
+                    <input class="star star-9" id="star-9" type="radio" name="star" />
+                    <label class="star star-9" for="star-9"></label>
+                    <input class="star star-8" id="star-8" type="radio" name="star" />
+                    <label class="star star-8" for="star-8"></label>
+                    <input class="star star-7" id="star-7" type="radio" name="star" />
+                    <label class="star star-7" for="star-7"></label>
+                    <input class="star star-6" id="star-6" type="radio" name="star" />
+                    <label class="star star-6" for="star-6"></label>
+                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                    <label class="star star-5" for="star-5"></label>
+                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                    <label class="star star-4" for="star-4"></label>
+                    <input class="star star-3" id="star-3" type="radio" name="star" />
+                    <label class="star star-3" for="star-3"></label>
+                    <input class="star star-2" id="star-2" type="radio" name="star" />
+                    <label class="star star-2" for="star-2"></label>
+                    <input class="star star-1" id="star-1" type="radio" name="star" />
+                    <label class="star star-1" for="star-1"></label>
+                </form>
+            </div>
+        </div>
+
         <img id="manimg" src="~/images/man.png" />
 
         <div id="gymframe" class="container">
+
+            <div class="text-vertical-center">
+                <p><input id="addbtn" value="+Додати до моїх залів"></p>
+            </div>
+
+            <div id="gymimage" class="container">
+                <img src="@Model.GymImgUrl">
+            </div>
           
             <div id="infoframe" class="container">
+               
 
                <div id="info" class="container">
                    <h4><strong>Адреса:</strong></h4><h4>@Model.GymLocation</h4>
@@ -56,7 +95,7 @@
                     
                </div>
 
-                <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар</b></h4>
+                <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар:</b></h4>
                 <div id="comframe" class="container">
                     @foreach (var comment in Model.Comments)
                     {
@@ -77,7 +116,7 @@
         </div>
 
     </div>
-   
+
     
 </body>
 
