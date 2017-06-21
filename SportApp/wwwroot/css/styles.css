@@ -714,24 +714,55 @@ label.star:before {
 
 #savedtxt{
     position:absolute;
-    top:135%;
+    top:146%;
     left:10%;
 
 }
 
-#manweight{
+#new{
     position:absolute;
-    left:68%;
-    top:140%;
+    border-color:rgb(89, 89, 89);
+    border-width:10px;
+    border-radius:8px;
+    z-index:200;
 }
 
-#savedgyms {
+#manweight{
+    position:absolute;
+    left:70%;
+    top:155%;
+}
+
+.savedgyms {
+    color: rgb(245, 144, 29);
     position: absolute;
-    border-radius: 8px;
-    border-width: 6px;
+    border-style: solid;
     border-color: rgb(89, 89, 89);
-    width: 90%;
-    height: 60%;
-    top: 160%;
+    border-width: 7px;
+    border-radius:8px;
+    z-index: 200;
+    position: absolute;
+    width: 68%;
+    height: 100%;
+    top: 158%;
     left: 10%;
+}
+
+#sdcontent {
+    position: absolute;
+    top: 10%;
+    left:4%;
+    width: 98%;
+    height: 100%;
+    top:4%;
+}
+
+
+#sdgymname {
+    padding-bottom:10px;
+    color:#444;
+    max-width: 230px;
+   font-size:20px;
+
+    
 }

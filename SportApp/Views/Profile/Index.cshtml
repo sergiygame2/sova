@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <h3 id="mycab">Мій кабінет</h3>
+        <h2 id="mycab">Мій кабінет</h2>
         <div id="profframe" class="container">
 
             <div class="container" id="picframe">
@@ -152,17 +152,18 @@
                     <br>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
+                            <div class="text-vertical-center">
                             <input type="submit" value="Зберегти" class="btn btn-dark" id="saveprof">
                         </div>
+                            </div>
                     </div>
                 </div>
             </form>
         </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
+  <div id="new" class="container">
+
+  </div>
 
         <div class="container">
             <h2 id="savedtxt">Збережені зали</h2>
@@ -171,21 +172,39 @@
                 <img src="~/images/weightman.jpg" />
             </div>
 
-            <div id="savedgyms" class="container">
-                <div id="sdgym" class="container">
-                    
-                </div>
+            <div class="container">
+            <div class="savedgyms">
+                <div id="sdcontent" class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="item">
+                                <div class="row">
+                                    @foreach (var gym in usersGyms)
+                                    {
+                                        <div class="col-md-4">
+
+                                            <img id="gympic" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                            <br>
+                                            <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
+                                        </div>
+                                  
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                       </div>
+
+                 </div>
             </div>
-        </div>
-    </div>
 </body>
 </html>
 
 
-@foreach(var gym in usersGyms)
-{
-    <p>@gym.GymName</p>
-}
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
