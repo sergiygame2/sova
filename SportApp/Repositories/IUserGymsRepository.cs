@@ -27,7 +27,7 @@ namespace SportApp.Repositories
         public List<Gym> GetGymsByUserId(string userId)
         {
             return _context.UsersGyms.Where(ug => ug.ApplicationUserId == userId).AsNoTracking()
-                .Select(ug => ug.Gym).ToList();
+                .Select(ug => ug.Gym).Distinct<Gym>().ToList();
         }
 
         public UsersGyms GetByUserIdAndGymId(string userId, int gymId) => 
