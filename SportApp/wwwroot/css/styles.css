@@ -818,3 +818,109 @@ label.star:before {
 
     
 }
+
+/*Login*/
+
+#log{
+    position:absolute;
+    left:12%;
+    top:22%;
+    color:#444;
+}
+
+.logframe {
+    position: absolute;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 8px;
+    border-color: rgb(245, 144, 29);
+    left:12%;
+    width:65%;
+    height:550px;
+    top:34%;
+}
+
+#logtxt1{
+    position:absolute;
+    left:25%;
+    top:20%;
+    color:#444;
+}
+
+#logtxt2 {
+    position: absolute;
+    left:25%;
+    top:30%;
+    color:#444;
+}
+
+#lgemail{
+    position:absolute;
+    left:38%;
+    top:20%;
+    background-color:rgba(0,0,0,0.2);
+}
+
+#lgpassword{
+    position:absolute;
+    left:38%;
+    top:30%;
+    background-color:rgba(0,0,0,0.2);
+
+}
+
+#remem{
+    position:absolute;
+    left:41%;
+    top:42%;
+}
+
+#forgot{
+    position:absolute;
+    left:38%;
+    top:50%;
+}
+
+#reg{
+    position:absolute;
+    left:38%;
+    top:55%;
+    text-align:center;
+}
+
+#logbtn{
+    position:absolute;
+    top:65%;
+    left:32%;
+}
+
+#or{
+    position:absolute;
+    left:44%;
+    top:100%;
+}
+
+#social{
+    position:absolute;
+    top:107%;
+    left:22%;
+}
+
+#puppycont{
+    position:absolute;
+    left:27%;
+    top:130%;
+}
+
+
+.spacing{
+ position: absolute;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 8px;
+    border-color:#fff;
+    left:12%;
+    width:65%;
+    height:20px;
+    top:160%;
+}
