@@ -936,3 +936,83 @@ label.star:before {
     height:20px;
     top:160%;
 }
+
+
+/*Register*/
+
+#loginbtnreg {
+    position: absolute;
+    top: 35px;
+    width:200px;
+    font-size:18px;
+    left:78%;
+}
+
+#register {
+    position: absolute;
+    left: 16%;
+    top: 23%;
+}
+
+.regframe{
+    position:absolute;
+    left:16%;
+    top:35%;
+    border-style:solid;
+    border-radius:8px;
+    border-width:8px;
+    border-color:rgb(245, 144, 29);
+    width:70%;
+    height:570px;
+}
+
+#regtxt1{
+    position:absolute;
+    left:20%;
+    top:25%;
+}
+
+#regtxt2 {
+    position: absolute;
+    left: 20%;
+    top: 35%;
+}
+
+#regtxt3 {
+    position: absolute;
+    left: 20%;
+    top: 45%;
+}
+
+#regml{
+    position:absolute;
+    left:46%;
+    top:25%;
+}
+
+#regpsrd{
+    position:absolute;
+    left:46%;
+    top:35%;
+}
+
+#regcnfrm{
+    position:absolute;
+    left:46%;
+    top:45%;
+}
+
+
+
+#regbtn{
+    position:absolute;
+    left:35%;
+    top:72%;
+    height:40px;
+    font-size:18px;
+}
+ #liftman{
+     position:absolute;
+     left:34%;
+     top:130%;
+}
