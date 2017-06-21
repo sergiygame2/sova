@@ -95,6 +95,8 @@ $(document).ready(function () {
     $("#Facilities").select2();
     //select2Dropdown('make-hdn', 'Facilities', 'Search for facility(s)', 'search', 'get', true);
 });
+
+$("#input-id").rating({ showClear: false, showCaption: false });
 /* 
 function select2Dropdown(hiddenID, valueID, ph, listAction, getAction, isMultiple) {
     var sid = '#' + hiddenID;
