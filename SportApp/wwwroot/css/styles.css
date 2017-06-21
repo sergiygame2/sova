@@ -361,20 +361,21 @@ img.side {
 
 #gymrate {
     position: absolute;
-    left: 58%;
+    left:53%;
     top:22%;
 }
 
 
 #gymstars {
     position: absolute;
-    left: 61%;
-    top: 25%;
+    left: 57.5%;
+    top: 25.5%;
+    font-size:25px;
 }
 
 #manimg{
     position:absolute;
-    left:37%;
+    left:32%;
     top:6%;
     width:250px;
 }
@@ -418,6 +419,7 @@ img.side {
     height: 30px;
     top: 2%;
     right: 2%;
+
 }
 
 #infoframe {
