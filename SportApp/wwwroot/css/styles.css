@@ -657,10 +657,22 @@ label.star:before {
 
 #mycab{
     position:absolute;
-    left:11%;
+    left:18%;
     top:23%;
 
 
+}
+
+#hgman{
+    position:absolute;
+    top:19.5%;
+
+}
+
+#hgwoman {
+    position: absolute;
+    top: 19.5%;
+    left:84%;
 }
 
 #profframe {
@@ -669,9 +681,9 @@ label.star:before {
     border-style: solid;
     border-color: rgb(245, 144, 29);
     border-width: 7px;
-    width: 73%;
+    width: 63%;
     border-radius: 12px;
-    left: 10%;
+    left: 18%;
     height: 600px;
     top: 34%;
     background-color: white;
@@ -686,7 +698,7 @@ label.star:before {
     border-radius:8px;
     border-color:rgb(225, 124, 9);
     z-index:100;
-    width:12%;
+    width:14%;
     height:17%;
     top:12%;
     left:9%;
@@ -710,7 +722,7 @@ label.star:before {
 
 #profbox1{
     position:absolute;
-    left:46%;
+    left:48%;
     
   
 }
@@ -718,39 +730,39 @@ label.star:before {
 
 #profbox2{
     position:absolute;
-    left:45%;
+    left:47%;
 }
 
 #profbox3 {
     position: absolute;
-    left: 46%;
+    left: 48%;
 }
 
 
 #profbox4 {
     position: absolute;
-    left: 46%;
+    left: 48%;
 }
 #profbox5 {
     position: absolute;
-    left: 46%;
+    left: 48%;
 }
 
 
 #profbox6 {
     position: absolute;
-    left: 45%;
+    left: 47%;
 }
 
 #profbox7 {
     position: absolute;
-    left: 46%;
+    left: 48%;
 }
 
 
 #profbox8 {
     position: absolute;
-    left: 46%;
+    left: 48%;
 }
 
 #saveprof{

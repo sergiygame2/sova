@@ -19,25 +19,37 @@
 
 <body>
 
-    <div id="profile" class="container">
-    <div id="profcont" class="container">
-        <div class="banerprof">
-            <div class="container">
-                <a href="../0">
-                    <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
-                </a>
-            </div>
-            <div class="container">
-                <div class="text-vertical-center">
-                    <div class="dropdown">
-                        <button class="dropbtn">Олександра</button>
-                        <div class="dropdown-content">
-                            <a href="../">Вийти</a>
-                        </div>
+    <div class="banerprof">
+        <div class="container">
+            <a href="../0">
+                <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+            </a>
+        </div>
+        <div class="container">
+            <div class="text-vertical-center">
+                <div class="dropdown">
+                    <button class="dropbtn">@Model.FullName</button>
+                    <div class="dropdown-content">
+                        <a href="../">Вийти</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="hgman" class="container">
+        <img src="~/images/hgman.png" />
+    </div>
+
+    <div id="hgwoman" class="container">
+        <img src="~/images/hgwoman.png" />
+    </div>
+
+
+    <div id="profile" class="container">
+    <div id="profcont" class="container">
+       
+
         <h2 id="mycab">Мій кабінет</h2>
         <div id="profframe" class="container">
 
