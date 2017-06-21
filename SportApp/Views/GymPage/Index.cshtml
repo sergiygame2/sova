@@ -62,8 +62,9 @@
                 <p><input id="removebtn" value="-Видалити з моїх залів" /></p>
             </div>
 
-            <div id="gymimage" class="container">
-                <img src="@Model.GymImgUrl" width="70%" height="40% ">
+            <div id="gymimage" class="container" >
+                <img src="../@Model.GymImgUrl"  style="width:30%; height:24%">
+                
             </div>
           
             <div id="infoframe" class="container">
@@ -80,8 +81,8 @@
                    @if(!string.IsNullOrEmpty((string)ViewData["Errors"]))
                    {
                         <div class="alert alert-warning">
-                            <strong>Comment validation error!</strong> 
-                            Text is required. Rate from 1 to 10
+                            <strong>Помилка в коментарі!</strong> 
+                            Введіть текст. Оцінка від 1 to 10
                         </div>
                    }
                     

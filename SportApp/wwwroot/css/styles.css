@@ -483,10 +483,8 @@ img.side {
 
 #gymimage{
     position:absolute;
-    border-width:3px;
-    border-radius:8px;
-    top:7%;
-    left:4%;
+    top:10%;
+    left:28%;
 
 }
 
