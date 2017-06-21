@@ -11,6 +11,7 @@ namespace SportApp.Repositories
     public interface IUserGymsRepository : IModelRepository<UsersGyms>
     {
         List<Gym> GetGymsByUserId(string userID);
+        UsersGyms GetByUserIdAndGymId(string userId, int gymId);
 
     }
 
@@ -28,5 +29,9 @@ namespace SportApp.Repositories
             return _context.UsersGyms.Where(ug => ug.ApplicationUserId == userId).AsNoTracking()
                 .Select(ug => ug.Gym).ToList();
         }
+
+        public UsersGyms GetByUserIdAndGymId(string userId, int gymId) => 
+            _context.UsersGyms.AsNoTracking().Where(ug => ug.ApplicationUserId == userId && ug.GymId == gymId).FirstOrDefault();
+        
     }
 }

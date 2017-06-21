@@ -24,14 +24,14 @@ namespace SportApp.Controllers
             _usersGymsRepo = usersGymsRepo;
         }
 
-        [Route("add/{id}")]
+        [Route("add/{gymId}")]
         [HttpPost]
-        public async Task<IActionResult> Add(int idGym)
+        public IActionResult Add(int gymId)
         {
             string id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var UserGyms = new UsersGyms() { GymId = idGym, ApplicationUserId = id };
+            var UserGyms = new UsersGyms() { GymId = gymId, ApplicationUserId = id };
 
-            if (id == null || idGym == 0)
+            if (id == null || gymId == 0)
                 return BadRequest("Wrong gymid or userid");
 
             try
@@ -51,18 +51,18 @@ namespace SportApp.Controllers
                 return BadRequest($"{e.Message}");
             }
 
-            return Ok("Added to your gyms");
+            return Ok();
 
         }
 
-        [Route("delete/{id}")]
+        [Route("delete/{gymId}")]
         [HttpPost]
-        public async Task<IActionResult> Delete(int idGym)
+        public IActionResult Delete(int gymId)
         {
             string id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var UserGyms = new UsersGyms() { GymId = idGym, ApplicationUserId = id };
+            var UserGyms = _usersGymsRepo.GetByUserIdAndGymId(id, gymId);
 
-            if (id == null || idGym == 0)
+            if (id == null || gymId == 0)
                 return BadRequest("Wrong gymid or userid");
 
             try
@@ -82,7 +82,7 @@ namespace SportApp.Controllers
                 return BadRequest($"{e.Message}");
             }
 
-            return Ok("Deleted from your gyms"); ;
+            return Ok();
         }
 
     }
