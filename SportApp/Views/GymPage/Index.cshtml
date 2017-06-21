@@ -10,6 +10,8 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="content-language" content="ru">
 
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
     <link href="~/css/bootstrap.css" rel="stylesheet">
 
     <link href="~/css/styles.css" rel="stylesheet">
@@ -31,7 +33,7 @@
     </div>
 
     <div id="gymmain" class="container">
-        <h2 id="gymname">@Model.GymName</h2>
+        <h3 id="gymname">@Model.GymName</h3>
         <h2 id="gymrate">@Model.GymRate/10</h2>
 
 
@@ -71,7 +73,7 @@
             </div>
 
             <div id="gymimage" class="container">
-                <img src="@Model.GymImgUrl">
+                <img src="@Model.GymImgUrl" width="70%" height="40% ">
             </div>
           
             <div id="infoframe" class="container">
@@ -97,16 +99,17 @@
 
                 <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар:</b></h4>
                 <div id="comframe" class="container">
-                    @foreach (var comment in Model.Comments)
-                    {
-                        <p>@comment.CommentText</p>
-                        <p>@comment.Rate</p>
-                        <hr/>
+                                        @foreach (var comment in Model.Comments)
+                                        {        
+                                            <br />
+                                            <p style="color:rgb(89,89,89)"> @comment.CommentText</p>
+                                            <p style="color:rgb(89,89,89)">@comment.Rate</p>
+                                              <hr/> 
                     }
                     <form asp-action="CreateComment">
                         <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
                         <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
-                        <input type="text" id="Rate" placeholder="1..10" style="color:black" name="Rate" size="40">
+                        <input type="text" id="Rate" placeholder="Оцінка" style="color:black" name="Rate" size="40">
                         <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black"></textarea></p>
                         <p><input id="sendbtn" type="submit"></p>
                     </form>
