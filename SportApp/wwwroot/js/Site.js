@@ -162,3 +162,33 @@ function s2FormatResult(item) {
 function s2FormatSelection(item) {
     return item.text;
 }
+
+function postgyms(id) {
+
+    alert(id);
+    $.post("/api/users-gyms/add/" + id, function () {
+        alert("send");
+    })
+        .done(function () {
+            alert("second success");
+        })
+        .fail(function () {
+            alert("error");
+        })
+    
+}
+
+function deletegyms(id) {
+
+    alert(id);
+    $.post("/api/users-gyms/delete/" + id, function () {
+        alert("send");
+    })
+        .done(function () {
+            alert("second success");
+        })
+        .fail(function () {
+            alert("error");
+        })
+
+}
