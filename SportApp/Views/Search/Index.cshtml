@@ -58,11 +58,16 @@
                 range: true,
                 min: 100,
                 max: 10000,
-                values: [75, 300],
+                values: [100, 300],
                 slide: function (event, ui) {
                     $("#amount").val("₴" + ui.values[0] + " - ₴" + ui.values[1]);
+                    $('#StartPrice').val($("#slider-range").slider("values", 0));
+                    $('#EndPrice').val($("#slider-range").slider("values", 1));
                 }
             });
+            $('#StartPrice').val($("#slider-range").slider("values", 0));
+            $('#EndPrice').val($("#slider-range").slider("values", 1));
+
             $("#amount").val("₴" + $("#slider-range").slider("values", 0) +
                 " - ₴" + $("#slider-range").slider("values", 1));
         });
@@ -117,9 +122,9 @@
                                     <select class="btn dropdown-toggle" name="Region" id="Region" asp-items="ViewBag.Regions"></select>
                                 </div>
                                 <div class="container">
-                                    <form>
+                                    
                                         <input class="w3-input" name="Street" id="Street" type="text" placeholder="Введіть вулицю">
-                                    </form>
+                                    
                                 </div>
                                 <!--Price range-->
                                 <div id="range" class="container"></div>
@@ -127,6 +132,8 @@
                                 <p>
                                     <label for="amount">Price range:</label>
                                     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
+                                    <input type="hidden" name="StartPrice" id="StartPrice" />
+                                    <input type="hidden" name="EndPrice" id="EndPrice"/>
                                 </p>
                       
                                 <div id="multpl" class="container" style="margin-left:58%; margin-top:8%"> 
