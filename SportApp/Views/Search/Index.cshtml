@@ -121,7 +121,9 @@
                                     <label for="amount">Price range:</label>
                                     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
                                 </p>
-                                <div class="container" style="margin-left:55%; margin-top:8.5%;">         <select class="my-select" multiple id="Facilities" name="Facilities" style="width:300px; margin-left:10%;">
+                      
+                                <div id="multpl" class="container" style="margin-left:58%; margin-top:8%"> 
+                                    <select class="my-select" multiple id="Facilities" name="Facilities" style="width:300px; margin-left:10%;">
                                         @foreach(var facility in facilities)
                                         {
                                             <option value="@facility">@facility</option>
@@ -197,16 +199,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="pager" style="align-content: center; margin-right:15%;">
+                                    <div class="pager">
                                         @{
                                             var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
                                             var nextDisabled = !Model.HasNextPage ? "disabled" : "";
                                         }
-                                        <a asp-action="Index"
+                                        <a id="prevbtn" asp-action="Index"
                                            asp-route-searchModel="@ViewData["SearchModel"]"
                                            asp-route-page="@(Model.PageIndex - 1)"
-                                           class="btn btn-default @prevDisabled">
-                                            Previous
+                                           class="btn btn-light @prevDisabled">
+                                            Попередня
                                         </a>
                                         <ul class="pagination">
                                             @for (int i = 1; i <= Model.TotalPages; ++i)
@@ -214,7 +216,7 @@
                                                 if (i == Model.PageIndex)
                                                 {
                                                     <li class="active">
-                                                        <a asp-action="Index"
+                                                        <a class="btn btn-dark" asp-action="Index"
                                                            asp-route-searchModel="@ViewData["SearchModel"]"
                                                            asp-route-page="@i">@i</a>
                                                     </li>
@@ -222,18 +224,19 @@
                                                 else
                                                 {
                                                     <li>
-                                                        <a asp-action="Index"
+                                                        <a id="pag" class="btn btn-dark" asp-action="Index"
                                                            asp-route-searchModel="@ViewData["SearchModel"]"
-                                                           asp-route-page="@i">@i</a>
+                                                           asp-route-page="@i">@i
+                                                        </a>
                                                     </li>
                                                 }
                                             }
                                         </ul>
-                                        <a asp-action="Index"
+                                        <a id="nextbtn" asp-action="Index"
                                            asp-route-searchModel="@ViewData["SearchModel"]"
                                            asp-route-page="@(Model.PageIndex + 1)"
-                                           class="btn btn-default @nextDisabled">
-                                            Next
+                                           class="btn btn-light @nextDisabled">
+                                            Наступна
                                         </a>
                                     </div>
                                 </div>

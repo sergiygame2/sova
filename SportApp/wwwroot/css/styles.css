@@ -245,6 +245,18 @@ input[type="text"] {
 }
 
 
+#mltpl{
+    position:absolute;
+    border:0;
+}
+
+#mltpl select:active,
+#mltpl select:hover,
+#mltpl select:focus{
+    background-color:rgb(245, 144, 29);
+}
+
+
 
 button {
     background-color: #6BBE92;
@@ -535,18 +547,6 @@ label.star:before {
 }
 
 
-/*Profile*/
-
-.banerprof {
-    padding: 60px 0;
-    background: url(../images/weights.png) no-repeat top center;
-    width:100%;
-    position:absolute;
-    right:0%;
-    height:10%;
-   
-   
-}
 
 /* Dropdown Button */
 .dropbtn {
@@ -586,22 +586,62 @@ label.star:before {
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        background-color:rgb(245,144,29);
     }
 
+    .dropdown-content a:active {
+        background-color: rgb(245, 144, 29);
+    }
         /* Change color of dropdown links on hover */
         .dropdown-content a:hover {
-            background-color: #e57325
+            background-color: rgb(245, 144, 29);
         }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+    background-color: rgb(245, 144, 29);
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color:rgb(245, 144, 29);
 }
+
+#prevbtn{
+    position:absolute;
+    right:75%;
+    top:92%;
+}
+
+.pagination{
+    position:absolute;
+    top:90%;
+    right:47%;
+}
+
+.pagination li.active a{
+    background-color:rgb(225, 124, 9);
+    border-color:rgb(225,124,9);
+}
+
+#nextbtn {
+    position: absolute;
+    left: 75%;
+    top: 92%;
+}
+
+/*Profile*/
+
+.banerprof {
+    padding: 60px 0;
+    background: url(../images/weights.png) no-repeat top center;
+    width: 100%;
+    position: absolute;
+    right: 0%;
+    height: 10%;
+}
+
 
 #mycab{
     position:absolute;
