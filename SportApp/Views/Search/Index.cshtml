@@ -200,6 +200,13 @@
                                 <div class="map-container">
                                     <div id="map-canvas"></div>
                                 </div>
+                                @if(gyms.Count == 0)
+                                {
+                                    <h2>На жаль, залів не знайдено :(</h2>
+                                }
+                                else
+                                {
+
                                 <div id="gyminfo" class="container">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -228,7 +235,7 @@
                                                                     <br>
                                                                     <br />
                                                                     <br />
-</div>
+                                                            </div>
                                                         </div>
                                                     }
                                                 </div>
@@ -275,6 +282,8 @@
                                         </a>
                                     </div>
                                 </div>
+                                }
+                                
                             </div>
                         </div>
                     </div>
