@@ -95,7 +95,10 @@
         <img id="manimg" src="~/images/man.png" />
 
         <div id="gymframe" class="container">
-            @if(isMyGYm)
+@if (loggedIn)
+{
+
+            @if (isMyGYm)
             {
                 <div class="text-vertical-center">
                     <p><input id="addbtn" type="button" hidden onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
@@ -117,7 +120,7 @@
                 </div>
 
             }
-            
+}
             <div id="gymimage" class="container" >
                 <img src="../@Model.GymImgUrl">
                 
