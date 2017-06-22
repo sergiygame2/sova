@@ -28,7 +28,14 @@
         <div id="usernamemy" class="container">
             <div class="text-vertical-center">
                 <div class="dropdown">
-                    <button class="dropbtn">@Model.FullName</button>
+                    @if(string.IsNullOrEmpty(@Model.FullName))
+                    {
+                           <button class="dropbtn">@Model.Email</button>
+                    }
+                    else
+                    {
+                        <button class="dropbtn">@Model.FullName</button>
+                    }
                     <div class="dropdown-content">
                         <form asp-controller="Account" asp-action="Logout" method="post">
                                 <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>

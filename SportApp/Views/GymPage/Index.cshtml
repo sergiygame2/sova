@@ -145,6 +145,14 @@
                         {
                             <br />
 
+                                            @if(string.IsNullOrEmpty((string)userName))
+                                            {
+                                                <b><p style="color:rgb(89,89,89)"> @userLogin</p></b>
+                                            }
+                                            else
+                                            {
+                                                <p style="color:rgb(89,89,89)"> @userName</p>
+                                            }
                                             <p style="color:rgb(89,89,89)"> @comment.CommentText</p>
                                             <p style="color:rgb(89,89,89)">Оцінка: @comment.Rate</p>
                                             <hr />
