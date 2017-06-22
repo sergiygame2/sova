@@ -148,7 +148,7 @@ img.logohead {
     top:25%;
     background-color: rgb(128, 128, 128);
     width: 73%;
-    height: auto;
+    height: 32%;
     z-index: 50;
     overflow: visible;
 }
@@ -164,7 +164,7 @@ img.logohead {
     top: 32%;
     left: 82%;
     z-index: 100;
-    width: 170px;
+    width: 14%;
     border-radius: 8;
     color: #fff;
     background-color: rgb(128, 128, 128);
@@ -175,6 +175,7 @@ img.logohead {
     top: 45%;
     left: 82%;
     z-index: 100;
+    width: 14%;
 }
 
 #topcont {
@@ -199,7 +200,7 @@ img.logohead {
     left:15%;
     position: absolute;
     top:20%;
-    width: 210px;
+    width: 10%;
     z-index: 250;
 }
 
@@ -208,7 +209,7 @@ button.btn.btn-primary.dropdown-toggle {
     background-color: white;
     border-color: white;
     color: gray;
-    width: 180px;
+    width: 15%;
 }
 
     button.btn.btn-primary.dropdown-toggle:active,
@@ -221,8 +222,8 @@ button.btn.btn-primary.dropdown-toggle {
 
 
 input[type="text"] {
-    width: 170px;
-    height: 35px;
+    width: 18.5%;
+    height:18%;
     position: absolute;
     top:52%;
     left:15%;
@@ -236,8 +237,8 @@ input[type="text"] {
 #amount {
     z-index: 100;
     position: absolute;
-    width: 200px;
-    height: 30px;
+    width: 19%;
+    height: 14%;
     left: 65%;
     top:7%
 }
@@ -245,7 +246,7 @@ input[type="text"] {
 #slider-range {
     z-index: 100;
     position: absolute;
-    width: 380px;
+    width: 41%;
     left: 55%;
     top:30%;
 }
@@ -254,6 +255,7 @@ input[type="text"] {
 #mltpl{
     position:absolute;
     border:0;
+    width:30%;
 }
 
 #mltpl select:active,
@@ -337,8 +339,8 @@ img.side {
 
 
 #text {
-    max-width: 230px;
-    margin-right:200px;
+    max-width: 80%;
+    margin-right:18%;
     text-align:center;
 }
 
@@ -348,7 +350,7 @@ img.side {
     position: absolute;
     right: -138%;
     float: right;
-    padding: 2px;
+    padding: 1%;
     font-size: 20px;
     color: #444;
 }
