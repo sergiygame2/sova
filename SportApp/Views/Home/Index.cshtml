@@ -1,8 +1,10 @@
 ﻿@{Layout = null; }
 @{
     ViewData["Title"] = "Home Page";
+    var userName = ViewData["CurrentUserName"]; 
+    var userLogin = ViewData["CurrentUserLogin"];
+    var loggedIn = (bool)ViewData["LoggedIn"];
 }
-
 
     <head>
         <title>Крос - Пошук залів для занять кросфітом</title>
@@ -20,12 +22,37 @@
 <body>
     <!-- Header -->
     <header id="top" class="header">
-        <div class="container">
-        <div class="text-vertical-center">
-            <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
-            <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
-        </div>  
+        @if (!loggedIn)
+        {
+            <div class="container">
+                <div class="text-vertical-center">
+                    <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                    <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                </div>  
             </div>
+        }
+        else
+        {
+            <div class="container">
+                <div class="text-vertical-center">
+                    <div class="dropdown">
+                        @if(!string.IsNullOrEmpty((string)userName))
+                        {
+                            <button class="dropbtn">@userName</button>
+                        }
+                        else
+                        {
+                            <button class="dropbtn">@userLogin</button>
+                        }
+                        <div class="dropdown-content">
+                             <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit">Вийти</button>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
         <div class="logo">
            <img class="img-logo" src="~/images/logo.png" height="200px" width="600px">
             <br>

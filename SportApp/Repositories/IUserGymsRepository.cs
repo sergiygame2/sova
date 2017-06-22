@@ -32,6 +32,7 @@ namespace SportApp.Repositories
 
         public UsersGyms GetByUserIdAndGymId(string userId, int gymId) => 
             _context.UsersGyms.AsNoTracking().Where(ug => ug.ApplicationUserId == userId && ug.GymId == gymId).FirstOrDefault();
+
         
     }
 }

@@ -6,6 +6,10 @@
     //var gyms = JsonConvert.DeserializeObject<List<Gym>>((string)serializedGyms);
     var gyms = Model.ToList();
     var facilities =  (List<string>)ViewData["Facilities"];
+
+    var userName = ViewData["CurrentUserName"]; 
+    var userLogin = ViewData["CurrentUserLogin"];
+    var loggedIn = (bool)ViewData["LoggedIn"];
 }
 
 <html>
@@ -85,12 +89,38 @@
                     <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
                 </a>
             </div>
-            <div class="container">
-                <div class="text-vertical-center">
-                    <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
-                    <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+            @if (!loggedIn)
+            {
+                <div class="container">
+                    <div class="text-vertical-center">
+                        <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                        <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                    </div>  
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="text-vertical-center">
+                        <div class="dropdown">
+                            @if(!string.IsNullOrEmpty((string)userName))
+                            {
+                                <button class="dropbtn">@userName</button>
+                            }
+                            else
+                            {
+                                <button class="dropbtn">@userLogin</button>
+                            }
+                            <div class="dropdown-content">
+                               <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit">Вийти</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            
         </div>
         <form asp-action="Index">
             <div class="container">
@@ -172,19 +202,21 @@
                                                                 </a>
                                                             </div>
                                                             <div id="text" class="container">
-                                                                <h4>@gym.GymName</h4>
-                                                                <h4>@gym.GymLocation</h4>
-                                                                <h4>@gym.MbrshipPrice  грн</h4>
-                                                                <div class="stars">
-                                                                  <div id="ratebar" class="container">
-                                                                <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false"/>
-                                                                </div>
+                                                                <a href="../GymPage/@gym.Id">
+                                                                    <h4>@gym.GymName</h4>
+                                                                </a>
+                                                                    <h4>@gym.GymLocation</h4>
+                                                                    <h4>@gym.MbrshipPrice  грн</h4>
+                                                                    <div class="stars">
+                                                                        <div id="ratebar" class="container">
+                                                                            <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
+                                                                        </div>
                                                                     </div>
-                                                                <br>
-                                                                <br>
-                                                              <br />
-                                                                <br />
-                                                            </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    <br />
+                                                                    <br />
+</div>
                                                         </div>
                                                     }
                                                 </div>

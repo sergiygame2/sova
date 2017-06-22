@@ -1,4 +1,4 @@
-@model SportApp.Models.DTO.UserDTO
+﻿@model SportApp.Models.DTO.UserDTO
 
 @{
     Layout=null;
@@ -30,7 +30,9 @@
                 <div class="dropdown">
                     <button class="dropbtn">@Model.FullName</button>
                     <div class="dropdown-content">
-                        <a href="../">Вийти</a>
+                        <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit">Вийти</button>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -58,7 +60,9 @@
                                             <img id="gympic" src="@gym.GymImgUrl" width="200px" height="200px" />
                                               </a>
                                             <br>
-                                            <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
+                                            <a href="../gympage/@gym.Id">
+                                                <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
+                                            </a>
                                         </div>
                                   
                                     }
@@ -73,7 +77,6 @@
 
                  </div>
             </div>
-        </div>
 </body>
 </html>
 

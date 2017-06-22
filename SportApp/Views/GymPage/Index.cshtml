@@ -1,6 +1,12 @@
 ﻿@model  SportApp.Models.Gym
 @{
     Layout = null;
+    bool isMyGYm = (bool)ViewData["MyGym"];
+
+
+    var userName = ViewData["CurrentUserName"]; 
+    var userLogin = ViewData["CurrentUserLogin"];
+    var loggedIn = (bool)ViewData["LoggedIn"];
 }
 <html>
 <head>
@@ -33,12 +39,38 @@
                 <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
             </a>
         </div>
-        <div class="container">
-            <div class="text-vertical-center">
-                <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
-                <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+        @if (!loggedIn)
+        {
+            <div class="container">
+                <div class="text-vertical-center">
+                    <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                    <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                </div>  
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="container">
+                <div class="text-vertical-center">
+                    <div class="dropdown">
+                        @if(!string.IsNullOrEmpty((string)userName))
+                        {
+                            <button class="dropbtn">@userName</button>
+                        }
+                        else
+                        {
+                            <button class="dropbtn">@userLogin</button>
+                        }
+                        <div class="dropdown-content">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit">Вийти</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
     </div>
 
     <div id="gymmain" class="container">
@@ -53,15 +85,29 @@
         <img id="manimg" src="~/images/man.png" />
 
         <div id="gymframe" class="container">
+            @if(isMyGYm)
+            {
+                <div class="text-vertical-center">
+                    <p><input id="addbtn" type="button" hidden onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
+                </div>
 
-            <div class="text-vertical-center">
-                <p><input id="addbtn" type="button" onclick="postgyms(@Model.Id)" value="+Додати до моїх залів"></p>
-            </div>
+                <div class="text-vertical-center">
+                    <p><input id="removebtn" onclick="deletegyms(@Model.Id)" type="button" value="- Видалити з моїх залів" /></p>
+                </div>
 
-            <div class="text-vertical-center">
-                <p><input id="removebtn" value="-Видалити з моїх залів" /></p>
-            </div>
+            }
+            else
+            {
+                <div class="text-vertical-center">
+                    <p><input id="addbtn" type="button" onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
+                </div>
 
+                <div class="text-vertical-center">
+                    <p><input id="removebtn" onclick="deletegyms(@Model.Id)" type="button" hidden value="- Видалити з моїх залів" /></p>
+                </div>
+
+            }
+            
             <div id="gymimage" class="container" >
                 <img src="../@Model.GymImgUrl"  style="width:30%; height:24%">
                 

@@ -44,6 +44,24 @@ namespace SportApp.Controllers
             ViewData["SearchModel"] = searchModel;
             ViewData["gyms"] = JsonConvert.SerializeObject(gyms.ToList());
             ViewData["Facilities"] = SelectLookups.Facilities;
+
+            var userId =  HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if(userId == null) userId = "";
+            
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                ViewData["LoggedIn"] = true;
+                ViewData["CurrentUserName"] = user.FullName;
+                ViewData["CurrentUserLogin"] = user.UserName;
+            }
+            else
+            {
+                ViewData["LoggedIn"] = false;
+                ViewData["CurrentUserName"] = ""; 
+                ViewData["CurrentUserLogin"] = "";
+            }
+            
             int pageSize = 6;
             
             return View(await PaginatedList<Gym>.CreateAsync(gyms, page ?? 1, pageSize));
