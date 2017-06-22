@@ -36,14 +36,20 @@
             <div id="usernamehome" class="container">
                 <div class="text-vertical-center">
                     <div class="dropdown">
-                        @if(!string.IsNullOrEmpty((string)userName))
+                        <form action="../Profile" class="inline">
+                        @if (!string.IsNullOrEmpty((string)userName))
                         {
-                            <button class="dropbtn">@userName</button>
+                          
+
+                            <button link="../Profile" class="dropbtn">@userName</button>
                         }
                         else
                         {
+                            
+
                             <button link="../Profile" class="dropbtn">@userLogin</button>
                         }
+                            </form>
                         <div class="dropdown-content">
                              <form asp-controller="Account" asp-action="Logout" method="post">
                                 <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>

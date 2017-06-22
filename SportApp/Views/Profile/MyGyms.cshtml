@@ -28,18 +28,33 @@
         <div id="usernamemy" class="container">
             <div class="text-vertical-center">
                 <div class="dropdown">
-                    <button class="dropbtn">@Model.FullName</button>
+                    <form action="../Profile" class="inline">
+                        @if (!string.IsNullOrEmpty((string)@Model.FullName))
+                        {
+
+
+                            <button link="../Profile" class="dropbtn">@Model.FullName</button>
+                        }
+                        else
+                        {
+
+
+                            <button link="../Profile" class="dropbtn">@Model.Email</button>
+                        }
+                    </form>
+
                     <div class="dropdown-content">
                         <form asp-controller="Account" asp-action="Logout" method="post">
-                                <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
-                            </form>
+                            <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
+                        </form>
                         <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
                         <a></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+                 </div>
 
         <div class="container">
             <h2 id="savedtxt">Збережені зали</h2>
