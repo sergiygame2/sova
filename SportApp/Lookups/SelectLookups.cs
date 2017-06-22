@@ -28,7 +28,9 @@ namespace SportApp.Lookups
             "КПІ",
             "Вокзальна",
             "Університет",
-            "Олімпійська"
+            "Олімпійська",
+            "Поділ",
+            "Русанівка"
         };
         public static List<string> Facilities = new List<string>
         {
