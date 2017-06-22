@@ -65,7 +65,7 @@ body::-webkit-scrollbar-thumb {
     display: table;
     position: relative;
     width: 100%;
-    height: 76%;
+    height: 20%;
     background: url(../images/dumbbell.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -361,7 +361,7 @@ img.side {
 #gymname{
    position:absolute;
    left:11%;
-   top:22%;
+   top:29%;
 
 
 }
@@ -369,22 +369,22 @@ img.side {
 #gymrate {
     position: absolute;
     left:53%;
-    top:22%;
+    top:29%;
 }
 
 
 #gymstars {
     position: absolute;
     left: 57.5%;
-    top: 25.5%;
+    top: 32.5%;
     font-size:25px;
 }
 
 #manimg{
     position:absolute;
     left:32%;
-    top:6%;
-    width:250px;
+    top:11%;
+    width:20%;
 }
 
 #gymframe {
@@ -396,8 +396,8 @@ img.side {
     width: 73%;
     border-radius: 12px;
     left: 10%;
-    height: 1300px;
-    top: 34%;
+    height: 200%;
+    top: 39%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 50;
@@ -438,8 +438,8 @@ img.side {
     width: 93%;
     border-radius: 12px;
     left: 3.5%;
-    height: 680px;
-    top: 45%;
+    height: 59%;
+    top: 38%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 100;
@@ -462,26 +462,24 @@ img.side {
     width: 40%;
     border-radius: 12px;
     left: 58%;
-    height: 480px;
-    top: 20%;
+    height: 82%;
+    top: 13%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 120;
-    overflow:scroll;
-    overflow-x:hidden;
 }
 
-    #comframe::-webkit-scrollbar {
+    #combox::-webkit-scrollbar {
         width: 1.2em;
  
     }
 
-    #comframe::-webkit-scrollbar-track {
+    #combox::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         border-radius:8px;
     }
 
-    #comframe::-webkit-scrollbar-thumb {
+    #combox::-webkit-scrollbar-thumb {
         background-color: darkgrey;
         outline: 1px solid rgb(245, 144, 29);
         border-radius:6px;
@@ -505,14 +503,25 @@ img.side {
 
 }
 
-#CommentText{
+#combox {
     position:absolute;
-    width:90%;
-    top:75%;
-    height:15%;
-    background-color:rgb(213, 204, 204);
-    border:0;
-    border-radius:6px;
+    overflow:scroll;
+    overflow-x:hidden;
+    width:100%;
+    left:-1%;
+    top:1%;
+}
+
+#CommentText {
+    position: absolute;
+    width: 90%;
+    top: 75%;
+    height: 15%;
+    background-color: rgb(213, 204, 204);
+    border: 0;
+    border-radius: 6px;
+    z-index: 120;
+
 }
 
 #Rate{
@@ -775,7 +784,7 @@ img.side {
     position:absolute;
     border-color:white;
     border-style:solid;
-    top:120%;
+    top:130%;
     height:40px;
 }
 

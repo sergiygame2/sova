@@ -118,7 +118,7 @@
 
                <div id="info" class="container">
                    <h4><strong>Адреса:</strong></h4><h4>@Model.GymLocation</h4>
-                   <h4><strong>Мінмальна ціна:</strong></h4><h4>@Model.MbrshipPrice</h4>
+                   <h4><strong>Мінімальна ціна:</strong></h4><h4>@Model.MbrshipPrice</h4>
                    <h4><strong>Загальна площа:</strong></h4><h4>@Model.GymArea</h4>
                    <h4><strong>Рік заснування:</strong></h4><h4>@Model.FoundYear</h4>
                    <h4><strong>Сайт заснування:</strong></h4><h4>@Model.Url</h4>
@@ -136,28 +136,40 @@
 
                 <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар:</b></h4>
                 <div id="comframe" class="container">
-                                        @foreach (var comment in Model.Comments)
-                                        {        
-                                            <br />
+                    <div id="combox" class="container">
+
+                        @foreach (var comment in Model.Comments)
+                        {
+                            <br />
+
                                             <p style="color:rgb(89,89,89)"> @comment.CommentText</p>
-                                            <p style="color:rgb(89,89,89)">@comment.Rate</p>
-                                              <hr/> 
-                    }
-                    <form asp-action="CreateComment">
-                        <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
-                        <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
-                        <input type="text" id="Rate" placeholder="Оцінка" style="color:black" name="Rate" size="40">
-                        <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black"></textarea></p>
-                        <p><input id="sendbtn" type="submit"></p>
-                    </form>
+                                            <p style="color:rgb(89,89,89)">Оцінка: @comment.Rate</p>
+                                            <hr />
+                        }
+                        </div>
+                        <form asp-action="CreateComment">
+                            <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
+                            <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
+                            <input type="text" id="Rate" placeholder="Оцінка" style="color:black" name="Rate" size="40">
+                            <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black"></textarea></p>
+                            <p><input id="sendbtn" type="submit"></p>
+                        </form>
+                    </div>
+
+                <div class="container">
+                    <div class="space">
+
+
+                    </div>
                 </div>
 
             </div>
         </div>
 
     </div>
-
-    
+    <br />
+    <br />
+   
 </body>
 
 
