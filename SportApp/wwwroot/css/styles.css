@@ -88,7 +88,7 @@ body::-webkit-scrollbar-thumb {
 
 #username{
     position:absolute;
-    top: 8%;
+    top: 20%;
     left:6%;
 }
 
@@ -119,9 +119,11 @@ footer {
 
 
 .baner {
-    padding: 60px 0;
+    padding: 2% 0;
     background: url(../images/weights.png) no-repeat top center;
     background-size: cover;
+    height:20%;
+
 }
 
 img.weighthead {
@@ -279,7 +281,7 @@ button {
 
 
 img.side {
-    top:19.5%;
+    top:20%;
     left: 85%;
     position: absolute;
     z-index: 50;
@@ -322,7 +324,7 @@ img.side {
     padding: 0;
     height:100%;
     width:100%;
-    top:22%;
+    top:17%;
     left:2%;
 }
 
@@ -564,8 +566,8 @@ img.side {
 .dropdown {
     position: relative;
     display: inline-block;
-    left:800px;
-    top:-30px;
+    left:280%;
+    top:20%;
 }
 
 /* Dropdown Content (Hidden by Default) */

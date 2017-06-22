@@ -50,20 +50,20 @@
         }
         else
         {
-            <div class="container">
+            <div  id ="username" class="container">
                 <div class="text-vertical-center">
                     <div class="dropdown">
                         @if(!string.IsNullOrEmpty((string)userName))
                         {
-                            <button class="btn btn-dark">@userName</button>
+                            <button class="dropbtn" style="background-color:rgb(245,144,29)">@userName</button>
                         }
                         else
                         {
-                            <button class="btn btn-dark">@userLogin</button>
+                            <button class="dropbtn" style="background-color:rgb(245,144,29)">@userLogin</button>
                         }
                         <div class="dropdown-content">
                             <form asp-controller="Account" asp-action="Logout" method="post">
-                                <button type="submit">Вийти</button>
+                                <button type="submit" class="btn btn-dark" style="background-color:rgb(245,144,29)">Вийти</button>
                             </form>
                         </div>
                     </div>
