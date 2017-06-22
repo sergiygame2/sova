@@ -27,7 +27,7 @@ namespace SportApp.Controllers
 
         public  async Task<IActionResult> Index([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel, int? page)
         {
-            SearchedHome();
+            //SearchedHome();
             var defaultRegion = "Оберіть район";
             if (searchModel.Region == defaultRegion) searchModel.Region = null;
             List<string> facilities = null;
