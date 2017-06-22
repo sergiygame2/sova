@@ -62,7 +62,7 @@
                 range: true,
                 min: 100,
                 max: 10000,
-                values: [100, 300],
+                values: [100, 10000],
                 slide: function (event, ui) {
                     $("#amount").val("₴" + ui.values[0] + " - ₴" + ui.values[1]);
                     $('#StartPrice').val($("#slider-range").slider("values", 0));
@@ -119,11 +119,13 @@
                             </form>
 
                             <div class="dropdown-content">
-                               <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="btn btn-dark">Вийти</button>
                                 </form>
-                                <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
-                                <a></a>
+                                <form action="../Profile/MyGyms" class="inline">
+                                    <button class="btn btn-dark" style="top:0%">Збережені зали</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -200,6 +202,13 @@
                                 <div class="map-container">
                                     <div id="map-canvas"></div>
                                 </div>
+                                @if(gyms.Count == 0)
+                                {
+                                    <h2>На жаль, залів не знайдено :(</h2>
+                                }
+                                else
+                                {
+
                                 <div id="gyminfo" class="container">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -223,14 +232,25 @@
                                                                         <div id="ratebar" class="container">
                                                                             <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
                                                                         </div>
+
                                                                     </div>           
                                                                </div>
-                                                        </div>
+
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    <br />
+                                                                    <br />
                                                     }
+                                                            </div>
+
+                                                        </div>
+                                                    
+                                       
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                  
+                            
 
                                     <div class="pager">
                                         @{
@@ -250,14 +270,14 @@
                                                 if (i == Model.PageIndex)
                                                 {
                                                     <li id="pag1" class="active">
-                                                        <a class="btn btn-dark" asp-action="Index"
+                                                        <a  asp-action="Index"
                                                            asp-route-page="@i">@i</a>
                                                     </li>
                                                 }
                                                 else
                                                 {
                                                     <li>
-                                                        <a id="pag" class="btn btn-dark" asp-action="Index"
+                                                        <a id="pag"  asp-action="Index"
                                                            asp-route-page="@i">@i
                                                         </a>
                                                     </li>
@@ -273,6 +293,8 @@
                                         </a>
                                     </div>
                                 </div>
+                                }
+                                
                             </div>
                         </div>
                     </div>

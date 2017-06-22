@@ -72,8 +72,9 @@
                             <form asp-controller="Account" asp-action="Logout" method="post">
                                 <button type="submit" class="btn btn-dark">Вийти</button>
                             </form>
-                            <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
-                            <a></a>
+                            <form action="../Profile/MyGyms" class="inline">
+                                <button class="btn btn-dark" style="top:0%">Збережені зали</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -95,7 +96,10 @@
         <img id="manimg" src="~/images/man.png" />
 
         <div id="gymframe" class="container">
-            @if(isMyGYm)
+@if (loggedIn)
+{
+
+            @if (isMyGYm)
             {
                 <div class="text-vertical-center">
                     <p><input id="addbtn" type="button" hidden onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
@@ -117,7 +121,7 @@
                 </div>
 
             }
-            
+}
             <div id="gymimage" class="container" >
                 <img src="../@Model.GymImgUrl">
                 

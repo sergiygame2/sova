@@ -14,6 +14,8 @@
     <link href="~/css/bootstrap.css" rel="stylesheet">
 
     <link href="~/css/styles.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="~/js/Site.js"></script>
 
 </head>
 
@@ -31,24 +33,22 @@
                     <form action="../Profile" class="inline">
                         @if (!string.IsNullOrEmpty((string)@Model.FullName))
                         {
-
-
                             <button link="../Profile" class="dropbtn">@Model.FullName</button>
                         }
                         else
                         {
-
-
                             <button link="../Profile" class="dropbtn">@Model.UserName</button>
                         }
                     </form>
 
                     <div class="dropdown-content">
                         <form asp-controller="Account" asp-action="Logout" method="post">
-                            <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
+                            <button type="submit" class="btn btn-dark">Вийти</button>
                         </form>
-                        <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
-                        <a></a>
+                        <form action="../Profile/MyGyms" class="inline">
+                            <button class="btn btn-dark" style="top:0%">Збережені зали</button>
+                        </form>
+                    
                     </div>
                 </div>
             </div>
@@ -59,12 +59,19 @@
                  </div>
 
         <div class="container">
-            <h2 id="savedtxt">Збережені зали</h2>
+            
 
             <div id="manweight" class="container">
                 <img src="~/images/weightman.jpg" />
             </div>
 
+            @if(usersGyms.Count == 0)
+            {
+                <h2 id="savedtxt">У Вас ще немає збережених залів :(</h2>
+            }
+            else
+            {
+            <h2 id="savedtxt">Збережені зали</h2>
             <div class="container">
             <div class="savedgyms">
                 <div id="sdcontent" class="container">
@@ -82,6 +89,9 @@
                                             <a href="../gympage/@gym.Id">
                                                 <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
                                             </a>
+                                            <div class="text-vertical-center">
+                                                <p><input id="removebtn" onclick="deletegymsonpage(@gym.Id)" type="button" value="х" /></p>
+                                            </div>
                                         </div>
                                   
                                     }
@@ -92,9 +102,11 @@
                             </div>
                         </div>
                     </div>
-                       </div>
+                </div>
 
                  </div>
+                 }
+
             </div>
 </body>
 </html>
