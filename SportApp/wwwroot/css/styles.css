@@ -420,12 +420,13 @@ img.side {
 
 #addbtn{
     position:absolute;
-    background-color:rgb(225, 124, 9);
+    background-color:#6BBE92;
     border:0;
     border-radius:5px;
     color:white;
     text-align:center;
-    height:30px;
+    height:40px;
+    width:30%;
     top:2%;
     right:2%;
 }
@@ -433,12 +434,13 @@ img.side {
 
 #removebtn {
     position: absolute;
-    background-color: rgb(225, 124, 9);
+    background-color: rgb(230, 54, 54);
     border: 0;
     border-radius: 5px;
     color: white;
+    width:30%;
     text-align: center;
-    height: 30px;
+    height: 40px;
     top: 2%;
     right: 2%;
 
