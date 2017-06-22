@@ -702,13 +702,13 @@ img.side {
 
 #hgman{
     position:absolute;
-    top:19.5%;
+    top:20%;
 
 }
 
 #hgwoman {
     position: absolute;
-    top: 19.5%;
+    top: 20%;
     left:84%;
 }
 
@@ -870,6 +870,18 @@ img.side {
     top:3%;
 }
 
+#rmvbtn {
+    position: absolute;
+    background-color: rgb(230, 54, 54);
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    width: 20%;
+    text-align: center;
+    height: 40px;
+    top: 1%;
+    left:57%;
+}
 
 #sdgymname {
     padding-bottom:10px;

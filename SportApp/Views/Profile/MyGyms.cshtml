@@ -21,13 +21,13 @@
 
 <body>
 
-    <div class="banerprof">
+    <div class="baner">
         <div class="container">
             <a asp-controller="Home">
                 <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
             </a>
         </div>
-        <div id="usernamemy" class="container">
+        <div id="username" class="container">
             <div class="text-vertical-center">
                 <div class="dropdown">
                     <form action="../Profile" class="inline">
@@ -90,7 +90,7 @@
                                                 <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
                                             </a>
                                             <div class="text-vertical-center">
-                                                <p><input id="removebtn" onclick="deletegymsonpage(@gym.Id)" type="button" value="х" /></p>
+                                                <p><input id="rmvbtn" onclick="deletegymsonpage(@gym.Id)" type="button" value="х" /></p>
                                             </div>
                                         </div>
                                   
