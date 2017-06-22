@@ -14,11 +14,15 @@ namespace SportApp.Controllers
     {
         private readonly IGymRepository _gymRepo;
         private readonly ICommentRepository _comRepo;
+        private readonly IUserGymsRepository _userRepo;
 
-        public GymPageController(IGymRepository gymRepo, ICommentRepository comRepo)
+
+
+        public GymPageController(IGymRepository gymRepo, ICommentRepository comRepo, IUserGymsRepository userRepo)
         {
             _gymRepo = gymRepo;
             _comRepo = comRepo;
+            _userRepo = userRepo;
         }
 
         [HttpGet("GymPage/{id}")]
@@ -32,7 +36,14 @@ namespace SportApp.Controllers
                 return NotFound();
 
             if(Length!=0) ViewData["Errors"] = "error";
-            ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewData["CurrentUserId"] = userId;
+
+            //userId gym.id
+            if(_userRepo.GetByUserIdAndGymId(userId, gym.Id)==null)
+                ViewData["MyGym"] = false; 
+            else
+                ViewData["MyGym"] = true;
             return View(gym);
         }
 

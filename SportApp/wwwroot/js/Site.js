@@ -165,12 +165,16 @@ function s2FormatSelection(item) {
 
 function postgyms(id) {
 
-    alert(id);
+    //alert(id);
     $.post("/api/users-gyms/add/" + id, function () {
-        alert("send");
+        //alert("send");
+
     })
         .done(function () {
-            alert("second success");
+            //alert("second success");
+            $("#addbtn").hide();
+            $("#removebtn").show();
+
         })
         .fail(function () {
             alert("error");
@@ -180,12 +184,14 @@ function postgyms(id) {
 
 function deletegyms(id) {
 
-    alert(id);
+    //alert(id);
     $.post("/api/users-gyms/delete/" + id, function () {
-        alert("send");
+        //alert("send");
     })
         .done(function () {
-            alert("second success");
+            //alert("second success");
+            $("#removebtn").hide();
+            $("#addbtn").show();
         })
         .fail(function () {
             alert("error");

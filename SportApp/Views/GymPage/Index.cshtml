@@ -1,6 +1,7 @@
 ﻿@model  SportApp.Models.Gym
 @{
     Layout = null;
+    bool isMyGYm = (bool)ViewData["MyGym"];
 }
 <html>
 <head>
@@ -53,15 +54,29 @@
         <img id="manimg" src="~/images/man.png" />
 
         <div id="gymframe" class="container">
+            @if(isMyGYm)
+            {
+                <div class="text-vertical-center">
+                    <p><input id="addbtn" type="button" hidden onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
+                </div>
 
-            <div class="text-vertical-center">
-                <p><input id="addbtn" type="button" onclick="postgyms(@Model.Id)" value="+Додати до моїх залів"></p>
-            </div>
+                <div class="text-vertical-center">
+                    <p><input id="removebtn" onclick="deletegyms(@Model.Id)" type="button" value="- Видалити з моїх залів" /></p>
+                </div>
 
-            <div class="text-vertical-center">
-                <p><input id="removebtn" value="-Видалити з моїх залів" /></p>
-            </div>
+            }
+            else
+            {
+                <div class="text-vertical-center">
+                    <p><input id="addbtn" type="button" onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
+                </div>
 
+                <div class="text-vertical-center">
+                    <p><input id="removebtn" onclick="deletegyms(@Model.Id)" type="button" hidden value="- Видалити з моїх залів" /></p>
+                </div>
+
+            }
+            
             <div id="gymimage" class="container" >
                 <img src="../@Model.GymImgUrl"  style="width:30%; height:24%">
                 
