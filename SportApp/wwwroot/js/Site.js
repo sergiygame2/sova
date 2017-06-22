@@ -23,10 +23,10 @@ class Gym {
 function initialize(gyms) {
 
     google.maps.visualRefresh = true;
-    var Kyiv = new google.maps.LatLng(50.499988, 30.223344);
+    var Kyiv = new google.maps.LatLng(50.450000, 30.522444);
 
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 8,
+        zoom: 11,
         center: Kyiv,
         mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
     });
