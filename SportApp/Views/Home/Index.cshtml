@@ -45,7 +45,9 @@
                             <button class="dropbtn">@userLogin</button>
                         }
                         <div class="dropdown-content">
-                            <a href="../">Вийти</a>
+                             <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit">Вийти</button>
+                              </form>
                         </div>
                     </div>
                 </div>

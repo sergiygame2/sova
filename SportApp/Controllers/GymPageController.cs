@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SportApp.Models;
 using SportApp.Repositories;
@@ -16,17 +17,19 @@ namespace SportApp.Controllers
         private readonly ICommentRepository _comRepo;
         private readonly IUserGymsRepository _userRepo;
 
+        public UserManager<ApplicationUser> _userManager;
 
 
-        public GymPageController(IGymRepository gymRepo, ICommentRepository comRepo, IUserGymsRepository userRepo)
+        public GymPageController(UserManager<ApplicationUser> userManager, IGymRepository gymRepo, ICommentRepository comRepo, IUserGymsRepository userRepo)
         {
             _gymRepo = gymRepo;
             _comRepo = comRepo;
             _userRepo = userRepo;
+            _userManager = userManager;
         }
 
         [HttpGet("GymPage/{id}")]
-        public IActionResult Index(int id, int Length=0)
+        public async Task<IActionResult> Index(int id, int Length=0)
         {
             if (id == 0)
                 return BadRequest("Wrong id");
@@ -37,6 +40,7 @@ namespace SportApp.Controllers
 
             if(Length!=0) ViewData["Errors"] = "error";
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            
             ViewData["CurrentUserId"] = userId;
 
             //userId gym.id
@@ -44,6 +48,22 @@ namespace SportApp.Controllers
                 ViewData["MyGym"] = false; 
             else
                 ViewData["MyGym"] = true;
+            
+            if(userId == null) userId = "";
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                ViewData["LoggedIn"] = true;
+                ViewData["CurrentUserName"] = user.FullName;
+                ViewData["CurrentUserLogin"] = user.UserName;
+            }
+            else
+            {
+                ViewData["LoggedIn"] = false;
+                ViewData["CurrentUserName"] = ""; 
+                ViewData["CurrentUserLogin"] = "";
+            }
+
             return View(gym);
         }
 

@@ -21,7 +21,7 @@ namespace SportApp.Controllers
         public async Task<IActionResult> Index()
         {
             var userId =  HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            
+            if(userId == null) userId = "";
             var user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
