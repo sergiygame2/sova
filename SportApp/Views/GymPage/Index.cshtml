@@ -55,11 +55,11 @@
                     <div class="dropdown">
                         @if(!string.IsNullOrEmpty((string)userName))
                         {
-                            <button class="dropbtn">@userName</button>
+                            <button class="btn btn-dark">@userName</button>
                         }
                         else
                         {
-                            <button class="dropbtn">@userLogin</button>
+                            <button class="btn btn-dark">@userLogin</button>
                         }
                         <div class="dropdown-content">
                             <form asp-controller="Account" asp-action="Logout" method="post">
