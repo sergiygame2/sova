@@ -84,5 +84,23 @@ namespace SportApp.Controllers
             //}
             return RedirectToAction("Index");
         }
+
+        [HttpGet("Profile/MyGyms")]
+        public async Task<IActionResult> MyGyms()
+        {
+
+            string id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var userDTO = new UserDTO() { Id = user.Id, Email = user.Email, Password = user.PasswordHash,UserName = user.UserName,FullName = user.FullName, Address = user.Address, BirthDay= user.BirthDay, Height = user.Height, Weight = user.Weight };
+
+            ViewData["UserGyms"] = _usersGymsRepo.GetGymsByUserId(userDTO.Id);
+            return View("Views/Profile/MyGyms.cshtml", userDTO);
+        }
+
     }
 }

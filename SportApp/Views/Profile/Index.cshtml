@@ -173,47 +173,6 @@
             </form>
         </div>
         </div>
-  <div id="new" class="container">
-
-  </div>
-
-        <div class="container">
-            <h2 id="savedtxt">Збережені зали</h2>
-
-            <div id="manweight" class="container">
-                <img src="~/images/weightman.jpg" />
-            </div>
-
-            <div class="container">
-            <div class="savedgyms">
-                <div id="sdcontent" class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="item">
-                                <div class="row">
-                                    @foreach (var gym in usersGyms)
-                                    {
-                                        <div class="col-md-4">
-                                            <a  href="../gympage/@gym.Id">
-                                            <img id="gympic" src="@gym.GymImgUrl" width="200px" height="200px" />
-                                              </a>
-                                            <br>
-                                            <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
-                                        </div>
-                                  
-                                    }
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                    </div>
-                       </div>
-
-                 </div>
-            </div>
-        </div>
 </body>
 </html>
 
