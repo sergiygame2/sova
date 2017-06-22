@@ -194,97 +194,101 @@
                     <div class="container" style="height:100%; width:100%;">
                         <div class="emptyframe">
                             <div class="emptycontent" style="height:100%; width:100%;">
-                                <div id="resultstext" class="container">
-                                    <h1>Результати пошуку</h1>
-                                </div>
+                                
                                 <div class="map-container">
                                     <div id="map-canvas"></div>
                                 </div>
-                                @if(gyms.Count == 0)
+                                @if (gyms.Count == 0)
                                 {
-                                    <h2>На жаль, залів не знайдено :(</h2>
+                                    <div id="resultstext" class="container">
+                                        <h2>На жаль, залів не знайдено :(</h2>
+                                    </div>
                                 }
                                 else
                                 {
+                                        <div id="resultstext" class="container">
+                                            <h1>Результати пошуку</h1>
+                                        </div>
 
-                                <div id="gyminfo" class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="item">
-                                                <div class="row">
-                                                    @foreach (var gym in gyms)
-                                                    {
-                                                        <div class="col-md-4">
-                                                            <div class="container">
-                                                                <a href="../GymPage/@gym.Id">
-                                                                    <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
-                                                                </a>
-                                                            </div>
-                                                            <div id="text" class="container">
-                                                                <a href="../GymPage/@gym.Id">
-                                                                    <h4>@gym.GymName</h4>
-                                                                </a>
-                                                                    <h4>@gym.GymLocation</h4>
-                                                                    <h4 id="mmshprice">@gym.MbrshipPrice  грн</h4>
-                                                                    <div class="stars">
-                                                                        <div id="ratebar" class="container">
-                                                                            <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
-                                                                        </div>
+                                        <div id="gyminfo" class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="item">
+                                                        <div class="row">
+                                                            @foreach (var gym in gyms)
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <div class="container">
+                                                                        <a href="../GymPage/@gym.Id">
+                                                                            <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                                                        </a>
                                                                     </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <br />
-                                                                    <br />
-                                                            </div>
+                                                                    <div id="text" class="container">
+                                                                        <a href="../GymPage/@gym.Id">
+                                                                            <h4>@gym.GymName</h4>
+                                                                        </a>
+                                                                        <h4>@gym.GymLocation</h4>
+                                                                        <h4 id="mmshprice">@gym.MbrshipPrice  грн</h4>
+                                                                        <div class="stars">
+                                                                            <div id="ratebar" class="container">
+                                                                                <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br />
+                                                                        <br />
+                                                                    </div>
+                                                                </div>
+                                                            }
                                                         </div>
-                                                    }
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="pager">
-                                        @{
-                                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-                                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                                            <div class="pager">
+                                                @{
+                                                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                                                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                                                }
+                                                <a id="prevbtn" asp-action="Index"
+                                                   asp-route-searchModel="@ViewData["SearchModel"]"
+                                                   asp-route-page="@(Model.PageIndex - 1)"
+                                                   class="btn btn-light @prevDisabled">
+                                                    Попередня
+                                                </a>
+                                                <ul class="pagination">
+                                                    @for (int i = 1; i <= Model.TotalPages; ++i)
+                                                    {
+                                                        if (i == Model.PageIndex)
+                                                        {
+                                                            <li class="active">
+                                                                <a class="btn btn-dark" asp-action="Index"
+                                                                   asp-route-page="@i">@i</a>
+                                                            </li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li>
+                                                                <a id="pag" class="btn btn-dark" asp-action="Index"
+                                                                   asp-route-page="@i">
+                                                                    @i
+                                                            </a>
+                                                        </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                                <a id="nextbtn" asp-action="Index"
+                                                   asp-route-searchModel="@ViewData["SearchModel"]"
+                                                   asp-route-page="@(Model.PageIndex + 1)"
+                                                   class="btn btn-light @nextDisabled">
+                                                    Наступна
+                                                </a>
+                                            </div>
+                                        </div>
                                         }
-                                        <a id="prevbtn" asp-action="Index"
-                                           asp-route-searchModel="@ViewData["SearchModel"]"
-                                           asp-route-page="@(Model.PageIndex - 1)"
-                                           class="btn btn-light @prevDisabled">
-                                            Попередня
-                                        </a>
-                                        <ul class="pagination">
-                                            @for (int i = 1; i <= Model.TotalPages; ++i)
-                                            {
-                                                if (i == Model.PageIndex)
-                                                {
-                                                    <li class="active">
-                                                        <a class="btn btn-dark" asp-action="Index"
-                                                           asp-route-page="@i">@i</a>
-                                                    </li>
-                                                }
-                                                else
-                                                {
-                                                    <li>
-                                                        <a id="pag" class="btn btn-dark" asp-action="Index"
-                                                           asp-route-page="@i">@i
-                                                        </a>
-                                                    </li>
-                                                }
-                                            }
-                                        </ul>
-                                        <a id="nextbtn" asp-action="Index"
-                                           asp-route-searchModel="@ViewData["SearchModel"]"
-                                           asp-route-page="@(Model.PageIndex + 1)"
-                                           class="btn btn-light @nextDisabled">
-                                            Наступна
-                                        </a>
+
                                     </div>
-                                </div>
-                                }
-                                
-                            </div>
                         </div>
                     </div>
                 </frameset>
