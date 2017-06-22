@@ -57,12 +57,7 @@ namespace SportApp.Controllers
                 _comRepo.Add(comment);
                 return RedirectToAction("Index");
             }
-            var gym = _gymRepo.Get(comment.GymId);
-            var comments = gym.Comments;
-            int sumRate = 0;
-            for (int i = 0; i < comments.Count; i++)
-                sumRate += comments[i].Rate;
-            double rateGym = sumRate / (comments.Count);
+           
 
             ViewData["CurrentUserId"] = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewData["GymsIds"] = new SelectList( _gymRepo.GetAll(), "Id", "GymName", comment.GymId);

@@ -45,5 +45,7 @@ namespace SportApp.Repositories
                 facilities.ForEach(facility => gyms = gyms.Where((gym => gym.Facilities.Contains(facility))));
             return gyms;
         }
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SportApp.Models;
 using SportApp.Repositories;
 
@@ -85,6 +86,34 @@ namespace SportApp.Controllers
             {
                 return RedirectToAction($"{comment.GymId}","GymPage","error");
             }
+
+
+            var gym = _gymRepo.Get(comment.GymId);
+            var comments = gym.Comments;
+            int sumRate = 0;
+            for (int i = 0; i < comments.Count; i++)
+                sumRate += comments[i].Rate;
+            double rateGym = sumRate / comments.Count;
+            int rate = (int)Math.Round(rateGym);
+            gym.GymRate = rate;
+            try
+            {
+                _gymRepo.Edit(gym);
+            }
+            catch (DbUpdateException e)
+            {
+                Console.WriteLine(e.InnerException.Message);
+                ModelState.AddModelError("0", e.InnerException.Message);
+                return BadRequest(ModelState);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                return BadRequest($"{e.Message}");
+            }
+
+
         }
 
 
