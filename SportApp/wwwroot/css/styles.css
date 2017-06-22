@@ -363,10 +363,10 @@ img.side {
     position: absolute;
     right: -135%;
     float: right;
-    padding:2%;
-    top:82%;
+    top:100%;
     font-size: 20px;
     color: #444;
+    padding-bottom:10%;
 }
 
 
@@ -506,9 +506,7 @@ img.side {
 #gymimage{
     position:absolute;
     top:10%;
-    left:32%;
-   
-
+    left:40%;
 }
 
 #leavecom{
@@ -636,13 +634,24 @@ img.side {
 
 .pagination{
     position:absolute;
-    top:97.5%;
+    top:98%;
     right:48%;
 }
 
 .pagination li.active a{
     background-color:rgb(225, 124, 9);
     border-color:rgb(225,124,9);
+}
+
+#pag{
+ 
+    color:white;
+    background-color:rgb(245, 144, 29);
+}
+
+#pag1 {
+    color: white;
+    background-color: rgb(245, 144, 29);
 }
 
 #nextbtn {

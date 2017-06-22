@@ -223,12 +223,8 @@
                                                                         <div id="ratebar" class="container">
                                                                             <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
                                                                         </div>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <br />
-                                                                    <br />
-</div>
+                                                                    </div>           
+                                                               </div>
                                                         </div>
                                                     }
                                                 </div>
@@ -247,12 +243,13 @@
                                            class="btn btn-light @prevDisabled">
                                             Попередня
                                         </a>
+                                     
                                         <ul class="pagination">
                                             @for (int i = 1; i <= Model.TotalPages; ++i)
                                             {
                                                 if (i == Model.PageIndex)
                                                 {
-                                                    <li class="active">
+                                                    <li id="pag1" class="active">
                                                         <a class="btn btn-dark" asp-action="Index"
                                                            asp-route-page="@i">@i</a>
                                                     </li>
@@ -267,6 +264,7 @@
                                                 }
                                             }
                                         </ul>
+                                           
                                         <a id="nextbtn" asp-action="Index"
                                            asp-route-searchModel="@ViewData["SearchModel"]"
                                            asp-route-page="@(Model.PageIndex + 1)"

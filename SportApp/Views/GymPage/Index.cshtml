@@ -158,7 +158,7 @@
                                             }
                                             else
                                             {
-                                                <p style="color:rgb(89,89,89)"> @userName</p>
+                                                <p style="color:rgb(89,89,89)"><strong> @userName </strong></p>
                                             }
                                             <p style="color:rgb(89,89,89)"> @comment.CommentText</p>
                                             <p style="color:rgb(89,89,89)">Оцінка: @comment.Rate</p>
@@ -169,8 +169,8 @@
                             <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
                             <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
                             <input type="text" id="Rate" placeholder="Оцінка" style="color:black" name="Rate" size="40">
-                            <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black"></textarea></p>
-                            <p><input id="sendbtn" type="submit"></p>
+                            <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black; resize:none"></textarea></p>
+                            <p><input id="sendbtn" type="submit" value="Надіслати"></p>
                         </form>
                     </div>
 
