@@ -86,15 +86,26 @@ body::-webkit-scrollbar-thumb {
     left:88%;
 }
 
-#username{
+#usernamehome {
     position:absolute;
-    top: 20%;
+    top:8%;
+    left:6%;
+}
+#username {
+    position: absolute;
+    top: 5%;
+    left: 6%;
+}
+
+#usernamemy{
+    position:absolute;
+    top:17%;
     left:6%;
 }
 
 img.img-logo {
     position: absolute;
-    left: 26%;
+    left: 28%;
     top:32%;
 }
 
@@ -350,9 +361,10 @@ img.side {
 
 #ratebar {
     position: absolute;
-    right: -138%;
+    right: -135%;
     float: right;
-    padding: 1%;
+    padding:2%;
+    top:82%;
     font-size: 20px;
     color: #444;
 }
@@ -491,7 +503,9 @@ img.side {
 #gymimage{
     position:absolute;
     top:10%;
-    left:28%;
+    left:32%;
+    width:25%;
+    height:42%;
 
 }
 
@@ -510,6 +524,7 @@ img.side {
     overflow:scroll;
     overflow-x:hidden;
     width:100%;
+    height:74%;
     left:-1%;
     top:1%;
 }
@@ -538,7 +553,6 @@ img.side {
 
 #sendbtn{
     position:absolute;
-    width:40%;
     height:6%;
     top:92%;
     left:55%;
@@ -560,6 +574,7 @@ img.side {
     cursor: pointer;
     border-radius: 8px;
     border: 0;
+    z-index:400;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -575,9 +590,9 @@ img.side {
     display: none;
     position: absolute;
     background-color: rgb(245, 144, 29);
-    min-width: 300px;
+    width:100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 400;
     border-radius: 8px;
     border: 0;
 }
@@ -613,13 +628,13 @@ img.side {
 #prevbtn{
     position:absolute;
     right:75%;
-    top:92%;
+    top:100%;
 }
 
 .pagination{
     position:absolute;
-    top:90%;
-    right:47%;
+    top:97.5%;
+    right:48%;
 }
 
 .pagination li.active a{
@@ -630,10 +645,11 @@ img.side {
 #nextbtn {
     position: absolute;
     left: 75%;
-    top: 92%;
+    top: 100%;
 }
 
 /*Profile*/
+
 
 .banerprof {
     padding: 60px 0;
@@ -644,6 +660,11 @@ img.side {
     height: 10%;
 }
 
+#usernameprof{
+    position:absolute;
+    left:6%;
+    top:24%;
+}
 
 #mycab{
     position:absolute;
@@ -688,7 +709,7 @@ img.side {
     border-radius:8px;
     border-color:rgb(225, 124, 9);
     z-index:100;
-    width:14%;
+    width:12%;
     height:17%;
     top:8%;
     left:9%;
@@ -703,11 +724,6 @@ img.side {
   
 }
 
-#shwgyms{
-    position:absolute;
-    left:69%;
-    top:88.5%;
-}
 
 .proftxt{
     position:absolute;
@@ -718,8 +734,7 @@ img.side {
 
 #profbox1{
     position:absolute;
-    left:48%;
-  
+    left:48.5%;
 }
 
 
@@ -730,7 +745,7 @@ img.side {
 
 #profbox3 {
     position: absolute;
-    left: 48%;
+    left: 48.5%;
 }
 
 
@@ -746,7 +761,7 @@ img.side {
 
 #profbox6 {
     position: absolute;
-    left: 47%;
+    left: 46.5%;
 }
 
 #profbox7 {

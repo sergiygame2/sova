@@ -113,8 +113,10 @@
                             }
                             <div class="dropdown-content">
                                <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <button type="submit">Вийти</button>
+                                    <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
                                 </form>
+                                <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
+                                <a></a>
                             </div>
                         </div>
                     </div>
@@ -209,7 +211,7 @@
                                                                     <h4>@gym.GymName</h4>
                                                                 </a>
                                                                     <h4>@gym.GymLocation</h4>
-                                                                    <h4>@gym.MbrshipPrice  грн</h4>
+                                                                    <h4 id="mmshprice">@gym.MbrshipPrice  грн</h4>
                                                                     <div class="stars">
                                                                         <div id="ratebar" class="container">
                                                                             <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />

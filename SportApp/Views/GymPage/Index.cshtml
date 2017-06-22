@@ -63,8 +63,10 @@
                         }
                         <div class="dropdown-content">
                             <form asp-controller="Account" asp-action="Logout" method="post">
-                                <button type="submit" class="btn btn-dark" style="background-color:rgb(245,144,29)">Вийти</button>
+                                <button type="submit" class="btn btn-dark">Вийти</button>
                             </form>
+                            <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
+                            <a></a>
                         </div>
                     </div>
                 </div>
@@ -76,6 +78,7 @@
     <div id="gymmain" class="container">
         <h3 id="gymname">@Model.GymName</h3>
         <h2 id="gymrate">@Model.GymRate/10</h2>
+   <!--username for comment--><h2 id="login"></h2>
 
 
         <div id="gymstars" class="container">
@@ -109,7 +112,7 @@
             }
             
             <div id="gymimage" class="container" >
-                <img src="../@Model.GymImgUrl"  style="width:30%; height:24%">
+                <img src="../@Model.GymImgUrl">
                 
             </div>
           
