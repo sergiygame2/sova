@@ -1,0 +1,101 @@
+@model SportApp.Models.Gym
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Gym</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="Id" />
+        <dt>
+            @Html.DisplayNameFor(model => model.GymName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GymName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GymRate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GymRate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GymLocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GymLocation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MbrshipPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MbrshipPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GymArea)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GymArea)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FoundYear)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FoundYear)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Facilities)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Facilities)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GymImgUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GymImgUrl)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

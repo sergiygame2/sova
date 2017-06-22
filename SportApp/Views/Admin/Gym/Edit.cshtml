@@ -1,0 +1,120 @@
+@model SportApp.Models.Gym
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>Gym</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="GymName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GymName" class="form-control" />
+                <span asp-validation-for="GymName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GymRate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GymRate" class="form-control" />
+                <span asp-validation-for="GymRate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GymLocation" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GymLocation" class="form-control" />
+                <span asp-validation-for="GymLocation" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Region" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Region" class ="form-control" asp-items="ViewBag.Regions"></select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MbrshipPrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MbrshipPrice" class="form-control" />
+                <span asp-validation-for="MbrshipPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GymArea" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GymArea" class="form-control" />
+                <span asp-validation-for="GymArea" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FoundYear" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FoundYear" class="form-control" />
+                <span asp-validation-for="FoundYear" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Facilities" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Facilities" class="form-control" />
+                <span asp-validation-for="Facilities" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Url" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Url" class="form-control" />
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Latitude" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Latitude" class="form-control" />
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Longitude" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Longitude" class="form-control" />
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GymImgUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GymImgUrl" class="form-control" enabled="false"/>
+                <p><input type="file" name="pic"></p>  
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,311 @@
+﻿@model SportApp.Services.PaginatedList<Gym>
+@{Layout = null; }
+@using Newtonsoft.Json
+@{
+    var serializedGyms = ViewData["gyms"];
+    //var gyms = JsonConvert.DeserializeObject<List<Gym>>((string)serializedGyms);
+    var gyms = Model.ToList();
+    var facilities = (List<string>)ViewData["Facilities"];
+
+    var userName = ViewData["CurrentUserName"];
+    var userLogin = ViewData["CurrentUserLogin"];
+    var loggedIn = (bool)ViewData["LoggedIn"];
+}
+
+<html>
+<head>
+    <title>Результати пошуку</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+
+    <!--rating-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/js/star-rating.js" type="text/javascript"></script>
+
+    <!--map-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <script src="~/js/Site.js"></script>
+
+
+    <!--price range-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!--mltpl-->
+    <link href="@Url.Content("~/css/select2.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/js/select2.min.js")"></script>
+
+
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 100,
+                max: 10000,
+                values: [100, 10000],
+                slide: function (event, ui) {
+                    $("#amount").val("₴" + ui.values[0] + " - ₴" + ui.values[1]);
+                    $('#StartPrice').val($("#slider-range").slider("values", 0));
+                    $('#EndPrice').val($("#slider-range").slider("values", 1));
+                }
+            });
+            $('#StartPrice').val($("#slider-range").slider("values", 0));
+            $('#EndPrice').val($("#slider-range").slider("values", 1));
+
+            $("#amount").val("₴" + $("#slider-range").slider("values", 0) +
+                " - ₴" + $("#slider-range").slider("values", 1));
+        });
+
+        $(".js-example-placeholder-multiple").select2({
+            placeholder: "Select a state"
+        });
+    </script>
+</head>
+<body>
+    <header id="hat" class="header">
+        <div class="baner">
+            <div class="container">
+                <a asp-controller="Home">
+                    <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+                </a>
+            </div>
+            @if (!loggedIn)
+            {
+                <div class="container">
+                    <div class="text-vertical-center">
+                        <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                        <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="text-vertical-center">
+                        <div class="dropdown">
+                            <form action="../Profile" class="inline">
+                                @if (!string.IsNullOrEmpty((string)userName))
+                                {
+
+
+                                    <button link="../Profile" class="dropbtn">@userName</button>
+                                }
+                                else
+                                {
+
+
+                                    <button link="../Profile" class="dropbtn">@userLogin</button>
+                                }
+                            </form>
+
+                            <div class="dropdown-content">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
+                                </form>
+                                <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
+                                <a></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <form asp-action="Index">
+            <div class="container">
+                <button id="searchnbtn" type="submit" class="btn btn-light btn-lg">Шукати</button>
+                @if (!loggedIn)
+                {
+                    <!--<a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>-->
+                }
+            </div>
+            <div class="container">
+                <img class="side" src="~/images/girl.png" />
+            </div>
+            <div class="container">
+                <frameset>
+                    <div class="container">
+                        <div class="greyframe">
+                            <div class="greycontent">
+                                <div id="topcont" class="container">
+                                    <div class="firstrow">
+                                        <h4>Район</h4>
+                                        <br>
+                                        <h4>Вулиця</h4>
+                                    </div>
+                                    <div class="secondrow">
+                                        <h4>Цінова категорія</h4>
+                                        <br />
+                                        <h4>Додаткові послуги</h4>
+                                    </div>
+                                </div>
+
+                                <div id="regionbox" class="dropdown">
+                                    <select class="btn dropdown-toggle" name="Region" id="Region" asp-items="ViewBag.Regions"></select>
+                                </div>
+                                <div class="container">
+
+                                    <input class="w3-input" name="Street" id="Street" type="text" placeholder="Введіть вулицю">
+
+                                </div>
+                                <!--Price range-->
+                                <div id="range" class="container"></div>
+                                <div id="slider-range"></div>
+                                <p>
+                                    <label for="amount">Price range:</label>
+                                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" width="100px">
+                                    <input type="hidden" name="StartPrice" id="StartPrice" />
+                                    <input type="hidden" name="EndPrice" id="EndPrice" />
+                                </p>
+
+                                <div id="multpl" class="container" style="margin-left:58%; margin-top:8%">
+                                    <select class="my-select" multiple id="Facilities" name="Facilities" style="width:300px; margin-left:10%;">
+                                        @foreach (var facility in facilities)
+                                        {
+                                            <option value="@facility">@facility</option>
+                                        }
+                                    </select>
+                                    <!--<input type="hidden" class="select2-offscreen" id="make-hdn" style="width:100%" value="Facilities" />-->
+                                    <!--<input type="text" class="my" style="margin-left: 500px;" id="Facilities" name="Facilities" placeholder="Facilities" />-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="height:100%; width:100%;">
+                        <div class="emptyframe">
+                            <div class="emptycontent" style="height:100%; width:100%;">
+
+                                <div class="map-container">
+                                    <div id="map-canvas"></div>
+                                </div>
+                                @if (gyms.Count == 0)
+                                {
+                                    <div id="resultstext" class="container">
+                                        <h2>На жаль, залів не знайдено :(</h2>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div id="resultstext" class="container">
+                                        <h1>Результати пошуку</h1>
+                                    </div>
+
+                                        <div id="gyminfo" class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="item">
+                                                        <div class="row">
+                                                            @foreach (var gym in gyms)
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <div class="container">
+                                                                        <a href="../GymPage/@gym.Id">
+                                                                            <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" style="width:200px; height:200px" />
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="text" class="container">
+                                                                        <a href="../GymPage/@gym.Id">
+                                                                            <h4 id="gymnames">@gym.GymName</h4>
+                                                                        </a>
+                                                                        <h4>@gym.GymLocation</h4>
+                                                                        <h4 id="mmshprice">@gym.MbrshipPrice  грн</h4>
+                                                                        <!--<div id="gymrates" class="stars">-->
+                                                                 
+                                                                            <div id="ratebar" class="container">
+                                                                                <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
+                                                                            </div>
+
+                                                                        <!--</div>-->
+                                                                        <br>
+                                                                        <br>
+                                                                        <br />
+                                                                        <br />
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="pager">
+                                                @{
+                                                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                                                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                                                }
+                                                <a id="prevbtn" asp-action="Index"
+                                                   asp-route-searchModel="@ViewData["SearchModel"]"
+                                                   asp-route-page="@(Model.PageIndex - 1)"
+                                                   class="btn btn-light @prevDisabled">
+                                                    Попередня
+                                                </a>
+                                                <ul class="pagination">
+                                                    @for (int i = 1; i <= Model.TotalPages; ++i)
+                                                    {
+                                                        if (i == Model.PageIndex)
+                                                        {
+                                                            <li class="active">
+                                                                <a class="btn btn-dark" asp-action="Index"
+                                                                   asp-route-page="@i">@i</a>
+                                                            </li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li>
+                                                                <a id="pag" class="btn btn-dark" asp-action="Index"
+                                                                   asp-route-page="@i">
+                                                                    @i
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                                <a id="nextbtn" asp-action="Index"
+                                                   asp-route-searchModel="@ViewData["SearchModel"]"
+                                                   asp-route-page="@(Model.PageIndex + 1)"
+                                                   class="btn btn-light @nextDisabled">
+                                                    Наступна
+                                                </a>
+                                            </div>
+                                            </div>
+
+                                            }
+
+                             
+                                </div>
+                                </div>
+                        </frameset>
+                    </div>
+                </form>
+            </header>
+        </body>
+    </html>
+    <footer>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwNLNBwCGX66RV_oYm8YUBAyB2Bgz7jQ"></script>
+        <script>
+        var data = @Html.Raw(serializedGyms);
+        console.log(data.length);
+        var gyms = $.extend(data);
+        google.maps.event.addDomListener(window, 'load' , initialize(gyms));
+        </script>
+    </footer>

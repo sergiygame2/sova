@@ -1,0 +1,119 @@
+﻿@model SportApp.Models.DTO.UserDTO
+
+@{
+    Layout=null;
+    ViewData["Title"] = "Index";
+    var usersGyms = (List<Gym>)ViewData["UserGyms"];
+}
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/css/styles.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="~/js/Site.js"></script>
+
+</head>
+
+<body>
+
+    <div class="baner">
+        <div class="container">
+            <a href="../Home">
+                <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+            </a>
+        </div>
+        <div id="username" class="container">
+            <div class="text-vertical-center">
+                <div class="dropdown">
+                    <form action="../Profile" class="inline">
+                        @if (!string.IsNullOrEmpty((string)@Model.FullName))
+                        {
+                            <button link="../Profile" class="dropbtn">@Model.FullName</button>
+                        }
+                        else
+                        {
+                            <button link="../Profile" class="dropbtn">@Model.UserName</button>
+                        }
+                    </form>
+
+                    <div class="dropdown-content">
+                        <form asp-controller="Account" asp-action="Logout" method="post">
+                            <button type="submit" class="btn btn-dark">Вийти</button>
+                        </form>
+                        <form action="../Profile/MyGyms" class="inline">
+                            <button class="btn btn-dark" style="top:0%">Збережені зали</button>
+                        </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+                 </div>
+
+        <div class="container">
+            
+
+            <div id="manweight" class="container">
+                <img src="~/images/weightman.jpg" />
+            </div>
+
+            @if(usersGyms.Count == 0)
+            {
+                <h2 id="savedtxt">У Вас ще немає збережених залів :(</h2>
+            }
+            else
+            {
+            <h2 id="savedtxt">Збережені зали</h2>
+            <div class="container">
+            <div class="savedgyms">
+                <div id="sdcontent" class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="item">
+                                <div class="row">
+                                    @foreach (var gym in usersGyms)
+                                    {
+                                        <div class="col-md-4">
+                                            <a  href="../gympage/@gym.Id">
+                                            <img id="gympic" src="../@gym.GymImgUrl" width="200px" height="200px" />
+                                              </a>
+                                            <br>
+                                            <a href="../gympage/@gym.Id">
+                                                <p id="sdgymname" style="text-align:center; max-width:200px;">@gym.GymName</p>
+                                            </a>
+                                            <div class="text-vertical-center">
+                                                <p><input id="rmvbtn" onclick="deletegymsonpage(@gym.Id)" type="button" value="х" /></p>
+                                            </div>
+                                        </div>
+                                  
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 </div>
+                 }
+
+            </div>
+</body>
+</html>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

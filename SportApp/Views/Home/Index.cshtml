@@ -1,0 +1,105 @@
+﻿@{Layout = null; }
+@{
+    ViewData["Title"] = "Home Page";
+    var userName = ViewData["CurrentUserName"]; 
+    var userLogin = ViewData["CurrentUserLogin"];
+    var loggedIn = (bool)ViewData["LoggedIn"];
+}
+
+    <head>
+        <title>Крос - Пошук залів для занять кросфітом</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    </head>
+
+<body>
+    <!-- Header -->
+    <header id="top" class="header">
+        @if (!loggedIn)
+        {
+            <div class="container">
+                <div class="text-vertical-center">
+                    <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                    <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                </div>  
+            </div>
+        }
+        else
+        {
+            <div id="usernamehome" class="container">
+                <div class="text-vertical-center">
+                    <div class="dropdown">
+                        <form action="../Profile" class="inline">
+                        @if (!string.IsNullOrEmpty((string)userName))
+                        {
+                          
+
+                            <button link="../Profile" class="dropbtn">@userName</button>
+                        }
+                        else
+                        {
+                            
+
+                            <button link="../Profile" class="dropbtn">@userLogin</button>
+                        }
+                            </form>
+                        <div class="dropdown-content">
+                             <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit" class="btn btn-dark" >Вийти</button>
+                              </form>
+                            <a href="../Profile/MyGyms" class="btn btn-dark" style="top:0%"><strong>Збережені зали</strong></a>
+                            <a></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="logo">
+            <a asp-controller="Home">
+           <img class="img-logo" src="~/images/logo.png" height="200px" width="600px">
+                </a>
+            <br>
+            <br>
+            <div class="text-vertical-center">
+                <a id="searchbtn" href="~/Search" class="btn btn-dark btn-lg">Пошук залів</a>
+            </div>
+            </div>
+    </header>
+    
+    <!--Footer-->
+    <footer id="bottom" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4>Крос</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> (098) 356-78-90</li>
+                        <li>
+                            <i class="fa fa-envelope-o fa-fw"></i> <a href="crossinkyiv@gmail.com">crossinkyiv@gmail.com</a>
+                        </li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.facebook.com/sanka.bosa?ref=bookmarks"><i class="fa fa-facebook fa-fw fa-3x"></i>Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/?lang=uk"><i class="fa fa-twitter fa-fw fa-3x"></i>Twitter</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/sandroksana/"><i class="fa fa-instagram fa-fw fa-3x"></i>Instagram</a>
+                        </li>
+                    </ul>
+                    <p>Copyright &copy; Крос 2017</p>
+                </div>
+            </div>
+            </div>
+    </footer>
+
+</body>

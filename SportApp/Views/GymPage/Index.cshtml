@@ -1,0 +1,198 @@
+﻿@model  SportApp.Models.Gym
+@{
+    Layout = null;
+    bool isMyGYm = (bool)ViewData["MyGym"];
+
+
+    var userName = ViewData["CurrentUserName"]; 
+    var userLogin = ViewData["CurrentUserLogin"];
+    var loggedIn = (bool)ViewData["LoggedIn"];
+}
+<html>
+<head>
+
+        <title>@Model.GymName</title>
+
+    <!--rating-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/js/star-rating.js" type="text/javascript"></script>
+
+   
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/css/styles.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="~/js/Site.js"></script>
+</head>
+<body>
+
+    <div class="baner">
+        <div class="container">
+            <a asp-controller="Home">
+                <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+            </a>
+        </div>
+        @if (!loggedIn)
+        {
+            <div class="container">
+                <div class="text-vertical-center">
+                    <a id="signupbtn" href="~/Account/Register" class="btn btn-dark btn-lg">Зареєструватись</a>
+                    <a id="loginbtn" href="~/Account/Login" class="btn btn-light btn-lg">Увійти</a>
+                </div>  
+            </div>
+        }
+        else
+        {
+            <div  id ="username" class="container">
+                <div class="text-vertical-center">
+                    <div class="dropdown">
+                        <form action="../Profile" class="inline">
+                            @if (!string.IsNullOrEmpty((string)userName))
+                            {
+
+
+                                <button link="../Profile" class="dropbtn">@userName</button>
+                            }
+                            else
+                            {
+
+
+                                <button link="../Profile" class="dropbtn">@userLogin</button>
+                            }
+                        </form>
+
+                        <div class="dropdown-content">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit" class="btn btn-dark">Вийти</button>
+                            </form>
+                            <form action="../Profile/MyGyms" class="inline">
+                                <button class="btn btn-dark" style="top:0%">Збережені зали</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </div>
+
+    <div id="gymmain" class="container">
+        <h3 id="gymname">@Model.GymName</h3>
+        <h2 id="gymrate">@Model.GymRate/10</h2>
+   <!--username for comment--><h2 id="login"></h2>
+
+
+        <div id="gymstars" class="container">
+            <input id="input-id" type="number" value="@Model.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false"/>
+        </div>
+
+        <img id="manimg" src="~/images/man.png" />
+
+        <div id="gymframe" class="container">
+@if (loggedIn)
+{
+
+            @if (isMyGYm)
+            {
+                <div class="text-vertical-center">
+                    <p><input id="addbtn" type="button" hidden onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
+                </div>
+
+                <div class="text-vertical-center">
+                    <p><input id="removebtn" onclick="deletegyms(@Model.Id)" type="button" value="- Видалити з моїх залів" /></p>
+                </div>
+
+            }
+            else
+            {
+                <div class="text-vertical-center">
+                    <p><input id="addbtn" type="button" onclick="postgyms(@Model.Id)" value="+ Додати до моїх залів"></p>
+                </div>
+
+                <div class="text-vertical-center">
+                    <p><input id="removebtn" onclick="deletegyms(@Model.Id)" type="button" hidden value="- Видалити з моїх залів" /></p>
+                </div>
+
+            }
+}
+            <div id="gymimage" class="container" >
+                <img src="../@Model.GymImgUrl" style="width:380px; height:330px">
+                
+            </div>
+          
+            <div id="infoframe" class="container">
+               
+
+               <div id="info" class="container">
+                   <h4><strong>Адреса:</strong></h4><h4>@Model.GymLocation</h4>
+                   <h4><strong>Мінімальна ціна:</strong></h4><h4>@Model.MbrshipPrice</h4>
+                   <h4><strong>Загальна площа:</strong></h4><h4>@Model.GymArea</h4>
+                   <h4><strong>Рік заснування:</strong></h4><h4>@Model.FoundYear</h4>
+                   <h4><strong>Сайт заснування:</strong></h4><h4>@Model.Url</h4>
+                   <h4><strong>Додаткові послуги:</strong></h4><h4>@Model.Facilities</h4>
+                   <h4><strong>Короткий опис:</strong></h4><h4>@Model.Description</h4>
+                   @if(!string.IsNullOrEmpty((string)ViewData["Errors"]))
+                   {
+                        <div class="alert alert-warning">
+                            <strong>Помилка в коментарі!</strong> 
+                            Введіть текст. Оцінка від 1 to 10
+                        </div>
+                   }
+                    
+               </div>
+
+                <h4 id="leavecom"><b>Оцініть якість наданих послуг та залиште коментар:</b></h4>
+                <div id="comframe" class="container">
+                    <div id="combox" class="container">
+
+                        @foreach (var comment in Model.Comments)
+                        {
+                            <br />
+
+                                            @if(string.IsNullOrEmpty((string)userName))
+                                            {
+                                                <b><p style="color:rgb(89,89,89)"> @userLogin</p></b>
+                                            }
+                                            else
+                                            {
+                                                <p style="color:rgb(89,89,89)"><strong> @userName </strong></p>
+                                            }
+                                            <p style="color:rgb(89,89,89)"> @comment.CommentText</p>
+                                            <p style="color:rgb(89,89,89)">Оцінка: @comment.Rate</p>
+                                            <hr />
+                        }
+                        </div>
+                        <form asp-action="CreateComment">
+                            <input type="hidden" name="GymId" id="GymId" value="@Model.Id">
+                            <input type="hidden" name="UserId" id="UserId" value="@ViewData["CurrentUserId"]" class="form-control" />
+                            <input type="text" id="Rate" placeholder="Оцінка" style="color:black" name="Rate" size="40">
+                            <p><textarea id="CommentText" name="CommentText" placeholder="Коментар.." style="color:black; resize:none"></textarea></p>
+                            <p><input id="sendbtn" type="submit" value="Надіслати"></p>
+                        </form>
+                    </div>
+
+                <div class="container">
+                    <div class="space">
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <br />
+   
+</body>
+
+
+</html>

@@ -1,0 +1,106 @@
+@model IEnumerable<SportApp.Models.Gym>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GymName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GymRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GymLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Region)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MbrshipPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GymArea)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoundYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Facilities)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GymImgUrl)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GymName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GymRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GymLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MbrshipPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GymArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoundYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facilities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                <img src="../@Html.DisplayFor(modelItem => item.GymImgUrl)" style="width:80px; height:50px;"/>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

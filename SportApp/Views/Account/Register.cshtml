@@ -1,0 +1,87 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+@{Layout = null; }
+
+
+
+<html>
+
+<head>
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+    <link href="~/css/styles.css" rel="stylesheet">
+
+    <title>Крос-Реєстрація</title>
+
+</head>
+
+<body>
+
+    <div class="baner">
+        <div class="container">
+            <a asp-controller="Home">
+                <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+            </a>
+        </div>
+        <div class="container">
+            <div class="text-vertical-center">
+                <a id="loginbtnreg" href="~/Account/Login" class="btn btn-light">Увійти</a>
+            </div>
+        </div>
+    </div>
+
+    <h3 id="register">Для реєстрації, будь ласка, заповніть форму</h3>
+
+    <div class="container">
+        <div class="regframe">
+            <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <h4 id="regtxt1">Email</h4>
+                    <!--<label asp-for="Email" class="col-md-2 control-label"></label>-->
+                  
+                        <input id="regml" asp-for="Email" class="form-control" style="width:300px"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                
+                </div>
+                <div class="form-group">
+                    <h4 id="regtxt2">Пароль</h4>
+                    <!--<label asp-for="Password" class="col-md-2 control-label"></label>-->
+                  
+                        <input id="regpsrd" asp-for="Password" class="form-control" style="width:300px" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                   
+                </div>
+                <div class="form-group">
+                    <h4 id="regtxt3">Підтвердження паролю</h4>
+                    <!--<label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>-->
+                 
+                        <input id="regcnfrm" asp-for="ConfirmPassword" class="form-control" style="width:300px"/>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            
+                </div>
+                <div class="form-group">
+                 
+                        <button  id="regbtn" type="submit" href="../Profile" class="btn btn-dark">Надіслати</button>
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="liftman" class="container">
+        <img src="~/images/liftman.jpg" />
+    </div>
+
+</body>
+
+</html>
+
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

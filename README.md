@@ -1,6 +1,6 @@
 # sova
 
-Sport4Everyone — OpenSource проект для пошуку спортивних залів для занять кросфітом. Проект написаний на c#, .net core framework. Використовується СУБД MySql.
+Крос — OpenSource проект для пошуку спортивних залів для занять кросфітом. Проект написаний на c#, .net core framework. Використовується СУБД MySql.
 	
   # Що потрібно встановити?
 1. .net core 1.04, netcoreapp1.1 -> https://www.microsoft.com/net/download/core

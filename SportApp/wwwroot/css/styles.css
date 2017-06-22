@@ -1,0 +1,1079 @@
+﻿
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+body::-webkit-scrollbar {
+    width: 1.2em;
+    
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid rgb(245, 144, 29);
+    border-radius: 6px;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+    .text-vertical-center h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 4.5em;
+        font-weight: 700;
+    }
+
+
+.btn-dark {
+    border-radius: 8;
+    color: #fff;
+    background-color: rgb(245, 144, 29);
+}
+
+.btn-light {
+    border-radius: 8;
+    color: #fff;
+    background-color: rgb(128, 128, 128);
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+    color: #fff;
+    background-color: rgb(225, 124, 9);
+}
+
+/*Home*/
+
+#top {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 73%;
+    background: url(../images/dumbbell.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+#signupbtn {
+    position: absolute;
+    top: 8%;
+    left:72%;
+}
+
+#loginbtn {
+    position: absolute;
+    top: 8%;
+    left:88%;
+}
+
+#usernamehome {
+    position:absolute;
+    top:8%;
+    left:6%;
+}
+#username {
+    position: absolute;
+    top: 5%;
+    left: 6%;
+}
+
+#usernamemy{
+    position:absolute;
+    top:17%;
+    left:6%;
+}
+
+img.img-logo {
+    position: absolute;
+    left: 28%;
+    top:32%;
+}
+
+#searchbtn {
+    position: absolute;
+    left: 38%;
+    top: 80%;
+    width:24%;
+}
+
+.footer {
+    background-color: rgb(89, 89, 89);
+    color: white;
+    top:100%;
+    height:27.5%;
+}
+
+.list-inline {
+    color: white;
+}
+
+/*Results*/
+
+
+.baner {
+    padding: 2% 0;
+    background: url(../images/weights.png) no-repeat top center;
+    background-size: cover;
+    height:20%;
+
+}
+
+img.weighthead {
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 20%;
+    z-index:20;
+}
+
+img.logohead {
+    position: absolute;
+    top: 20px;
+    left: 80px;
+}
+
+.greyframe {
+    color: rgb(128, 128, 128);
+    position: absolute;
+    border-style: solid;
+    border-radius: 12px;
+    overflow: hidden;
+    left: 7%;
+    top:25%;
+    background-color: rgb(128, 128, 128);
+    width: 73%;
+    height: 32%;
+    z-index: 50;
+    overflow: visible;
+}
+
+
+.caret {
+    background-color: white;
+}
+
+
+#searchnbtn {
+    position: absolute;
+    top: 32%;
+    left: 82%;
+    z-index: 100;
+    width: 14%;
+    border-radius: 8;
+    color: #fff;
+    background-color: rgb(128, 128, 128);
+}
+
+#schhomebtn {
+    position: absolute;
+    top: 45%;
+    left: 82%;
+    z-index: 100;
+    width: 14%;
+}
+
+#topcont {
+    color: white;
+}
+
+.firstrow {
+    position: absolute;
+    z-index: 100;
+    left:5%;
+    top:20%;
+}
+
+.secondrow {
+    position: absolute;
+    left: 38%;
+    z-index: 100;
+    top:20%
+}
+
+#regionbox {
+    left:15%;
+    position: absolute;
+    top:20%;
+    width: 10%;
+    z-index: 250;
+}
+
+
+button.btn.btn-primary.dropdown-toggle {
+    background-color: white;
+    border-color: white;
+    color: gray;
+    width: 15%;
+}
+
+    button.btn.btn-primary.dropdown-toggle:active,
+    button.btn.btn-primary.dropdown-toggle:hover,
+    button.btn.btn-primary.dropdown-toggle:focus {
+        background-color: rgb(213, 204, 204);
+        border-color: rgb(213, 204, 204);
+    }
+
+
+
+input[type="text"] {
+    width: 18.5%;
+    height:18%;
+    position: absolute;
+    top:52%;
+    left:15%;
+    display: block;
+    border-radius: 4px;
+    border: 0;
+    text-align: center;
+}
+
+
+#amount {
+    z-index: 100;
+    position: absolute;
+    width: 19%;
+    height: 14%;
+    left: 65%;
+    top:7%
+}
+
+#slider-range {
+    z-index: 100;
+    position: absolute;
+    width: 41%;
+    left: 55%;
+    top:30%;
+}
+
+
+#mltpl{
+    position:absolute;
+    border:0;
+    width:30%;
+}
+
+#mltpl select:active,
+#mltpl select:hover,
+#mltpl select:focus{
+    background-color:rgb(245, 144, 29);
+}
+
+
+
+button {
+    background-color: #6BBE92;
+    width: 302px;
+    border: 0;
+    padding: 10px 0;
+    margin: 5px 0;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+img.side {
+    top:20%;
+    left: 85%;
+    position: absolute;
+    z-index: 50;
+}
+
+
+.emptyframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 7px;
+    width: 73%;
+    border-radius: 12px;
+    left: 7%;
+    height: 270%;
+    top:68%;
+    background-color: rgb(213, 204, 204);
+    color: rgb(213,204,204);
+    z-index: 50;
+}
+
+
+
+#resultstext {
+    color:white;
+    position:absolute;
+    left:2%;
+    z-index:100;
+    top:1%;
+}
+
+.map-container {
+    height: 35%;
+    width: 96%;
+}
+
+#map-canvas {
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+    top:17%;
+    left:2%;
+}
+
+
+
+#gyminfo {
+    z-index: 200;
+    left: 2%;
+    position: absolute;
+    color: white;
+    max-width:100%;
+    top: 44%;
+}
+
+
+
+
+#text {
+    max-width: 100%;
+    margin-right:20%;
+    text-align:center;
+}
+
+
+
+#ratebar {
+    position: absolute;
+    right: -135%;
+    float: right;
+    top:310px;
+    font-size: 20px;
+    color: #444;
+    padding-bottom:10%;
+    display:inline;
+}
+
+
+/*GymPage*/
+
+#gymname{
+   position:absolute;
+   left:11%;
+   top:29%;
+
+
+}
+
+#gymrate {
+    position: absolute;
+    left:53%;
+    top:29%;
+}
+
+
+#gymstars {
+    position: absolute;
+    left: 57.5%;
+    top: 32.5%;
+    font-size:25px;
+}
+
+#manimg{
+    position:absolute;
+    display:block;
+    left:32%;
+    top:11%;
+    width:250px;
+}
+
+#gymframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 7px;
+    width: 73%;
+    border-radius: 12px;
+    left: 10%;
+    height: 200%;
+    top: 39%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 50;
+}
+
+#addbtn{
+    position:absolute;
+    background-color:#6BBE92;
+    border:0;
+    border-radius:5px;
+    color:white;
+    text-align:center;
+    height:40px;
+    width:30%;
+    top:2%;
+    right:2%;
+}
+
+
+#removebtn {
+    position: absolute;
+    background-color: rgb(230, 54, 54);
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    width:30%;
+    text-align: center;
+    height: 40px;
+    top: 2%;
+    right: 2%;
+
+}
+
+    #removebtn.focus,
+    #removebtn.hover,
+    #removebtn.active{
+        background-color: rgb(204, 14, 14);
+    }
+
+#infoframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(89, 89, 89);
+    border-width: 7px;
+    width: 93%;
+    border-radius: 12px;
+    left: 3.5%;
+    height: 59%;
+    top: 38%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 100;
+}
+
+#info{
+    position:absolute;
+    top:2%;
+    max-width:470px;
+    z-index:150;
+    color:#444;
+}
+
+#comframe {
+    color: #444;
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 5px;
+    width: 40%;
+    border-radius: 12px;
+    left: 58%;
+    height: 82%;
+    top: 13%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 120;
+}
+
+    #combox::-webkit-scrollbar {
+        width: 1.2em;
+ 
+    }
+
+    #combox::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius:8px;
+    }
+
+    #combox::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid rgb(245, 144, 29);
+        border-radius:6px;
+    }
+
+
+#gymimage{
+    position:absolute;
+    top:7%;
+    left:27%;
+}
+
+#leavecom{
+    position:absolute;
+    max-width:35%;
+    left:59%;
+    top:2%;
+    z-index:200;
+    color:#444;
+
+}
+
+#combox {
+    position:absolute;
+    overflow:scroll;
+    overflow-x:hidden;
+    width:100%;
+    height:74%;
+    left:-1%;
+    top:1%;
+}
+
+#CommentText {
+    position: absolute;
+    width: 90%;
+    top: 75%;
+    height: 15%;
+    background-color: rgb(213, 204, 204);
+    border: 0;
+    border-radius: 6px;
+    z-index: 120;
+
+}
+
+#Rate{
+    position:absolute;
+    width:17%;
+    height:5%;
+    top:84%;
+    left:75%;
+    z-index:200;
+}
+
+
+#sendbtn{
+    position:absolute;
+    height:35px;
+    top:92%;
+    left:70%;
+    color:white;
+    background-color:rgb(225, 124, 9);
+    border-radius:6px;
+    border:0;
+}
+
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgb(245, 144, 29);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 0;
+    z-index:400;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+   display: inline-block;
+    border-radius: 8px;
+    left: 280%;
+    top: 20%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(245, 144, 29);
+    width:100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 400;
+    border-radius: 8px;
+    border: 0;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color:white;
+        padding: 12px 0px;
+        text-decoration: none;
+        display: block;
+        background-color:rgb(245,144,29);
+    }
+
+    .dropdown-content a:active {
+        background-color: rgb(245, 144, 29);
+    }
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: rgb(245, 144, 29);
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: rgb(245, 144, 29);
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color:rgb(245, 144, 29);
+}
+
+#prevbtn{
+    position:absolute;
+    right:75%;
+    top:100%;
+}
+
+.pagination{
+    position:absolute;
+    top:98%;
+    right:48%;
+}
+
+.pagination li.active a{
+    background-color:rgb(225, 124, 9);
+    border-color:rgb(225,124,9);
+}
+
+#pag{
+ 
+    color:white;
+    background-color:rgb(245, 144, 29);
+}
+
+#pag1 {
+    color: white;
+    background-color: rgb(245, 144, 29);
+}
+
+    #pag1.active {
+        background-color: rgb(225, 124, 9);
+    }
+
+#nextbtn {
+    position: absolute;
+    left: 75%;
+    top: 100%;
+}
+
+/*Profile*/
+
+
+.banerprof {
+    padding: 60px 0;
+    background: url(../images/weights.png) no-repeat top center;
+    width: 100%;
+    position: absolute;
+    right: 0%;
+    height: 10%;
+}
+
+#usernameprof{
+    position:absolute;
+    left:6%;
+    top:24%;
+}
+
+#mycab{
+    position:absolute;
+    left:18%;
+    top:17%;
+
+
+}
+
+#hgman{
+    position:absolute;
+    top:20%;
+
+}
+
+#hgwoman {
+    position: absolute;
+    top: 20%;
+    left:84%;
+}
+
+#profframe {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(245, 144, 29);
+    border-width: 7px;
+    width: 63%;
+    border-radius: 12px;
+    left: 18%;
+    height: 520px;
+    top: 27%;
+    background-color: white;
+    color: rgb(213,204,204);
+    z-index: 50;
+}
+
+#picframe{
+    position:absolute;
+    border-width:5px;
+    border-style:solid;
+    border-radius:8px;
+    border-color:rgb(225, 124, 9);
+    z-index:100;
+    width:12%;
+    height:17%;
+    top:8%;
+    left:9%;
+}
+
+#pic{
+    position:absolute;
+    width:72%;
+    height:87%;
+    top:2%;
+    left:15%;
+  
+}
+
+
+.proftxt{
+    position:absolute;
+    left:28%;
+    color:#444;
+}
+
+
+#profbox1{
+    position:absolute;
+    left:48.5%;
+}
+
+
+#profbox2{
+    position:absolute;
+    left:47%;
+}
+
+#profbox3 {
+    position: absolute;
+    left: 48.5%;
+}
+
+
+#profbox4 {
+    position: absolute;
+    left: 48%;
+}
+#profbox5 {
+    position: absolute;
+    left: 48%;
+}
+
+
+#profbox6 {
+    position: absolute;
+    left: 46.5%;
+}
+
+#profbox7 {
+    position: absolute;
+    left: 48%;
+}
+
+
+#profbox8 {
+    position: absolute;
+    left: 48%;
+}
+
+#saveprof{
+    position:absolute;
+    top:110%;
+    left:36%;
+    border-width:3px;
+    border-radius:8px;
+    background-color:rgb(225, 124, 9);
+    color:white;
+}
+
+
+
+
+#new{
+    position:absolute;
+    border-color:rgb(89, 89, 89);
+    border-width:10px;
+    border-radius:8px;
+    z-index:200;
+}
+
+
+.space{
+    position:absolute;
+    border-color:white;
+    border-style:solid;
+    top:130%;
+    height:40px;
+}
+
+
+/*Saved gyms*/
+
+#manweight{
+    position:absolute;
+    left:70%;
+    top:20%;
+}
+
+#savedtxt {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+
+.savedgyms {
+    color: rgb(245, 144, 29);
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(89, 89, 89);
+    border-width: 7px;
+    border-radius:8px;
+    z-index: 200;
+    position: absolute;
+    width: 68%;
+    height: 85%;
+    top: 30%;
+    left: 10%;
+}
+
+#sdcontent {
+    position: absolute;
+    top: 10%;
+    left:4%;
+    width: 98%;
+    height: 100%;
+    top:3%;
+}
+
+#rmvbtn {
+    position: absolute;
+    background-color: rgb(230, 54, 54);
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    width: 20%;
+    text-align: center;
+    height: 40px;
+    top: 1%;
+    left:57%;
+}
+
+#sdgymname {
+    padding-bottom:10px;
+    color:#444;
+    max-width: 230px;
+    font-size:20px;
+
+    
+}
+
+/*Login*/
+
+#log{
+    position:absolute;
+    left:12%;
+    top:22%;
+    color:#444;
+}
+
+.logframe {
+    position: absolute;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 8px;
+    border-color: rgb(245, 144, 29);
+    left:12%;
+    width:65%;
+    height:550px;
+    top:34%;
+}
+
+#logtxt1{
+    position:absolute;
+    left:25%;
+    top:20%;
+    color:#444;
+}
+
+#logtxt2 {
+    position: absolute;
+    left:25%;
+    top:30%;
+    color:#444;
+}
+
+#lgemail{
+    position:absolute;
+    left:38%;
+    top:20%;
+    background-color:rgba(0,0,0,0.2);
+}
+
+#lgpassword{
+    position:absolute;
+    left:38%;
+    top:30%;
+    background-color:rgba(0,0,0,0.2);
+
+}
+
+#remem{
+    position:absolute;
+    left:41%;
+    top:42%;
+}
+
+#forgot{
+    position:absolute;
+    left:38%;
+    top:50%;
+}
+
+#reg{
+    position:absolute;
+    left:38%;
+    top:55%;
+    text-align:center;
+}
+
+#logbtn{
+    position:absolute;
+    top:65%;
+    left:32%;
+}
+
+#or{
+    position:absolute;
+    left:44%;
+    top:100%;
+}
+
+#social{
+    position:absolute;
+    top:107%;
+    left:22%;
+}
+
+#puppycont{
+    position:absolute;
+    left:27%;
+    top:130%;
+}
+
+
+.spacing{
+ position: absolute;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 8px;
+    border-color:#fff;
+    left:12%;
+    width:65%;
+    height:20px;
+    top:160%;
+}
+
+
+/*Register*/
+
+#loginbtnreg {
+    position: absolute;
+    top: 35px;
+    width:200px;
+    font-size:18px;
+    left:78%;
+}
+
+#register {
+    position: absolute;
+    left: 16%;
+    top: 23%;
+}
+
+.regframe{
+    position:absolute;
+    left:16%;
+    top:35%;
+    border-style:solid;
+    border-radius:8px;
+    border-width:8px;
+    border-color:rgb(245, 144, 29);
+    width:70%;
+    height:570px;
+}
+
+#regtxt1{
+    position:absolute;
+    left:20%;
+    top:25%;
+}
+
+#regtxt2 {
+    position: absolute;
+    left: 20%;
+    top: 35%;
+}
+
+#regtxt3 {
+    position: absolute;
+    left: 20%;
+    top: 45%;
+}
+
+#regml{
+    position:absolute;
+    left:46%;
+    top:25%;
+}
+
+#regpsrd{
+    position:absolute;
+    left:46%;
+    top:35%;
+}
+
+#regcnfrm{
+    position:absolute;
+    left:46%;
+    top:45%;
+}
+
+
+
+#regbtn{
+    position:absolute;
+    left:35%;
+    top:72%;
+    height:40px;
+    font-size:18px;
+}
+ #liftman{
+     position:absolute;
+     left:34%;
+     top:130%;
+}

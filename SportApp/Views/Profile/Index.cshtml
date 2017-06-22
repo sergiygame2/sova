@@ -1,0 +1,202 @@
+﻿@model SportApp.Models.DTO.UserDTO
+
+@{
+    Layout=null;
+    ViewData["Title"] = "Index";
+    var usersGyms = (List<Gym>)ViewData["UserGyms"];
+}
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="content-language" content="ru">
+
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="baner">
+        <div class="container">
+            <a asp-controller="Home">
+                <img class="logohead" src="~/images/logo.png" height="80px" width="250px">
+            </a>
+        </div>
+        <div id="username" class="container">
+            <div class="text-vertical-center">
+                <div class="dropdown">
+                    <form action="../Profile" class="inline">
+                        @if (!string.IsNullOrEmpty((string)@Model.FullName))
+                        {
+
+
+                            <button link="../Profile" class="dropbtn">@Model.FullName</button>
+                        }
+                        else
+                        {
+
+                            <button link="../Profile" class="dropbtn">@Model.UserName</button>
+                        }
+                    </form>
+
+                    <div class="dropdown-content">
+                        <form asp-controller="Account" asp-action="Logout" method="post">
+                            <button type="submit" class="btn btn-dark">Вийти</button>
+                        </form>
+                        <form action="../Profile/MyGyms" class="inline">
+                        <button class="btn btn-dark" style="top:0%">Збережені зали</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div id="hgman" class="container">
+        <img src="~/images/hgman.png" />
+    </div>
+
+    <div id="hgwoman" class="container">
+        <img src="~/images/hgwoman.png" />
+    </div>
+
+
+    <div id="profile" class="container">
+    <div id="profcont" class="container">
+       
+
+        <h2 id="mycab">Мій кабінет</h2>
+        <div id="profframe" class="container">
+
+            <div class="container" id="picframe">
+                <img id="pic" src="~/images/fmllogo.png" />
+            </div>
+
+
+            <form asp-action="Index">
+                <div class="form-horizontal">
+                    <br />
+                    <br />
+                    <br />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <h4 class="proftxt">Повне ім'я</h4>
+                        <!--<label asp-for="FullName" class="col-md-2 control-label"></label>-->
+                        <div id="profbox1" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="FullName" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px; height:30px; text-align:center" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Дата народження</h4>
+                        <!--<label asp-for="BirthDay" class="col-md-2 control-label"></label>-->
+                        <div id="profbox2" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="BirthDay" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px;  height:30px; text-align:center" />
+                                <span asp-validation-for="BirthDay" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Логін</h4>
+                        <!--<label asp-for="UserName" class="col-md-2 control-label"></label>-->
+                        <div id="profbox3" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="UserName" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px;  height:30px; text-align:center" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <!--<label asp-for="Email" class="col-md-2 control-label"></label>-->
+                        <h4 class="proftxt">Email</h4>
+                        <div id="profbox4" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Email" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px;  height:30px; text-align:center" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <h4 class="proftxt">Адреса</h4>
+                        <!-- <label asp-for="Address" class="col-md-2 control-label"></label>-->
+                        <div id="profbox5" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Address" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px;  height:30px; text-align:center" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Зріст</h4>
+                        <!--<label asp-for="Height" class="col-md-2 control-label"></label>-->
+                        <div id="profbox6" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Height" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px;  height:30px; text-align:center" />
+                                <span asp-validation-for="Height" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <h4 class="proftxt">Вага</h4>
+                        <!--<label asp-for="Weight" class="col-md-2 control-label"></label>-->
+                        <div id="profbox7" class="profbox">
+                            <div class="col-md-10">
+                                <input asp-for="Weight" class="form-control" style="background-color:rgba(0,0,0,0.2); width:200px;  height:30px; text-align:center" />
+                                <span asp-validation-for="Weight" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                 
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="text-vertical-center">
+                            <input type="submit" value="Зберегти" class="btn btn-dark" id="saveprof">
+                        </div>
+                            </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="space">
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        </div>
+</body>
+</html>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
