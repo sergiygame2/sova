@@ -33,14 +33,13 @@ namespace SportApp.Controllers
         // GET: Profile
         public async Task<IActionResult> Index()
         {
-
             string id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if(id == null) id = "";
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
-
 
             var userDTO = new UserDTO() { Id = user.Id, Email = user.Email, Password = user.PasswordHash,UserName = user.UserName,FullName = user.FullName, Address = user.Address, BirthDay= user.BirthDay, Height = user.Height, Weight = user.Weight };
 
