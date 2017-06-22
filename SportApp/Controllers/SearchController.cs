@@ -27,7 +27,6 @@ namespace SportApp.Controllers
 
         public  async Task<IActionResult> Index([Bind("Region","Street", "StartPrice", "EndPrice", "Facilities" )] SearchModel searchModel, int? page)
         {
-            //SearchedHome();
             var defaultRegion = "Оберіть район";
             if (searchModel.Region == defaultRegion) searchModel.Region = null;
             List<string> facilities = null;
@@ -67,7 +66,7 @@ namespace SportApp.Controllers
             return View(await PaginatedList<Gym>.CreateAsync(gyms, page ?? 1, pageSize));
         }
 
-        public async Task<IActionResult> SearchedHome()
+        public async Task<IActionResult> SearchNearHome()
         {
             string id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = await _userManager.FindByIdAsync(id);
@@ -75,11 +74,14 @@ namespace SportApp.Controllers
             {
                 return NotFound();
             }
-
-
-            //var address = user.Address;
-            Console.WriteLine("\n\n\n\n Address   " + user.Email);
-
+            if(!string.IsNullOrEmpty(user.Address))
+            {
+                var searchModel = new SearchModel()
+                {
+                    Street = user.Address
+                };
+                return RedirectToAction("Index", searchModel);
+            }
             return Ok("Ok");
         }
     }

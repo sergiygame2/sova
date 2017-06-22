@@ -65,7 +65,7 @@ body::-webkit-scrollbar-thumb {
     display: table;
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 76%;
     background: url(../images/dumbbell.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -76,33 +76,39 @@ body::-webkit-scrollbar-thumb {
 
 #signupbtn {
     position: absolute;
-    top: 35px;
-    right: 120px;
+    top: 8%;
+    left:72%;
 }
 
 #loginbtn {
     position: absolute;
-    top: 35px;
-    right: 20px;
+    top: 8%;
+    left:88%;
+}
+
+#username{
+    position:absolute;
+    top: 20%;
+    left:6%;
 }
 
 img.img-logo {
     position: absolute;
-    left: 45%;
-    margin-left: -270px;
-    margin-top: 200px;
+    left: 26%;
+    top:32%;
 }
 
 #searchbtn {
     position: absolute;
-    left: 47%;
+    left: 38%;
     top: 80%;
-    margin-left: -20px;
+    width:24%;
 }
 
 footer {
     background-color: rgb(89, 89, 89);
     color: white;
+    top:100%;
 }
 
 .list-inline {
@@ -113,9 +119,11 @@ footer {
 
 
 .baner {
-    padding: 60px 0;
+    padding: 2% 0;
     background: url(../images/weights.png) no-repeat top center;
     background-size: cover;
+    height:20%;
+
 }
 
 img.weighthead {
@@ -142,8 +150,7 @@ img.logohead {
     top:25%;
     background-color: rgb(128, 128, 128);
     width: 73%;
-    height: auto;
-    min-height: 200px;
+    height: 32%;
     z-index: 50;
     overflow: visible;
 }
@@ -159,7 +166,7 @@ img.logohead {
     top: 32%;
     left: 82%;
     z-index: 100;
-    width: 170px;
+    width: 14%;
     border-radius: 8;
     color: #fff;
     background-color: rgb(128, 128, 128);
@@ -170,6 +177,7 @@ img.logohead {
     top: 45%;
     left: 82%;
     z-index: 100;
+    width: 14%;
 }
 
 #topcont {
@@ -194,7 +202,7 @@ img.logohead {
     left:15%;
     position: absolute;
     top:20%;
-    width: 210px;
+    width: 10%;
     z-index: 250;
 }
 
@@ -203,7 +211,7 @@ button.btn.btn-primary.dropdown-toggle {
     background-color: white;
     border-color: white;
     color: gray;
-    width: 180px;
+    width: 15%;
 }
 
     button.btn.btn-primary.dropdown-toggle:active,
@@ -216,8 +224,8 @@ button.btn.btn-primary.dropdown-toggle {
 
 
 input[type="text"] {
-    width: 170px;
-    height: 35px;
+    width: 18.5%;
+    height:18%;
     position: absolute;
     top:52%;
     left:15%;
@@ -231,8 +239,8 @@ input[type="text"] {
 #amount {
     z-index: 100;
     position: absolute;
-    width: 200px;
-    height: 30px;
+    width: 19%;
+    height: 14%;
     left: 65%;
     top:7%
 }
@@ -240,7 +248,7 @@ input[type="text"] {
 #slider-range {
     z-index: 100;
     position: absolute;
-    width: 380px;
+    width: 41%;
     left: 55%;
     top:30%;
 }
@@ -249,6 +257,7 @@ input[type="text"] {
 #mltpl{
     position:absolute;
     border:0;
+    width:30%;
 }
 
 #mltpl select:active,
@@ -272,7 +281,7 @@ button {
 
 
 img.side {
-    top:19.5%;
+    top:20%;
     left: 85%;
     position: absolute;
     z-index: 50;
@@ -288,8 +297,8 @@ img.side {
     width: 73%;
     border-radius: 12px;
     left: 7%;
-    height: 1400px;
-    top:70%;
+    height: 270%;
+    top:68%;
     background-color: rgb(213, 204, 204);
     color: rgb(213,204,204);
     z-index: 50;
@@ -306,8 +315,8 @@ img.side {
 }
 
 .map-container {
-    height: 400px;
-    width: 870px;
+    height: 35%;
+    width: 96%;
 }
 
 #map-canvas {
@@ -315,7 +324,7 @@ img.side {
     padding: 0;
     height:100%;
     width:100%;
-    top:25%;
+    top:17%;
     left:2%;
 }
 
@@ -327,13 +336,13 @@ img.side {
     position: absolute;
     color: white;
     width: 100%;
-    top: 40%;
+    top: 44%;
 }
 
 
 #text {
-    max-width: 230px;
-    margin-right:200px;
+    max-width: 80%;
+    margin-right:18%;
     text-align:center;
 }
 
@@ -343,7 +352,7 @@ img.side {
     position: absolute;
     right: -138%;
     float: right;
-    padding: 2px;
+    padding: 1%;
     font-size: 20px;
     color: #444;
 }
@@ -354,7 +363,7 @@ img.side {
 #gymname{
    position:absolute;
    left:11%;
-   top:22%;
+   top:29%;
 
 
 }
@@ -362,22 +371,22 @@ img.side {
 #gymrate {
     position: absolute;
     left:53%;
-    top:22%;
+    top:29%;
 }
 
 
 #gymstars {
     position: absolute;
     left: 57.5%;
-    top: 25.5%;
+    top: 32.5%;
     font-size:25px;
 }
 
 #manimg{
     position:absolute;
     left:32%;
-    top:6%;
-    width:250px;
+    top:11%;
+    width:20%;
 }
 
 #gymframe {
@@ -389,8 +398,8 @@ img.side {
     width: 73%;
     border-radius: 12px;
     left: 10%;
-    height: 1300px;
-    top: 34%;
+    height: 200%;
+    top: 39%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 50;
@@ -431,8 +440,8 @@ img.side {
     width: 93%;
     border-radius: 12px;
     left: 3.5%;
-    height: 680px;
-    top: 45%;
+    height: 59%;
+    top: 38%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 100;
@@ -455,26 +464,24 @@ img.side {
     width: 40%;
     border-radius: 12px;
     left: 58%;
-    height: 480px;
-    top: 20%;
+    height: 82%;
+    top: 13%;
     background-color: white;
     color: rgb(213,204,204);
     z-index: 120;
-    overflow:scroll;
-    overflow-x:hidden;
 }
 
-    #comframe::-webkit-scrollbar {
+    #combox::-webkit-scrollbar {
         width: 1.2em;
  
     }
 
-    #comframe::-webkit-scrollbar-track {
+    #combox::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         border-radius:8px;
     }
 
-    #comframe::-webkit-scrollbar-thumb {
+    #combox::-webkit-scrollbar-thumb {
         background-color: darkgrey;
         outline: 1px solid rgb(245, 144, 29);
         border-radius:6px;
@@ -498,14 +505,25 @@ img.side {
 
 }
 
-#CommentText{
+#combox {
     position:absolute;
-    width:90%;
-    top:75%;
-    height:15%;
-    background-color:rgb(213, 204, 204);
-    border:0;
-    border-radius:6px;
+    overflow:scroll;
+    overflow-x:hidden;
+    width:100%;
+    left:-1%;
+    top:1%;
+}
+
+#CommentText {
+    position: absolute;
+    width: 90%;
+    top: 75%;
+    height: 15%;
+    background-color: rgb(213, 204, 204);
+    border: 0;
+    border-radius: 6px;
+    z-index: 120;
+
 }
 
 #Rate{
@@ -548,8 +566,8 @@ img.side {
 .dropdown {
     position: relative;
     display: inline-block;
-    left:800px;
-    top:-30px;
+    left:280%;
+    top:20%;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -768,7 +786,7 @@ img.side {
     position:absolute;
     border-color:white;
     border-style:solid;
-    top:120%;
+    top:130%;
     height:40px;
 }
 

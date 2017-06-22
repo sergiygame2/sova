@@ -125,10 +125,13 @@
         <form asp-action="Index">
             <div class="container">
                 <button id="searchnbtn" type="submit" class="btn btn-light btn-lg">Шукати</button>
-                <a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>
+                @if (!loggedIn)
+                {
+                    <!--<a id="schhomebtn" href="" class="btn btn-dark btn-lg">Шукати біля дому</a>-->
+                }
             </div>
             <div class="container">
-                <img class="side" src="~/images/girl.jpg" />
+                <img class="side" src="~/images/girl.png" />
             </div>
             <div class="container">
                 <frameset>
@@ -242,7 +245,6 @@
                                                 {
                                                     <li class="active">
                                                         <a class="btn btn-dark" asp-action="Index"
-                                                           asp-route-searchModel="@ViewData["SearchModel"]"
                                                            asp-route-page="@i">@i</a>
                                                     </li>
                                                 }
@@ -250,7 +252,6 @@
                                                 {
                                                     <li>
                                                         <a id="pag" class="btn btn-dark" asp-action="Index"
-                                                           asp-route-searchModel="@ViewData["SearchModel"]"
                                                            asp-route-page="@i">@i
                                                         </a>
                                                     </li>
