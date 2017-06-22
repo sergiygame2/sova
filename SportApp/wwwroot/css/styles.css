@@ -347,14 +347,16 @@ img.side {
     left: 2%;
     position: absolute;
     color: white;
-    width: 100%;
+    max-width:100%;
     top: 44%;
 }
 
 
+
+
 #text {
-    max-width: 80%;
-    margin-right:18%;
+    max-width: 100%;
+    margin-right:20%;
     text-align:center;
 }
 
@@ -364,10 +366,11 @@ img.side {
     position: absolute;
     right: -135%;
     float: right;
-    top:100%;
+    top:310px;
     font-size: 20px;
     color: #444;
     padding-bottom:10%;
+    display:inline;
 }
 
 

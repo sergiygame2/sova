@@ -220,20 +220,22 @@
                                                                 <div class="col-md-4">
                                                                     <div class="container">
                                                                         <a href="../GymPage/@gym.Id">
-                                                                            <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" width="200px" height="200px" />
+                                                                            <img id="gymimg" src="@gym.GymImgUrl" href="../Gym/Index" style="width:200px; height:200px" />
                                                                         </a>
                                                                     </div>
                                                                     <div id="text" class="container">
                                                                         <a href="../GymPage/@gym.Id">
-                                                                            <h4>@gym.GymName</h4>
+                                                                            <h4 id="gymnames">@gym.GymName</h4>
                                                                         </a>
                                                                         <h4>@gym.GymLocation</h4>
                                                                         <h4 id="mmshprice">@gym.MbrshipPrice  грн</h4>
-                                                                        <div class="stars">
+                                                                        <!--<div id="gymrates" class="stars">-->
+                                                                 
                                                                             <div id="ratebar" class="container">
                                                                                 <input id="input-id" type="number" value="@gym.GymRate" class="rating" readonly="true" ratingClass="rating" min=0 max=10 step=0.5 data-stars="10" data-size="s" data-show-caption="false" data-show-clear="false" data-rtl="false" />
                                                                             </div>
-                                                                        </div>
+
+                                                                        <!--</div>-->
                                                                         <br>
                                                                         <br>
                                                                         <br />
