@@ -198,3 +198,20 @@ function deletegyms(id) {
         })
 
 }
+
+
+function deletegymsonpage(id) {
+
+    //alert(id);
+    $.post("/api/users-gyms/delete/" + id, function () {
+        //alert("send");
+    })
+        .done(function () {
+            window.location.reload();
+            //alert("second success");
+        })
+        .fail(function () {
+            alert("error");
+        })
+
+}
