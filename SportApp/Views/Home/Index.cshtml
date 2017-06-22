@@ -33,7 +33,7 @@
         }
         else
         {
-            <div id="username" class="container">
+            <div id="usernamehome" class="container">
                 <div class="text-vertical-center">
                     <div class="dropdown">
                         @if(!string.IsNullOrEmpty((string)userName))
@@ -42,12 +42,14 @@
                         }
                         else
                         {
-                            <button class="dropbtn">@userLogin</button>
+                            <button link="../Profile" class="dropbtn">@userLogin</button>
                         }
                         <div class="dropdown-content">
                              <form asp-controller="Account" asp-action="Logout" method="post">
-                                <button type="submit">Вийти</button>
+                                <button type="submit" style="background-color:rgb(245,144,29)">Вийти</button>
                               </form>
+                            <button href="../Profile/MyGyms" class="btn btn-dark" style="top:0%">Збережені зали</button>
+                            <a></a>
                         </div>
                     </div>
                 </div>
