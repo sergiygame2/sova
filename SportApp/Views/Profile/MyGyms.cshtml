@@ -31,14 +31,10 @@
                     <form action="../Profile" class="inline">
                         @if (!string.IsNullOrEmpty((string)@Model.FullName))
                         {
-
-
                             <button link="../Profile" class="dropbtn">@Model.FullName</button>
                         }
                         else
                         {
-
-
                             <button link="../Profile" class="dropbtn">@Model.UserName</button>
                         }
                     </form>
@@ -64,6 +60,13 @@
             <div id="manweight" class="container">
                 <img src="~/images/weightman.jpg" />
             </div>
+
+            @if(usersGyms.Count == 0)
+            {
+                <h2>У Вас ще немає збережених залів :(</h2>
+            }
+            else
+            {
 
             <div class="container">
             <div class="savedgyms">
@@ -92,9 +95,11 @@
                             </div>
                         </div>
                     </div>
-                       </div>
+                </div>
 
                  </div>
+                 }
+
             </div>
 </body>
 </html>
