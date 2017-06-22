@@ -336,6 +336,8 @@ img.side {
     text-align:center;
 }
 
+
+
 #ratebar {
     position: absolute;
     right: -138%;
@@ -345,9 +347,6 @@ img.side {
     color: #444;
 }
 
-#ratebar.active{
-    color:rgb(245, 144, 29);
-}
 
 /*GymPage*/
 
